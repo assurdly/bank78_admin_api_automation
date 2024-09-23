@@ -1491,7 +1491,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Referral Details-Non-existing Id",
+							"name": "Get Referral Details-unregistered Id",
 							"event": [
 								{
 									"listen": "test",
@@ -23718,9 +23718,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrlre}}/api/referral/by-user-id/3f9d7c05-297d-4008-ba54-511247b9d2e4",
+							"raw": "{{baseUrlref}}/api/referral/by-user-id/3f9d7c05-297d-4008-ba54-511247b9d2e4",
 							"host": [
-								"{{baseUrlre}}"
+								"{{baseUrlref}}"
 							],
 							"path": [
 								"api",
