@@ -23958,6 +23958,24 @@
 			"id": "43ed39da-c1a6-468c-ad4f-f14c7b2d94d2"
 		},
 		{
+			"name": "Sales Account",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "6ee943cb-72e9-4bb1-b846-21905aecaad2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "9d7ce9d3-dae0-47cb-8d83-9c0b636cb1ac"
+		},
+		{
 			"name": "https://referral-dev.bank78.co/api/referral/query/referrals/1/20/%7B%7D",
 			"event": [
 				{
