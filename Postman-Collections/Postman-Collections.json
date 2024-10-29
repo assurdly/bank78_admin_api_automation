@@ -24030,6 +24030,32 @@
 				},
 				{
 					"name": "Create sales person- Duplicate Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46c8eacd-b98d-4434-9b1f-c66391eee52b",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is Bad Request\", function () {\r",
+									"    pm.response.to.have.status('Bad Request');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is supposed to return an error inducating that Duplicate email is used\", function () {\r",
+									"     var responseBody = pm.response.json();\r",
+									"\r",
+									"     pm.expect(responseBody).to.be.an('object');\r",
+									"     pm.expect(responseBody.message).to.include(\"Salesperson with email already exists\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "343f5e47-1d14-4299-9637-5aadc05877ac",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -24051,7 +24077,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Liasusales\",\r\n  \"email\": \"liasu@mailinator.com\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Liasusalesboy\",\r\n  \"email\": \"liasu@mailinator.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
