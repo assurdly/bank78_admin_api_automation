@@ -24159,7 +24159,20 @@
 				},
 				{
 					"name": "Assign a Salesperson",
-					"item": [],
+					"item": [
+						{
+							"name": "Assign a Salesperson - Success",
+							"id": "f549895c-62f8-4e72-ae7e-bd0970f90007",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "ddbd24e1-c1fd-425c-ac56-85782ba4a3fe"
 				}
 			],
