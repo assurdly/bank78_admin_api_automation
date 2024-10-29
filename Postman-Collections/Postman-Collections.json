@@ -23962,7 +23962,75 @@
 			"item": [
 				{
 					"name": "Create sales person- Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e78d3f7c-38f1-42ae-bcc0-63f8d4a3b198",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is OK\", function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pesponse body has a valid structure\", function () {\r",
+									"     pm.expect(pm.response.json()).to.be.an('object');\r",
+									"     pm.expect(pm.response.json()).to.have.property('hasResult');\r",
+									"     pm.expect(pm.response.json()).to.have.property('result');\r",
+									"     pm.expect(pm.response.json().result).to.be.an('object');\r",
+									"     pm.expect(pm.response.json().result).to.have.property('name');\r",
+									"     pm.expect(pm.response.json().result).to.have.property('email');\r",
+									"     pm.expect(pm.response.json().result).to.have.property('salesCode');\r",
+									"     pm.expect(pm.response.json().result).to.have.property('id');\r",
+									"     pm.expect(pm.response.json().result).to.have.property('dateCreated');\r",
+									"     pm.expect(pm.response.json().result).to.have.property('lastUpdatedOn');\r",
+									"     pm.expect(pm.response.json().result).to.have.property('createdBy');\r",
+									"     pm.expect(pm.response.json().result).to.have.property('lastUpdatedBy');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "6ee943cb-72e9-4bb1-b846-21905aecaad2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Liasusalesman\",\r\n  \"email\": \"liasuuu@mailinator.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrlo}}/api/salesAccounts/create-sales-person"
+					},
+					"response": []
+				},
+				{
+					"name": "Create sales person- Duplicate Email",
+					"id": "343f5e47-1d14-4299-9637-5aadc05877ac",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
