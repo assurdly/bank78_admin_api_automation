@@ -23645,6 +23645,95 @@
 			"name": "Add Rules",
 			"item": [
 				{
+					"name": "Referral Configuration",
+					"item": [
+						{
+							"name": "Get Referral Configuration",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4288e29c-a733-4cdb-8797-5ba44d1b0b10",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has required fields\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+											"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+											"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that reult has required fields\", function () {\r",
+											"    pm.expect(jsonData.result.active).to.be.a('boolean');\r",
+											"    pm.expect(jsonData.result.referralAmount).to.be.a('number');\r",
+											"    pm.expect(jsonData.result.id).to.be.a('number');\r",
+											"    pm.expect(jsonData.result.createdBy).to.be.a('string');\r",
+											"    pm.expect(jsonData.result.lastUpdatedBy).to.be.a('string');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "005e9765-a639-4d69-8234-4deaeed2f67a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrlre}}/api/referral-config"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Referral Configuration-NoAuth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4288e29c-a733-4cdb-8797-5ba44d1b0b10",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ce80a99c-a687-4909-8ac2-723482e89004",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrlre}}/api/referral-config"
+							},
+							"response": []
+						}
+					],
+					"id": "43ed39da-c1a6-468c-ad4f-f14c7b2d94d2"
+				},
+				{
 					"name": "Add a Rule",
 					"id": "bb5e04a4-35e7-4b6a-8ceb-f8190052fdf9",
 					"protocolProfileBehavior": {
@@ -23869,43 +23958,11 @@
 			"id": "7ec554e8-793d-420f-9d34-019a49506686"
 		},
 		{
-			"name": "Referral Configuration",
+			"name": "Sales Account",
 			"item": [
 				{
-					"name": "Get Referral Configuration",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4288e29c-a733-4cdb-8797-5ba44d1b0b10",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"var jsonData = pm.response.json();\r",
-									"\r",
-									"pm.test(\"Response has required fields\", function () {\r",
-									"    pm.expect(jsonData).to.be.an('object');\r",
-									"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
-									"    pm.expect(jsonData.resultType).to.be.a('string');\r",
-									"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Verify that reult has required fields\", function () {\r",
-									"    pm.expect(jsonData.result.active).to.be.a('boolean');\r",
-									"    pm.expect(jsonData.result.referralAmount).to.be.a('number');\r",
-									"    pm.expect(jsonData.result.id).to.be.a('number');\r",
-									"    pm.expect(jsonData.result.createdBy).to.be.a('string');\r",
-									"    pm.expect(jsonData.result.lastUpdatedBy).to.be.a('string');\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "005e9765-a639-4d69-8234-4deaeed2f67a",
+					"name": "Create sales person- Success",
+					"id": "6ee943cb-72e9-4bb1-b846-21905aecaad2",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -23916,59 +23973,24 @@
 								"token": "{{admin_access_token}}"
 							}
 						},
-						"method": "GET",
-						"header": [],
-						"url": "{{baseUrlre}}/api/referral-config"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Referral Configuration-NoAuth",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4288e29c-a733-4cdb-8797-5ba44d1b0b10",
-								"exec": [
-									"pm.test(\"Status code is 401\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
 							}
-						}
-					],
-					"id": "ce80a99c-a687-4909-8ac2-723482e89004",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Liasusales\",\r\n  \"email\": \"liasu@mailinator.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						"method": "GET",
-						"header": [],
-						"url": "{{baseUrlre}}/api/referral-config"
-					},
-					"response": []
-				}
-			],
-			"id": "43ed39da-c1a6-468c-ad4f-f14c7b2d94d2"
-		},
-		{
-			"name": "Sales Account",
-			"item": [
-				{
-					"name": "New Request",
-					"id": "6ee943cb-72e9-4bb1-b846-21905aecaad2",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
+						"url": "{{baseUrlo}}/api/salesAccounts/create-sales-person"
 					},
 					"response": []
 				}
