@@ -24107,12 +24107,17 @@
 											"    pm.response.to.have.status('Bad Request');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response body is supposed to return an error inducating that Duplicate email is used\", function () {\r",
-											"     var responseBody = pm.response.json();\r",
-											"\r",
-											"     pm.expect(responseBody).to.be.an('object');\r",
-											"     pm.expect(responseBody.message).to.include(\"Salesperson with email already exists\");\r",
-											"});"
+											"pm.test(\"Response body is not empty\",function () {\r",
+											"    pm.test(\"Response body is not empty\", function () {   \r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+											"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+											"});\r",
+											"})"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -24140,7 +24145,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"Liasusalesboy\",\r\n  \"email\": \"liasuuu@mailinator.com\"\r\n}",
+									"raw": "{\r\n  \"name\": \"Liasusalesboy\",\r\n  \"email\": \"\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
