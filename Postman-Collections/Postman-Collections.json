@@ -24240,6 +24240,24 @@
 			"id": "9d7ce9d3-dae0-47cb-8d83-9c0b636cb1ac"
 		},
 		{
+			"name": "Stakeholders",
+			"item": [
+				{
+					"name": "Add a director",
+					"id": "d72a2481-14cc-4bbf-8561-cefedb84759d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "2e87e5cc-705a-4800-b83a-f6c2080b33e1"
+		},
+		{
 			"name": "https://referral-dev.bank78.co/api/referral/query/referrals/1/20/%7B%7D",
 			"event": [
 				{
