@@ -24440,7 +24440,37 @@
 					"response": []
 				}
 			],
-			"id": "8010d3a2-a126-4c08-9b85-ac5a0a944e4b"
+			"id": "8010d3a2-a126-4c08-9b85-ac5a0a944e4b",
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "{{access_token}}"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "63e0e64d-59fa-497b-97ef-e237455681d6",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "73e3926c-5326-4b3d-8303-ca4fe9bcb92f",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "https://referral-dev.bank78.co/api/referral/query/referrals/1/20/%7B%7D",
