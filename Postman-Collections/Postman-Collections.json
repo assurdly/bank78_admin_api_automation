@@ -24290,7 +24290,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{access_token}}"
+								"token": "{{admin_access_token}}"
 							}
 						},
 						"method": "POST",
@@ -24352,7 +24352,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{access_token}}"
+								"token": "{{admin_access_token}}"
 							}
 						},
 						"method": "POST",
@@ -24411,7 +24411,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{access_token}}"
+								"token": "{{admin_access_token}}"
 							}
 						},
 						"method": "POST",
@@ -24477,7 +24477,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{access_token}}"
+								"token": "{{admin_access_token}}"
 							}
 						},
 						"method": "POST",
@@ -24571,7 +24571,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{access_token}}"
+								"token": "{{admin_access_token}}"
 							}
 						},
 						"method": "POST",
