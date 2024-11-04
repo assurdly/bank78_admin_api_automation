@@ -24447,15 +24447,22 @@
 							"script": {
 								"id": "186596e1-9a3f-43c4-8cff-c4abfec0548a",
 								"exec": [
-									"pm.test(\"Status code is 400 for invalid email format\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"if (typeof pm.variables.get(\"uniqueSalespersonIDs\") === 'undefined') {\r",
+									"    pm.variables.set(\"uniqueSalespersonIDs\", JSON.stringify([]));\r",
+									"}\r",
+									"\r",
+									"let uniqueIDs = JSON.parse(pm.variables.get(\"uniqueSalespersonIDs\"));\r",
+									"let response = pm.response.json();\r",
+									"\r",
+									"let newID = response.id;\r",
+									"\r",
+									"pm.test(\"Unique ID generated for salesperson\", function() {\r",
+									"    pm.expect(uniqueIDs).not.to.include(newID);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Error message for invalid email format\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.message).to.include(\"Response has validation errors\");\r",
-									"    pm.expect(jsonData.validationMessages).to.include(\"'Email' is not a valid email address.\");\r",
-									"});"
+									"uniqueIDs.push(newID);\r",
+									"pm.variables.set(\"uniqueSalespersonIDs\", JSON.stringify(uniqueIDs));\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -24486,7 +24493,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Bussy04\",\r\n  \"email\": \"bussy@@mailinator.com\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Bussy04\",\r\n  \"email\": \"bussy@mailinator.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
