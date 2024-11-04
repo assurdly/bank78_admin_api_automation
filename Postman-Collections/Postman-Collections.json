@@ -24323,7 +24323,7 @@
 					"response": []
 				},
 				{
-					"name": "CreateSalesperson-DuplicateEmail",
+					"name": "CreateSalesperson-ExistingEmail",
 					"event": [
 						{
 							"listen": "test",
