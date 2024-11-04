@@ -24258,10 +24258,10 @@
 			"id": "2e87e5cc-705a-4800-b83a-f6c2080b33e1"
 		},
 		{
-			"name": "Create Salesperson",
+			"name": "Add Salesperson",
 			"item": [
 				{
-					"name": "CreateSalesperson-NameCharactercheck",
+					"name": "AddSalesperson-NameCharactercheck",
 					"event": [
 						{
 							"listen": "test",
@@ -24323,7 +24323,7 @@
 					"response": []
 				},
 				{
-					"name": "CreateSalesperson-ExistingEmail",
+					"name": "AddSalesperson-ExistingEmail",
 					"event": [
 						{
 							"listen": "test",
@@ -24381,7 +24381,7 @@
 					"response": []
 				},
 				{
-					"name": "CreateSalesperson-Invalid Email",
+					"name": "AddSalesperson-Invalid Email",
 					"event": [
 						{
 							"listen": "test",
