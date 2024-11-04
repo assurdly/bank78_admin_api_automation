@@ -24579,11 +24579,37 @@
 				},
 				{
 					"name": "AssignSalesperson-ValidateName to SalesCodeMapping",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1e59863e-93c6-4c80-b64f-462a76ff301a",
+								"exec": [
+									"pm.test(\"Status code is 400 when name contains numbers\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate that a salesperson cannot \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.include(\"Already assigned to a sales person\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "c996acb5-c634-4798-b0cb-65108237441c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -24601,7 +24627,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{",
+							"raw": "{\r\n  \"email\": \"zeze@mailinator.com\",\r\n  \"salesCode\": \"SAL-0024\",\r\n  \"accountHolder\": \"Customer\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
