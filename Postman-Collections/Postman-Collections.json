@@ -25336,6 +25336,135 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Toggle Provider Status -Invalid ID",
+							"id": "a4059508-484b-4d1f-b854-ccd99d3577e2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin_access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account-provider/toggle-status/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account-provider",
+										"toggle-status",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "022310ff-e233-4630-802e-d7a83027923d",
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Toggle Provider Status -Invalid Token",
+							"id": "3266ea7d-f4c9-45d9-8541-ad24344a851c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin_access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account-provider/toggle-status/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account-provider",
+										"toggle-status",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "022310ff-e233-4630-802e-d7a83027923d",
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Toggle Provider Status -No Auth",
+							"id": "b64dac65-9e29-4049-ba39-28d11cd94614",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin_access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account-provider/toggle-status/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account-provider",
+										"toggle-status",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "022310ff-e233-4630-802e-d7a83027923d",
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "a596754a-f7c7-490c-8ec8-0ab00979bfa5"
