@@ -24718,8 +24718,21 @@
 			"id": "a0c8b3d6-c992-473f-a0f1-99ab85eee352"
 		},
 		{
-			"name": "New Folder",
-			"item": [],
+			"name": "Foreign Account Provider",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "c3d6922e-b9e2-4609-9bb2-e2c6a9a8d4a3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "7bb23a1b-6d77-4cd0-a4e9-ad0bacefc455"
 		},
 		{
