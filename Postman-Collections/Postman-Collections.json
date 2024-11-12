@@ -25172,6 +25172,15 @@
 										"type": "text"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\npm.test(\"Status code is 200 OK\", function () {\r\n    pm.expect(pm.response.code).to.equal(200);\r\n});\r\n\r\npm.test(\"Response has correct structure\", function () {\r\n    let response = pm.response.json();\r\n    pm.expect(response).to.have.property(\"hasResult\", true);\r\n    pm.expect(response.result).to.be.an(\"object\");\r\n});",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
 									"raw": "{{baseurlo}}/api/foreign-account-provider/providers/:id",
 									"host": [
