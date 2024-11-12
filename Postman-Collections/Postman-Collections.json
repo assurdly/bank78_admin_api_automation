@@ -25244,8 +25244,21 @@
 					"id": "6dd32bd5-1fa9-4f6c-a980-6fd5f82c2df4"
 				},
 				{
-					"name": "New Folder",
-					"item": [],
+					"name": "Fetch Providers Status",
+					"item": [
+						{
+							"name": "Fetch Providers Status",
+							"id": "a7c70506-3023-4b1f-81b2-ebabdf58c904",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "a596754a-f7c7-490c-8ec8-0ab00979bfa5"
 				}
 			],
