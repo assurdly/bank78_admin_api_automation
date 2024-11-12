@@ -24817,6 +24817,70 @@
 						"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
 					},
 					"response": []
+				},
+				{
+					"name": "Add provider - Invalid Currency Code Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5657ae6e-efbc-4796-a8ae-66b27bb18330",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response has the correct structure\", function () {\r",
+									"    pm.expect(response).to.have.property(\"hasResult\", false);\r",
+									"    pm.expect(response).to.have.property(\"result\", null);\r",
+									"    pm.expect(response).to.have.property(\"resultType\", \"ValidationError\");\r",
+									"    pm.expect(response).to.have.property(\"message\", \"Response has validation errors\");\r",
+									"    pm.expect(response).to.have.property(\"validationMessages\").that.is.an(\"array\").with.lengthOf(1);\r",
+									"    pm.expect(response).to.have.property(\"successful\", false);\r",
+									"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
+									"});\r",
+									"pm.test(\"Validation message content\", function () {\r",
+									"    pm.expect(response.validationMessages[0]).to.equal(\"a valid currency Code is required\");\r",
+									"});\r",
+									"pm.test(\"Status code is 400 for validation error\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "ee99f1b0-cdbc-4477-b4f2-e7324ddc59f1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"providerName\": \"UBA Ghana\",\r\n  \"currencyCode\": \"GHS\",\r\n  \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
+					},
+					"response": []
 				}
 			],
 			"id": "7bb23a1b-6d77-4cd0-a4e9-ad0bacefc455"
