@@ -25154,6 +25154,28 @@
 					"item": [
 						{
 							"name": "Fetch a single provider - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "eca80218-aa8c-446f-be52-edce4eb29ebf",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response contains provider details\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result).to.have.property(\"transferType\");\r",
+											"    pm.expect(jsonData.result).to.have.property(\"bicCode\");\r",
+											"    pm.expect(jsonData.result).to.have.property(\"routingNumber\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "f865b9de-7c83-4a1c-b1ca-53c41dd74f0f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -25175,7 +25197,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "\r\npm.test(\"Status code is 200 OK\", function () {\r\n    pm.expect(pm.response.code).to.equal(200);\r\n});\r\n\r\npm.test(\"Response has correct structure\", function () {\r\n    let response = pm.response.json();\r\n    pm.expect(response).to.have.property(\"hasResult\", true);\r\n    pm.expect(response.result).to.be.an(\"object\");\r\n});",
+									"raw": "\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
