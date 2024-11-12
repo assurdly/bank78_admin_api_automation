@@ -25685,6 +25685,27 @@
 						},
 						{
 							"name": "Add Provider details - Non-Existent TransferType",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ab6276d9-9581-4cb8-a478-905c2d9b37be",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates invalid transfer type\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Invalid transfer type\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "949408ef-c23d-449c-98ab-47ae07665183",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -25706,7 +25727,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": 3,\r\n  \"foreignAccountProviderId\": 3,\r\n  \"transferType\": \"ACH\",\r\n  \"bicCode\": \"WHKVAG80AWS\",\r\n  \"routingNumber\": \"0001234567\",\r\n  \"bankName\": \"UBA PLC\",\r\n  \"bankAddress\": \"Kigali\",\r\n  \"bankCountry\": \"Rwanda\"\r\n}",
+									"raw": "{\r\n  \"id\": 9,\r\n  \"foreignAccountProviderId\": 9,\r\n  \"transferType\": \"ACJ\",\r\n  \"bicCode\": \"WHKVAG80AWS\",\r\n  \"routingNumber\": \"0001234567\",\r\n  \"bankName\": \"UBA PLC\",\r\n  \"bankAddress\": \"Kigali\",\r\n  \"bankCountry\": \"Rwanda\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
