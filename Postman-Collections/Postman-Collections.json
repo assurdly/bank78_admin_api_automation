@@ -24721,344 +24721,356 @@
 			"name": "Foreign Account Provider",
 			"item": [
 				{
-					"name": "Add provider - Success",
-					"event": [
+					"name": "Add Provider",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "6654f93a-9224-4c46-801e-5a651ac3d96a",
-								"exec": [
-									"\r",
-									"let response = pm.response.json();\r",
-									"\r",
-									"\r",
-									"pm.test(\"Status code is 201 Created or 200 OK\", function () {\r",
-									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has the correct structure for provider creation\", function () {\r",
-									"    pm.expect(response).to.have.property(\"hasResult\", true);\r",
-									"    pm.expect(response).to.have.property(\"resultType\", \"Success\");\r",
-									"    pm.expect(response).to.have.property(\"message\", \"Success\");\r",
-									"    pm.expect(response).to.have.property(\"successful\", true);\r",
-									"    pm.expect(response).to.have.property(\"result\").that.is.an(\"object\");\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Provider details are correctly populated\", function () {\r",
-									"    pm.expect(response.result).to.have.property(\"providerName\", \"UBA Tanzania\");\r",
-									"    pm.expect(response.result).to.have.property(\"currencyCode\", \"USD\");\r",
-									"    pm.expect(response.result).to.have.property(\"active\", true);\r",
-									"    pm.expect(response.result).to.have.property(\"foreignAccountProviderDetails\").that.is.null;\r",
-									"    pm.expect(response.result).to.have.property(\"id\").that.is.a(\"number\");\r",
-									"    pm.expect(response.result).to.have.property(\"dateCreated\").that.is.a(\"string\");\r",
-									"    pm.expect(response.result).to.have.property(\"lastUpdatedOn\").that.is.a(\"string\");\r",
-									"    pm.expect(response.result).to.have.property(\"createdBy\", \"superadmin@payaza.africa\");\r",
-									"    pm.expect(response.result).to.have.property(\"lastUpdatedBy\", \"superadmin@payaza.africa\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"No validation messages present\", function () {\r",
-									"    pm.expect(response.validationMessages).to.be.null;\r",
-									"});\r",
-									""
+							"name": "Add provider - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6654f93a-9224-4c46-801e-5a651ac3d96a",
+										"exec": [
+											"\r",
+											"let response = pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 201 Created or 200 OK\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has the correct structure for provider creation\", function () {\r",
+											"    pm.expect(response).to.have.property(\"hasResult\", true);\r",
+											"    pm.expect(response).to.have.property(\"resultType\", \"Success\");\r",
+											"    pm.expect(response).to.have.property(\"message\", \"Success\");\r",
+											"    pm.expect(response).to.have.property(\"successful\", true);\r",
+											"    pm.expect(response).to.have.property(\"result\").that.is.an(\"object\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Provider details are correctly populated\", function () {\r",
+											"    pm.expect(response.result).to.have.property(\"providerName\", \"UBA Tanzania\");\r",
+											"    pm.expect(response.result).to.have.property(\"currencyCode\", \"USD\");\r",
+											"    pm.expect(response.result).to.have.property(\"active\", true);\r",
+											"    pm.expect(response.result).to.have.property(\"foreignAccountProviderDetails\").that.is.null;\r",
+											"    pm.expect(response.result).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(response.result).to.have.property(\"dateCreated\").that.is.a(\"string\");\r",
+											"    pm.expect(response.result).to.have.property(\"lastUpdatedOn\").that.is.a(\"string\");\r",
+											"    pm.expect(response.result).to.have.property(\"createdBy\", \"superadmin@payaza.africa\");\r",
+											"    pm.expect(response.result).to.have.property(\"lastUpdatedBy\", \"superadmin@payaza.africa\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"No validation messages present\", function () {\r",
+											"    pm.expect(response.validationMessages).to.be.null;\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c3d6922e-b9e2-4609-9bb2-e2c6a9a8d4a3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
 								],
-								"type": "text/javascript",
-								"packages": {}
-							}
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"providerName\": \"UBA Tanzania\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
+							},
+							"response": []
+						},
+						{
+							"name": "Add provider - Already existing Provider",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6654f93a-9224-4c46-801e-5a651ac3d96a",
+										"exec": [
+											"\r",
+											"let response = pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 400 Bad Request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has the correct structure\", function () {\r",
+											"    pm.expect(response).to.have.property(\"hasResult\", false);\r",
+											"    pm.expect(response).to.have.property(\"result\", null);\r",
+											"    pm.expect(response).to.have.property(\"resultType\", \"ValidationError\");\r",
+											"    pm.expect(response).to.have.property(\"message\", \"Response has validation errors\");\r",
+											"    pm.expect(response).to.have.property(\"validationMessages\").that.is.an(\"array\").with.lengthOf(1);\r",
+											"    pm.expect(response).to.have.property(\"successful\", false);\r",
+											"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
+											"});\r",
+											"pm.test(\"Validation message content\", function () {\r",
+											"    pm.expect(response.validationMessages[0]).to.equal(\"Provider already exists\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c34c5777-81ab-42a1-90e5-85852e88d40a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"providerName\": \"UBA Tanzania\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
+							},
+							"response": []
+						},
+						{
+							"name": "Add provider - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2247cf08-b18a-404e-9a7a-842f930c18a3",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code should indicate no authentication\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
+											"});\r",
+											"\r",
+											" \r",
+											"pm.test(\"Error message should indicate missing authentication\", function () {\r",
+											"    let response = pm.response.json();\r",
+											"    pm.expect(response).to.have.property(\"message\");\r",
+											"    pm.expect(response.message).to.include(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "76ab8558-fc03-4cf5-a7f6-3c6e1be0f620",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"providerName\": \"UBA Rwanda\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
+							},
+							"response": []
+						},
+						{
+							"name": "Add provider - Invalid Currency Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5657ae6e-efbc-4796-a8ae-66b27bb18330",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has the correct structure\", function () {\r",
+											"    pm.expect(response).to.have.property(\"hasResult\", false);\r",
+											"    pm.expect(response).to.have.property(\"result\", null);\r",
+											"    pm.expect(response).to.have.property(\"resultType\", \"ValidationError\");\r",
+											"    pm.expect(response).to.have.property(\"message\", \"Response has validation errors\");\r",
+											"    pm.expect(response).to.have.property(\"validationMessages\").that.is.an(\"array\").with.lengthOf(1);\r",
+											"    pm.expect(response).to.have.property(\"successful\", false);\r",
+											"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
+											"});\r",
+											"pm.test(\"Validation message content\", function () {\r",
+											"    pm.expect(response.validationMessages[0]).to.equal(\"A provider name is required\");\r",
+											"});\r",
+											"pm.test(\"Status code is 400 for validation error\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "62939add-5ede-4b4d-b972-3cae1e41c9f8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"providerName\": \"UBA Ghana\",\r\n  \"currencyCode\": \"GHS\",\r\n  \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
+							},
+							"response": []
+						},
+						{
+							"name": "Add provider - Empty Provider NamE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5657ae6e-efbc-4796-a8ae-66b27bb18330",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has the correct structure\", function () {\r",
+											"    pm.expect(response).to.have.property(\"hasResult\", false);\r",
+											"    pm.expect(response).to.have.property(\"result\", null);\r",
+											"    pm.expect(response).to.have.property(\"resultType\", \"ValidationError\");\r",
+											"    pm.expect(response).to.have.property(\"message\", \"Response has validation errors\");\r",
+											"    pm.expect(response).to.have.property(\"validationMessages\").that.is.an(\"array\").with.lengthOf(1);\r",
+											"    pm.expect(response).to.have.property(\"successful\", false);\r",
+											"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
+											"});\r",
+											"pm.test(\"Validation message content\", function () {\r",
+											"    pm.expect(response.validationMessages[0]).to.equal(\"a provider name is required\");\r",
+											"});\r",
+											"pm.test(\"Status code is 400 for validation error\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ee99f1b0-cdbc-4477-b4f2-e7324ddc59f1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"providerName\": \"\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
+							},
+							"response": []
 						}
 					],
-					"id": "c3d6922e-b9e2-4609-9bb2-e2c6a9a8d4a3",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"providerName\": \"UBA Tanzania\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
-					},
-					"response": []
+					"id": "a3720e5e-3c27-41c8-91d1-d6959ce2c940"
 				},
 				{
-					"name": "Add provider - Already existing Provider",
-					"event": [
+					"name": "New Folder",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "6654f93a-9224-4c46-801e-5a651ac3d96a",
-								"exec": [
-									"\r",
-									"let response = pm.response.json();\r",
-									"\r",
-									"\r",
-									"pm.test(\"Status code is 201 Created or 200 OK\", function () {\r",
-									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has the correct structure for provider creation\", function () {\r",
-									"    pm.expect(response).to.have.property(\"hasResult\", true);\r",
-									"    pm.expect(response).to.have.property(\"resultType\", \"Success\");\r",
-									"    pm.expect(response).to.have.property(\"message\", \"Success\");\r",
-									"    pm.expect(response).to.have.property(\"successful\", true);\r",
-									"    pm.expect(response).to.have.property(\"result\").that.is.an(\"object\");\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Provider details are correctly populated\", function () {\r",
-									"    pm.expect(response.result).to.have.property(\"providerName\", \"UBA Tanzania\");\r",
-									"    pm.expect(response.result).to.have.property(\"currencyCode\", \"USD\");\r",
-									"    pm.expect(response.result).to.have.property(\"active\", true);\r",
-									"    pm.expect(response.result).to.have.property(\"foreignAccountProviderDetails\").that.is.null;\r",
-									"    pm.expect(response.result).to.have.property(\"id\").that.is.a(\"number\");\r",
-									"    pm.expect(response.result).to.have.property(\"dateCreated\").that.is.a(\"string\");\r",
-									"    pm.expect(response.result).to.have.property(\"lastUpdatedOn\").that.is.a(\"string\");\r",
-									"    pm.expect(response.result).to.have.property(\"createdBy\", \"superadmin@payaza.africa\");\r",
-									"    pm.expect(response.result).to.have.property(\"lastUpdatedBy\", \"superadmin@payaza.africa\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"No validation messages present\", function () {\r",
-									"    pm.expect(response.validationMessages).to.be.null;\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
+							"name": "New Request",
+							"id": "5d3b371e-c14d-42b9-bdba-22aedb781c86",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
 						}
 					],
-					"id": "c34c5777-81ab-42a1-90e5-85852e88d40a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"providerName\": \"UBA Tanzania\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
-					},
-					"response": []
-				},
-				{
-					"name": "Add provider - No Auth",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "2247cf08-b18a-404e-9a7a-842f930c18a3",
-								"exec": [
-									"\r",
-									"pm.test(\"Status code should indicate no authentication\", function () {\r",
-									"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
-									"});\r",
-									"\r",
-									" \r",
-									"pm.test(\"Error message should indicate missing authentication\", function () {\r",
-									"    let response = pm.response.json();\r",
-									"    pm.expect(response).to.have.property(\"message\");\r",
-									"    pm.expect(response.message).to.include(\"Unauthorized\"); \r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "76ab8558-fc03-4cf5-a7f6-3c6e1be0f620",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"providerName\": \"UBA Rwanda\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
-					},
-					"response": []
-				},
-				{
-					"name": "Add provider - Invalid Currency Code",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "5657ae6e-efbc-4796-a8ae-66b27bb18330",
-								"exec": [
-									"const response = pm.response.json();\r",
-									"\r",
-									"pm.test(\"Response has the correct structure\", function () {\r",
-									"    pm.expect(response).to.have.property(\"hasResult\", false);\r",
-									"    pm.expect(response).to.have.property(\"result\", null);\r",
-									"    pm.expect(response).to.have.property(\"resultType\", \"ValidationError\");\r",
-									"    pm.expect(response).to.have.property(\"message\", \"Response has validation errors\");\r",
-									"    pm.expect(response).to.have.property(\"validationMessages\").that.is.an(\"array\").with.lengthOf(1);\r",
-									"    pm.expect(response).to.have.property(\"successful\", false);\r",
-									"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
-									"});\r",
-									"pm.test(\"Validation message content\", function () {\r",
-									"    pm.expect(response.validationMessages[0]).to.equal(\"A provider name is required\");\r",
-									"});\r",
-									"pm.test(\"Status code is 400 for validation error\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "62939add-5ede-4b4d-b972-3cae1e41c9f8",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"providerName\": \"UBA Ghana\",\r\n  \"currencyCode\": \"GHS\",\r\n  \"active\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
-					},
-					"response": []
-				},
-				{
-					"name": "Add provider - Empty Provider NamE",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "5657ae6e-efbc-4796-a8ae-66b27bb18330",
-								"exec": [
-									"const response = pm.response.json();\r",
-									"\r",
-									"pm.test(\"Response has the correct structure\", function () {\r",
-									"    pm.expect(response).to.have.property(\"hasResult\", false);\r",
-									"    pm.expect(response).to.have.property(\"result\", null);\r",
-									"    pm.expect(response).to.have.property(\"resultType\", \"ValidationError\");\r",
-									"    pm.expect(response).to.have.property(\"message\", \"Response has validation errors\");\r",
-									"    pm.expect(response).to.have.property(\"validationMessages\").that.is.an(\"array\").with.lengthOf(1);\r",
-									"    pm.expect(response).to.have.property(\"successful\", false);\r",
-									"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
-									"});\r",
-									"pm.test(\"Validation message content\", function () {\r",
-									"    pm.expect(response.validationMessages[0]).to.equal(\"a provider name is required\");\r",
-									"});\r",
-									"pm.test(\"Status code is 400 for validation error\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "ee99f1b0-cdbc-4477-b4f2-e7324ddc59f1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"providerName\": \"\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
-					},
-					"response": []
+					"id": "9a568335-6b8f-43de-abda-c07879129e1a"
 				}
 			],
 			"id": "7bb23a1b-6d77-4cd0-a4e9-ad0bacefc455"
