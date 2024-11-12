@@ -25684,6 +25684,70 @@
 							"response": []
 						},
 						{
+							"name": "Add Provider details -  No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fa130ac2-6d8a-49d5-ada2-66dde0241a78",
+										"exec": [
+											"\r",
+											"let response = pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200 OK\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has correct structure and success message\", function () {\r",
+											"    pm.expect(response).to.have.property(\"successful\", true);\r",
+											"    pm.expect(response).to.have.property(\"message\", \"Success\");\r",
+											"    pm.expect(response).to.have.property(\"resultType\", \"Success\");\r",
+											"    pm.expect(response).to.have.property(\"result\").that.is.an(\"object\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "32fc6468-f7a7-4a1b-be17-3ac96e59d8d4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 7,\r\n  \"foreignAccountProviderId\": 7,\r\n  \"transferType\": \"ACH\",\r\n  \"bicCode\": \"WHKVAG80AWJ\",\r\n  \"routingNumber\": \"00012345667\",\r\n  \"bankName\": \"UBA PLC\",\r\n  \"bankAddress\": \"Tanzania\",\r\n  \"bankCountry\": \"Tanzania\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseurlo}}/api/foreign-account-provider/add-provider-details"
+							},
+							"response": []
+						},
+						{
 							"name": "Add Provider details - Non-Existent TransferType",
 							"event": [
 								{
