@@ -25227,6 +25227,27 @@
 						},
 						{
 							"name": "Fetch a single provider - Invalid ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7b9133d1-c5b7-42e6-8cee-35dcf23729eb",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates provider not found\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Provider not found\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "f2a2d88e-4058-41c8-b31d-ea82af7a779a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -25259,9 +25280,8 @@
 									],
 									"variable": [
 										{
-											"id": "1b97fcba-31af-4984-a5aa-b3395cb84e52",
 											"key": "id",
-											"value": "2"
+											"value": "2552"
 										}
 									]
 								}
@@ -25270,16 +25290,34 @@
 						},
 						{
 							"name": "Fetch a single provider - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a90135b8-274e-49c2-b145-b5ee89db2afb",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates authorization required\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Authorization required\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "034de4f0-8c5b-472e-8886-a3b75229f91f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
+									"type": "noauth"
 								},
 								"method": "GET",
 								"header": [
@@ -25302,7 +25340,6 @@
 									],
 									"variable": [
 										{
-											"id": "81a9dc73-f87c-4e8f-8e18-40df24f65f65",
 											"key": "id",
 											"value": "2"
 										}
