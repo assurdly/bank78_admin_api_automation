@@ -24755,6 +24755,40 @@
 					"response": []
 				},
 				{
+					"name": "Add provider - No Auth",
+					"id": "76ab8558-fc03-4cf5-a7f6-3c6e1be0f620",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"providerName\": \"UBA Rwanda\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
+					},
+					"response": []
+				},
+				{
 					"name": "Add provider - Invalid Currency Code",
 					"event": [
 						{
