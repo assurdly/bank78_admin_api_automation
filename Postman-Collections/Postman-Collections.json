@@ -24988,7 +24988,7 @@
 							"response": []
 						},
 						{
-							"name": "Add provider - Empty Provider NamE",
+							"name": "Add provider - Empty Provider Name",
 							"event": [
 								{
 									"listen": "test",
@@ -25266,6 +25266,45 @@
 					"item": [
 						{
 							"name": "Add Provider details - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fa130ac2-6d8a-49d5-ada2-66dde0241a78",
+										"exec": [
+											"// Parse JSON response\r",
+											"let response = pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200 OK\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has correct structure and success message\", function () {\r",
+											"    pm.expect(response).to.have.property(\"successful\", true);\r",
+											"    pm.expect(response).to.have.property(\"message\", \"Provider details added successfully\");\r",
+											"    pm.expect(response).to.have.property(\"resultType\", \"Success\");\r",
+											"    pm.expect(response).to.have.property(\"result\").that.is.an(\"object\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Provider details match request data\", function () {\r",
+											"    pm.expect(response.result).to.have.property(\"foreignAccountProviderId\", 3);\r",
+											"    pm.expect(response.result).to.have.property(\"transferType\", \"ACH\");\r",
+											"    pm.expect(response.result).to.have.property(\"bicCode\", \"WHKVAG80AWS\");\r",
+											"    pm.expect(response.result).to.have.property(\"routingNumber\", \"0001234567\");\r",
+											"    pm.expect(response.result).to.have.property(\"bankName\", \"UBA PLC\");\r",
+											"    pm.expect(response.result).to.have.property(\"bankAddress\", \"Kigali\");\r",
+											"    pm.expect(response.result).to.have.property(\"bankCountry\", \"Rwanda\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "97ae121c-eeed-4d00-9451-89d72b672b16",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -25287,7 +25326,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": 3,\r\n  \"foreignAccountProviderId\": 3,\r\n  \"transferType\": \"ACH\",\r\n  \"bicCode\": \"WHKVAG80AWS\",\r\n  \"routingNumber\": \"0001234567\",\r\n  \"bankName\": \"UBA PLC\",\r\n  \"bankAddress\": \"Kigali\",\r\n  \"bankCountry\": \"Rwanda\"\r\n}",
+									"raw": "{\r\n  \"id\": 6,\r\n  \"foreignAccountProviderId\": 6,\r\n  \"transferType\": \"ACH\",\r\n  \"bicCode\": \"WHKVAG80AWS\",\r\n  \"routingNumber\": \"0001234567\",\r\n  \"bankName\": \"UBA PLC\",\r\n  \"bankAddress\": \"Kigali\",\r\n  \"bankCountry\": \"Rwanda\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
