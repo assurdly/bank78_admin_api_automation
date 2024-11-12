@@ -25867,6 +25867,27 @@
 					"item": [
 						{
 							"name": "Update Provider - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5b029737-1e73-491c-a08e-26d1e2448a4f",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates provider update success\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Success\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "0d8093dc-3b66-4aed-81dc-8e161a9c6edd",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -25875,7 +25896,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjY2RDhGOTE5QUM5Njk3OTJENjVCMkI0MTdGMjM3OEMzIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MzE0NDA4ODQsImV4cCI6MTczMTQ0NDQ4NCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS1kZXYuYmFuazc4LmNvIiwiYXVkIjoiYXBpMSIsImNsaWVudF9pZCI6IkVDQkVFQ0JDN0NFNTQzNERCQTUwOUI5Mzc1MjAzRUMxIiwic3ViIjoiMjdjN2E0NzYtM2FhNC00NzA0LWJlYWEtMGI2OTMyNDViZTY2IiwiYXV0aF90aW1lIjoxNzMxNDQwODg0LCJpZHAiOiJsb2NhbCIsInBob25lTnVtYmVyIjoiMDgwMDAwMDAwMDAiLCJ1c2VySWQiOiIyN2M3YTQ3Ni0zYWE0LTQ3MDQtYmVhYS0wYjY5MzI0NWJlNjYiLCJ1c2VybmFtZSI6InN1cGVyYWRtaW5AcGF5YXphLmFmcmljYSIsImlzQWN0aXZlIjoiVHJ1ZSIsInVzZXJUeXBlSWQiOiI0IiwidXNlclR5cGUiOiJTdXBlckFkbWluaXN0cmF0b3IiLCJlbWFpbCI6InN1cGVyYWRtaW5AcGF5YXphLmFmcmljYSIsImxhc3ROYW1lIjoiQWRtaW5pc3RyYXRvciIsImZpcnN0TmFtZSI6IlN1cGVyIiwicGVybWlzc2lvbiI6IntcInNlY3Rpb25zXCI6W3tcInNlY3Rpb25JZFwiOjEsXCJzZWN0aW9uTmFtZVwiOlwiQnVzaW5lc3NcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkFwcHJvdmVcIjp0cnVlLFwiY2FuUmVqZWN0S3ljXCI6dHJ1ZX19LHtcInNlY3Rpb25JZFwiOjIsXCJzZWN0aW9uTmFtZVwiOlwiQWRtaW5pc3RyYXRvclwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5BZGRcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkludml0ZVVzZXJcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MyxcInNlY3Rpb25OYW1lXCI6XCJUcmFuc2FjdGlvblwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5WaWV3XCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo0LFwic2VjdGlvbk5hbWVcIjpcIlRyYW5zZmVyXCIsXCJwZXJtaXNzaW9uc1wiOntcImNhblZpZXdcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo1LFwic2VjdGlvbk5hbWVcIjpcIkNvbmZpZ3VyYXRpb25cIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuQWRkXCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo2LFwic2VjdGlvbk5hbWVcIjpcIldhbGxldFwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5VcGRhdGVcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6NyxcInNlY3Rpb25OYW1lXCI6XCJEYXNoYm9hcmRcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo4LFwic2VjdGlvbk5hbWVcIjpcIlVzZXJcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuQWRkXCI6dHJ1ZSxcImNhblZpZXdcIjp0cnVlLFwiY2FuRXhwb3J0XCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo5LFwic2VjdGlvbk5hbWVcIjpcIkVtYWlsTG9nc1wiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5VcGRhdGVcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTAsXCJzZWN0aW9uTmFtZVwiOlwiQXVkaXRUcmFpbHNcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTEsXCJzZWN0aW9uTmFtZVwiOlwiUm9sZUNvbmZpZ1wiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5BZGRcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTIsXCJzZWN0aW9uTmFtZVwiOlwiQ3VzdG9tZXJcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuQWRkXCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjoxMyxcInNlY3Rpb25OYW1lXCI6XCJCaWxsVHJhbnNhY3Rpb25zXCIsXCJwZXJtaXNzaW9uc1wiOntcImNhblZpZXdcIjp0cnVlLFwiY2FuRXhwb3J0XCI6dHJ1ZSxcImNhbkFkZFwiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTQsXCJzZWN0aW9uTmFtZVwiOlwiVmlydHVhbEFjY291bnREYXNoYm9hcmRcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjoxNSxcInNlY3Rpb25OYW1lXCI6XCJWaXJ0dWFsQWNjb3VudFwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5WaWV3XCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTYsXCJzZWN0aW9uTmFtZVwiOlwiVmlydHVhbEFjY291bnRUcmFuc2FjdGlvbnNcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuUHJvY2Vzc1BheW1lbnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTcsXCJzZWN0aW9uTmFtZVwiOlwiUmVmZXJyYWxcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuUHJvY2Vzc1BheW1lbnRcIjp0cnVlfX1dfSIsImp0aSI6IjNERDlDOTU5REYxMzhBNEE4MjVFRTVFMkVEMTg5MTc2IiwiaWF0IjoxNzMxNDQwODg0LCJzY29wZSI6WyJhcGkxIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImN1c3RvbSJdfQ.xEnranYWlizbAjJlFmGplp7YOZs8DALQ7LZFrtTEOHupshD_tXuO2ZZWgQ4AZ_qwuI2yzr6jU75IftycoS139ggnJAlqEBSqP5jVvGHBS4bbUNK3AZTWT6sdMy8RMfwuVRny2Rjd6ikciZPYWbRezF8RlsrLl_kCNCGBK_2SBCEYgEKfZeptgQDzFjlHotNL5dzxzc3w2oBpaLoMzZzJOABH-PvZlV4zt0GYluHpMnoh1wDZoXFrjSamWO9c4muFTK26GLVq9QqLSEe0TQgvAGJE2fWfQYmoHYths173jnxJk8XfG7SsgohHSpSUQ2zaiKT6FInBsGFGgc0rosBn8A"
 									}
 								},
 								"method": "POST",
@@ -25889,6 +25910,79 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n  \"providerName\": \"UBA Zambia\",\r\n  \"id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account-provider/update-provider/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account-provider",
+										"update-provider",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Provider - Non Existent ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5b029737-1e73-491c-a08e-26d1e2448a4f",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates provider not found\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Provider not found\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "98227232-0519-4fe6-a5c7-a3bf9a50cabd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjY2RDhGOTE5QUM5Njk3OTJENjVCMkI0MTdGMjM3OEMzIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MzE0NDA4ODQsImV4cCI6MTczMTQ0NDQ4NCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS1kZXYuYmFuazc4LmNvIiwiYXVkIjoiYXBpMSIsImNsaWVudF9pZCI6IkVDQkVFQ0JDN0NFNTQzNERCQTUwOUI5Mzc1MjAzRUMxIiwic3ViIjoiMjdjN2E0NzYtM2FhNC00NzA0LWJlYWEtMGI2OTMyNDViZTY2IiwiYXV0aF90aW1lIjoxNzMxNDQwODg0LCJpZHAiOiJsb2NhbCIsInBob25lTnVtYmVyIjoiMDgwMDAwMDAwMDAiLCJ1c2VySWQiOiIyN2M3YTQ3Ni0zYWE0LTQ3MDQtYmVhYS0wYjY5MzI0NWJlNjYiLCJ1c2VybmFtZSI6InN1cGVyYWRtaW5AcGF5YXphLmFmcmljYSIsImlzQWN0aXZlIjoiVHJ1ZSIsInVzZXJUeXBlSWQiOiI0IiwidXNlclR5cGUiOiJTdXBlckFkbWluaXN0cmF0b3IiLCJlbWFpbCI6InN1cGVyYWRtaW5AcGF5YXphLmFmcmljYSIsImxhc3ROYW1lIjoiQWRtaW5pc3RyYXRvciIsImZpcnN0TmFtZSI6IlN1cGVyIiwicGVybWlzc2lvbiI6IntcInNlY3Rpb25zXCI6W3tcInNlY3Rpb25JZFwiOjEsXCJzZWN0aW9uTmFtZVwiOlwiQnVzaW5lc3NcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkFwcHJvdmVcIjp0cnVlLFwiY2FuUmVqZWN0S3ljXCI6dHJ1ZX19LHtcInNlY3Rpb25JZFwiOjIsXCJzZWN0aW9uTmFtZVwiOlwiQWRtaW5pc3RyYXRvclwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5BZGRcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkludml0ZVVzZXJcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MyxcInNlY3Rpb25OYW1lXCI6XCJUcmFuc2FjdGlvblwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5WaWV3XCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo0LFwic2VjdGlvbk5hbWVcIjpcIlRyYW5zZmVyXCIsXCJwZXJtaXNzaW9uc1wiOntcImNhblZpZXdcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo1LFwic2VjdGlvbk5hbWVcIjpcIkNvbmZpZ3VyYXRpb25cIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuQWRkXCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo2LFwic2VjdGlvbk5hbWVcIjpcIldhbGxldFwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5VcGRhdGVcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6NyxcInNlY3Rpb25OYW1lXCI6XCJEYXNoYm9hcmRcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo4LFwic2VjdGlvbk5hbWVcIjpcIlVzZXJcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuQWRkXCI6dHJ1ZSxcImNhblZpZXdcIjp0cnVlLFwiY2FuRXhwb3J0XCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo5LFwic2VjdGlvbk5hbWVcIjpcIkVtYWlsTG9nc1wiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5VcGRhdGVcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTAsXCJzZWN0aW9uTmFtZVwiOlwiQXVkaXRUcmFpbHNcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTEsXCJzZWN0aW9uTmFtZVwiOlwiUm9sZUNvbmZpZ1wiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5BZGRcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTIsXCJzZWN0aW9uTmFtZVwiOlwiQ3VzdG9tZXJcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuQWRkXCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjoxMyxcInNlY3Rpb25OYW1lXCI6XCJCaWxsVHJhbnNhY3Rpb25zXCIsXCJwZXJtaXNzaW9uc1wiOntcImNhblZpZXdcIjp0cnVlLFwiY2FuRXhwb3J0XCI6dHJ1ZSxcImNhbkFkZFwiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTQsXCJzZWN0aW9uTmFtZVwiOlwiVmlydHVhbEFjY291bnREYXNoYm9hcmRcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjoxNSxcInNlY3Rpb25OYW1lXCI6XCJWaXJ0dWFsQWNjb3VudFwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5WaWV3XCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTYsXCJzZWN0aW9uTmFtZVwiOlwiVmlydHVhbEFjY291bnRUcmFuc2FjdGlvbnNcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuUHJvY2Vzc1BheW1lbnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTcsXCJzZWN0aW9uTmFtZVwiOlwiUmVmZXJyYWxcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuUHJvY2Vzc1BheW1lbnRcIjp0cnVlfX1dfSIsImp0aSI6IjNERDlDOTU5REYxMzhBNEE4MjVFRTVFMkVEMTg5MTc2IiwiaWF0IjoxNzMxNDQwODg0LCJzY29wZSI6WyJhcGkxIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImN1c3RvbSJdfQ.xEnranYWlizbAjJlFmGplp7YOZs8DALQ7LZFrtTEOHupshD_tXuO2ZZWgQ4AZ_qwuI2yzr6jU75IftycoS139ggnJAlqEBSqP5jVvGHBS4bbUNK3AZTWT6sdMy8RMfwuVRny2Rjd6ikciZPYWbRezF8RlsrLl_kCNCGBK_2SBCEYgEKfZeptgQDzFjlHotNL5dzxzc3w2oBpaLoMzZzJOABH-PvZlV4zt0GYluHpMnoh1wDZoXFrjSamWO9c4muFTK26GLVq9QqLSEe0TQgvAGJE2fWfQYmoHYths173jnxJk8XfG7SsgohHSpSUQ2zaiKT6FInBsGFGgc0rosBn8A"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"providerName\": \"UBA Zambia\",\r\n  \"id\": 2540\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
