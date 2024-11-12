@@ -24721,14 +24721,36 @@
 			"name": "Foreign Account Provider",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Add provider",
 					"id": "c3d6922e-b9e2-4609-9bb2-e2c6a9a8d4a3",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"providerName\": \"UBA Rwanda\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurlo}}/api/foreign-account-provider/add-provider"
 					},
 					"response": []
 				}
