@@ -25058,8 +25058,20 @@
 					"name": "New Folder",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Fetch All Providers - Success",
 							"id": "5d3b371e-c14d-42b9-bdba-22aedb781c86",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch All Providers - No Auth",
+							"id": "6fa5dbc7-dc72-45f7-819b-61d99092ae7a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
