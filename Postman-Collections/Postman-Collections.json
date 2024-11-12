@@ -25299,7 +25299,41 @@
 							"response": []
 						},
 						{
-							"name": "Add Provider details - Empty Required Fields",
+							"name": "Add Provider details - Success Copy",
+							"id": "949408ef-c23d-449c-98ab-47ae07665183",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 3,\r\n  \"foreignAccountProviderId\": 3,\r\n  \"transferType\": \"ACH\",\r\n  \"bicCode\": \"WHKVAG80AWS\",\r\n  \"routingNumber\": \"0001234567\",\r\n  \"bankName\": \"UBA PLC\",\r\n  \"bankAddress\": \"Kigali\",\r\n  \"bankCountry\": \"Rwanda\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseurlo}}/api/foreign-account-provider/add-provider-details"
+							},
+							"response": []
+						},
+						{
+							"name": "Add Provider details - Empty Required Fields -BIC or Routing Number",
 							"id": "4bff737e-41df-410d-a32e-5f53de23f56d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -25368,6 +25402,24 @@
 						}
 					],
 					"id": "d211fa5f-fb7d-410a-864f-41c5ac8a52cc"
+				},
+				{
+					"name": "Update Provider",
+					"item": [
+						{
+							"name": "Update Provider - Success",
+							"id": "0d8093dc-3b66-4aed-81dc-8e161a9c6edd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
+					"id": "b49a4563-a8a1-48f9-8b1b-99f856201a37"
 				}
 			],
 			"id": "7bb23a1b-6d77-4cd0-a4e9-ad0bacefc455"
