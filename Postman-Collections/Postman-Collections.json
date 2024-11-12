@@ -25141,7 +25141,8 @@
 							},
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": "{{baseurlo}}/api/foreign-account-provider/get-all-providers"
 							},
 							"response": []
 						}
