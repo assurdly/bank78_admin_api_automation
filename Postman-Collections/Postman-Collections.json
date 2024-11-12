@@ -25111,7 +25111,20 @@
 				},
 				{
 					"name": "Fetch a single Provider",
-					"item": [],
+					"item": [
+						{
+							"name": "New Request",
+							"id": "f865b9de-7c83-4a1c-b1ca-53c41dd74f0f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "6dd32bd5-1fa9-4f6c-a980-6fd5f82c2df4"
 				}
 			],
