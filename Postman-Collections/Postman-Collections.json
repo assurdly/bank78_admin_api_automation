@@ -25059,6 +25059,32 @@
 					"item": [
 						{
 							"name": "Fetch All Providers - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fd055fbc-4e80-4148-a780-22ce0f76364d",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200 OK\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has correct structure\", function () {\r",
+											"    let response = pm.response.json();\r",
+											"    pm.expect(response).to.have.property(\"hasResult\", true);\r",
+											"    pm.expect(response.result).to.be.an(\"array\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "5d3b371e-c14d-42b9-bdba-22aedb781c86",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
