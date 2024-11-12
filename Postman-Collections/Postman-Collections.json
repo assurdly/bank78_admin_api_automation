@@ -24774,7 +24774,7 @@
 									"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
 									"});\r",
 									"pm.test(\"Validation message content\", function () {\r",
-									"    pm.expect(response.validationMessages[0]).to.equal(\"a valid currency Code is required\");\r",
+									"    pm.expect(response.validationMessages[0]).to.equal(\"A provider name is required\");\r",
 									"});\r",
 									"pm.test(\"Status code is 400 for validation error\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
@@ -24819,7 +24819,7 @@
 					"response": []
 				},
 				{
-					"name": "Add provider - Invalid Currency Code Copy",
+					"name": "Add provider - Empty Provider NamE",
 					"event": [
 						{
 							"listen": "test",
@@ -24838,7 +24838,7 @@
 									"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
 									"});\r",
 									"pm.test(\"Validation message content\", function () {\r",
-									"    pm.expect(response.validationMessages[0]).to.equal(\"a valid currency Code is required\");\r",
+									"    pm.expect(response.validationMessages[0]).to.equal(\"a provider name is required\");\r",
 									"});\r",
 									"pm.test(\"Status code is 400 for validation error\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
@@ -24871,7 +24871,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"providerName\": \"UBA Ghana\",\r\n  \"currencyCode\": \"GHS\",\r\n  \"active\": true\r\n}",
+							"raw": "{\r\n  \"providerName\": \"\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
