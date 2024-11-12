@@ -25064,8 +25064,21 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseurlo}}/api/foreign-account-provider/get-all-providers"
 							},
 							"response": []
 						},
@@ -25090,7 +25103,7 @@
 										"type": "text"
 									}
 								],
-								"url": "https://onboard-dev.bank78.co/api/foreign-account-provider/get-all-providers"
+								"url": "{{baseurlo}}/api/foreign-account-provider/get-all-providers"
 							},
 							"response": []
 						},
