@@ -24756,6 +24756,36 @@
 				},
 				{
 					"name": "Add provider - Invalid Currency Code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5657ae6e-efbc-4796-a8ae-66b27bb18330",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response has the correct structure\", function () {\r",
+									"    pm.expect(response).to.have.property(\"hasResult\", false);\r",
+									"    pm.expect(response).to.have.property(\"result\", null);\r",
+									"    pm.expect(response).to.have.property(\"resultType\", \"ValidationError\");\r",
+									"    pm.expect(response).to.have.property(\"message\", \"Response has validation errors\");\r",
+									"    pm.expect(response).to.have.property(\"validationMessages\").that.is.an(\"array\").with.lengthOf(1);\r",
+									"    pm.expect(response).to.have.property(\"successful\", false);\r",
+									"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
+									"});\r",
+									"pm.test(\"Validation message content\", function () {\r",
+									"    pm.expect(response.validationMessages[0]).to.equal(\"a valid currency Code is required\");\r",
+									"});\r",
+									"pm.test(\"Status code is 400 for validation error\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "62939add-5ede-4b4d-b972-3cae1e41c9f8",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -24777,7 +24807,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"providerName\": \"UBA Rwanda\",\r\n  \"currencyCode\": \"USD\",\r\n  \"active\": true\r\n}",
+							"raw": "{\r\n  \"providerName\": \"UBA Ghana\",\r\n  \"currencyCode\": \"GHS\",\r\n  \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
