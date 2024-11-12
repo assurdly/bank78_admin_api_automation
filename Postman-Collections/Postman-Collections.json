@@ -25293,7 +25293,7 @@
 					"id": "6dd32bd5-1fa9-4f6c-a980-6fd5f82c2df4"
 				},
 				{
-					"name": "Fetch Providers Status",
+					"name": "Toggle Providers Status",
 					"item": [
 						{
 							"name": "Toggle Provider Status -Success",
@@ -25433,6 +25433,27 @@
 						},
 						{
 							"name": "Toggle Provider Status -Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "01f66eb7-34c8-4f00-a7db-fad8c529cea8",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates authorization required\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Authorization required\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "3266ea7d-f4c9-45d9-8541-ad24344a851c",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -25441,7 +25462,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjY2RDhGOTE5QUM5Njk3OTJENjVCMkI0MTdGMjM3OEMzIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MzE0MzY3ODMsImV4cCI6MTczMTQ0MDM4Mywi"
 									}
 								},
 								"method": "PUT",
@@ -25465,7 +25486,6 @@
 									],
 									"variable": [
 										{
-											"id": "022310ff-e233-4630-802e-d7a83027923d",
 											"key": "id",
 											"value": "2"
 										}
@@ -25476,16 +25496,34 @@
 						},
 						{
 							"name": "Toggle Provider Status -No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "74ef6d19-9753-49b4-8791-17f5d24dcc5c",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates authorization required\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Authorization required\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "b64dac65-9e29-4049-ba39-28d11cd94614",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
+									"type": "noauth"
 								},
 								"method": "PUT",
 								"header": [
@@ -25508,7 +25546,6 @@
 									],
 									"variable": [
 										{
-											"id": "022310ff-e233-4630-802e-d7a83027923d",
 											"key": "id",
 											"value": "2"
 										}
