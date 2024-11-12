@@ -25297,6 +25297,28 @@
 					"item": [
 						{
 							"name": "Toggle Provider Status -Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3f2530bc-be11-4e03-954f-dff8ebcacd28",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates successful toggle\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Success\");\r",
+											"    pm.expect(jsonData.result.active).to.be.oneOf([true, false]);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "a7c70506-3023-4b1f-81b2-ebabdf58c904",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -25339,6 +25361,27 @@
 						},
 						{
 							"name": "Toggle Provider Status -Invalid ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "23967fc0-6b60-4acd-8b05-1c9c640209d3",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates account provider not found\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Account provider not found\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "a4059508-484b-4d1f-b854-ccd99d3577e2",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -25358,6 +25401,15 @@
 										"type": "text"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
 									"raw": "{{baseurlo}}/api/foreign-account-provider/toggle-status/:id",
 									"host": [
@@ -25371,9 +25423,8 @@
 									],
 									"variable": [
 										{
-											"id": "022310ff-e233-4630-802e-d7a83027923d",
 											"key": "id",
-											"value": "2"
+											"value": "2014"
 										}
 									]
 								}
