@@ -25113,14 +25113,87 @@
 					"name": "Fetch a single Provider",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Fetch a single provider - Success",
 							"id": "f865b9de-7c83-4a1c-b1ca-53c41dd74f0f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account-provider/providers/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account-provider",
+										"providers",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch a single provider - No Auth",
+							"id": "034de4f0-8c5b-472e-8886-a3b75229f91f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account-provider/providers/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account-provider",
+										"providers",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "81a9dc73-f87c-4e8f-8e18-40df24f65f65",
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
 							},
 							"response": []
 						}
