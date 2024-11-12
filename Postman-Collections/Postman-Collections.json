@@ -25296,14 +25296,44 @@
 					"name": "Fetch Providers Status",
 					"item": [
 						{
-							"name": "Fetch Providers Status -Success",
+							"name": "Toggle Provider Status -Success",
 							"id": "a7c70506-3023-4b1f-81b2-ebabdf58c904",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin_access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account-provider/toggle-status/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account-provider",
+										"toggle-status",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
 							},
 							"response": []
 						}
