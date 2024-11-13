@@ -27354,6 +27354,33 @@
 					"item": [
 						{
 							"name": "Get Account by Internalacctno. - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "25358a6b-444b-4dea-8bb4-abcc919140e0",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response body has result property\", function () {\r",
+											"    pm.response.to.have.jsonBody('hasResult', true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response body has resultType property\", function () {\r",
+											"    pm.response.to.have.jsonBody('resultType', \"Success\");\r",
+											"});\r",
+											"\r",
+											";\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "1f51a9cf-9b03-46a5-9347-9ddc53975474",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -27386,6 +27413,76 @@
 									],
 									"variable": [
 										{
+											"key": "accountnumber",
+											"value": "0000069326"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Account by Internalacctno. - Non Existent Account no.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "25358a6b-444b-4dea-8bb4-abcc919140e0",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response body has result property\", function () {\r",
+											"    pm.response.to.have.jsonBody('hasResult', true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response body has resultType property\", function () {\r",
+											"    pm.response.to.have.jsonBody('resultType', \"Success\");\r",
+											"});\r",
+											"\r",
+											";\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "fde12407-ca04-426e-b861-b663573f280e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/getaccount-by-internalaccount/:accountnumber",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"getaccount-by-internalaccount",
+										":accountnumber"
+									],
+									"variable": [
+										{
+											"id": "ffc95843-6987-4e55-a92d-6c649e41e8ce",
 											"key": "accountnumber",
 											"value": "0000069326"
 										}
