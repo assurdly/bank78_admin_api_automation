@@ -26394,8 +26394,21 @@
 					"id": "9627040b-68ac-4190-85ff-57ff03a70df7"
 				},
 				{
-					"name": "Get  Foreign Accounts",
-					"item": [],
+					"name": "Get  Foreign Account Requests",
+					"item": [
+						{
+							"name": "Get  Foreign Account Requests - Success",
+							"id": "ab428a11-91c1-46e6-b284-40949ee6046a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "d65199ab-f550-4f54-b006-615038848c4b"
 				}
 			],
