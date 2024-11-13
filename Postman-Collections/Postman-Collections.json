@@ -26478,25 +26478,15 @@
 									"script": {
 										"id": "ae70a2b3-4531-4ab5-9c6c-71d86b4d7074",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Verify the internal account number in the response\", function () {\r",
-											"    pm.expect(pm.response.json().result.internalAccountNumber).to.be.a('string');\r",
+											"pm.test(\"Response indicates provider not found\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Foreign Account not found\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Verify the status in the response\", function () {\r",
-											"    pm.expect(pm.response.json().result.status).to.be.a('string');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify the business name in the response\", function () {\r",
-											"    pm.expect(pm.response.json().result.businessName).to.be.a('string');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Verify the provider account number in the response\", function () {\r",
-											"    pm.expect(pm.response.json().result.providerAccountNumber).to.be.a('string');\r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript",
@@ -26536,9 +26526,133 @@
 									],
 									"variable": [
 										{
-											"id": "8478fead-19f9-4bf8-8715-905c989eb5ce",
 											"key": "id",
-											"value": "1"
+											"value": "125"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get  Foreign Account Requests - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ae70a2b3-4531-4ab5-9c6c-71d86b4d7074",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates authorization required\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Authorization required\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "db45e938-d0e2-4497-90f6-71466c127893",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/account-requests/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"account-requests",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "125"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get  Foreign Account Requests - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ae70a2b3-4531-4ab5-9c6c-71d86b4d7074",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates authorization required\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Authorization required\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "45967670-4a29-4323-b442-83d5d29b8d68",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/account-requests/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"account-requests",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "d672a9b5-b1ff-42d3-a56d-1276881dd56b",
+											"key": "id",
+											"value": "125"
 										}
 									]
 								}
