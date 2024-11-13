@@ -27229,13 +27229,15 @@
 									"script": {
 										"id": "90850ca7-5fa6-4d50-a7e1-94bdb0eca734",
 										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
+											"pm.test(\"Status code should indicate no authentication\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Validate unmapped account response\", function () {\r",
-											"    pm.expect(pm.response.json().hasResult).to.eql(false);\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"request Id not found\");\r",
+											" \r",
+											"pm.test(\"Error message should indicate missing authentication\", function () {\r",
+											"    let response = pm.response.json();\r",
+											"    pm.expect(response).to.have.property(\"message\");\r",
+											"    pm.expect(response.message).to.include(\"Unauthorized\"); \r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -27249,9 +27251,70 @@
 							},
 							"request": {
 								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/account-mapping/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"account-mapping",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Mapped Account - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "90850ca7-5fa6-4d50-a7e1-94bdb0eca734",
+										"exec": [
+											"pm.test(\"Status code should indicate no authentication\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
+											"});\r",
+											"\r",
+											" \r",
+											"pm.test(\"Error message should indicate missing authentication\", function () {\r",
+											"    let response = pm.response.json();\r",
+											"    pm.expect(response).to.have.property(\"message\");\r",
+											"    pm.expect(response.message).to.include(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "24c029fa-1421-4444-9559-c63adac33060",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "rsetxryctuviybuonippbiuyreteztrxyctuvybuinppituryetrxyctuyviboinmo'"
 									}
 								},
 								"method": "GET",
@@ -27275,9 +27338,8 @@
 									],
 									"variable": [
 										{
-											"id": "a8ddbf38-4cc7-4480-b4e2-b3e8ffae923f",
 											"key": "id",
-											"value": "400"
+											"value": "2"
 										}
 									]
 								}
@@ -27286,6 +27348,11 @@
 						}
 					],
 					"id": "6a12540b-75b7-4684-b0ea-149a3711a167"
+				},
+				{
+					"name": "New Folder",
+					"item": [],
+					"id": "44a0da2f-a4e9-4ef2-a9c0-edf984ca9bcb"
 				}
 			],
 			"id": "105c2122-4cbe-46fc-a6f1-53c0e206de9c"
