@@ -27430,16 +27430,16 @@
 										"id": "25358a6b-444b-4dea-8bb4-abcc919140e0",
 										"exec": [
 											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Response body has result property\", function () {\r",
-											"    pm.response.to.have.jsonBody('hasResult', true);\r",
+											"    pm.response.to.have.jsonBody('hasResult', false);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Response body has resultType property\", function () {\r",
-											"    pm.response.to.have.jsonBody('resultType', \"Success\");\r",
+											"    pm.response.to.have.jsonBody('resultType', \"Error\");\r",
 											"});\r",
 											"\r",
 											";\r",
@@ -27482,9 +27482,68 @@
 									],
 									"variable": [
 										{
-											"id": "ffc95843-6987-4e55-a92d-6c649e41e8ce",
 											"key": "accountnumber",
-											"value": "0000069326"
+											"value": "0000000011"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Account by Internalacctno. - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "25358a6b-444b-4dea-8bb4-abcc919140e0",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message should indicate missing authentication\", function () {\r",
+											"    let response = pm.response.json();\r",
+											"    pm.expect(response).to.have.property(\"message\");\r",
+											"    pm.expect(response.message).to.include(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "462bc5d3-1957-45eb-8019-706462c44d5a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/getaccount-by-internalaccount/:accountnumber",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"getaccount-by-internalaccount",
+										":accountnumber"
+									],
+									"variable": [
+										{
+											"key": "accountnumber",
+											"value": "0000000011"
 										}
 									]
 								}
