@@ -26398,13 +26398,150 @@
 					"item": [
 						{
 							"name": "Get  Foreign Account Requests - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ae70a2b3-4531-4ab5-9c6c-71d86b4d7074",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the internal account number in the response\", function () {\r",
+											"    pm.expect(pm.response.json().result.internalAccountNumber).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the status in the response\", function () {\r",
+											"    pm.expect(pm.response.json().result.status).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the business name in the response\", function () {\r",
+											"    pm.expect(pm.response.json().result.businessName).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the provider account number in the response\", function () {\r",
+											"    pm.expect(pm.response.json().result.providerAccountNumber).to.be.a('string');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "ab428a11-91c1-46e6-b284-40949ee6046a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/account-requests/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"account-requests",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get  Foreign Account Requests - Invalid ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ae70a2b3-4531-4ab5-9c6c-71d86b4d7074",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the internal account number in the response\", function () {\r",
+											"    pm.expect(pm.response.json().result.internalAccountNumber).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the status in the response\", function () {\r",
+											"    pm.expect(pm.response.json().result.status).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the business name in the response\", function () {\r",
+											"    pm.expect(pm.response.json().result.businessName).to.be.a('string');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify the provider account number in the response\", function () {\r",
+											"    pm.expect(pm.response.json().result.providerAccountNumber).to.be.a('string');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "93897154-71bb-450c-b177-4869b7c06358",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/account-requests/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"account-requests",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "8478fead-19f9-4bf8-8715-905c989eb5ce",
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
 							},
 							"response": []
 						}
