@@ -26168,6 +26168,28 @@
 					"item": [
 						{
 							"name": "Get FX requests (Paged)- Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cb3618dc-209d-4c2d-a705-a6d2cd4e7ccc",
+										"exec": [
+											"pm.test(\"Status code is 200 OK\", function () {\r",
+											"    pm.expect(pm.response.code).to.equal(200);\r",
+											"});\r",
+											";\r",
+											"\r",
+											"pm.test(\"Status is returned in the response\", function () {\r",
+											"     var responseBody = pm.response.json();\r",
+											"     pm.expect(responseBody).to.be.an('object');\r",
+											"     pm.expect(responseBody).to.have.property('status');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "27f8576a-713f-40ac-975b-efaf0a0e294a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
