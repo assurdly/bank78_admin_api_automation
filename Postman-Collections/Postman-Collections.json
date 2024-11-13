@@ -25814,7 +25814,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": 3,\r\n  \"foreignAccountProviderId\": 3,\r\n  \"transferType\": \"ACH\",\r\n  \"bicCode\": \"WHKVAG80AWS\",\r\n  \"routingNumber\": \"0001234567\",\r\n  \"bankName\": \"UBA PLC\",\r\n  \"bankAddress\": \"Kigali\",\r\n  \"bankCountry\": \"Rwanda\"\r\n}",
+									"raw": "{\r\n  \"id\": 3,\r\n  \"foreignAccountProviderId\": 3,\r\n  \"transferType\": \"ACH\",\r\n  \"bicCode\": \"WHKVAG80AWS\",\r\n  \"routingNumber\": \"\",\r\n  \"bankName\": \"UBA PLC\",\r\n  \"bankAddress\": \"Kigali\",\r\n  \"bankCountry\": \"Rwanda\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
