@@ -24943,7 +24943,7 @@
 											"    pm.expect(response).to.have.property(\"responseCode\", null);\r",
 											"});\r",
 											"pm.test(\"Validation message content\", function () {\r",
-											"    pm.expect(response.validationMessages[0]).to.equal(\"A provider name is required\");\r",
+											"    pm.expect(response.validationMessages[0]).to.equal(\"Invalid Currency Code\");\r",
 											"});\r",
 											"pm.test(\"Status code is 400 for validation error\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
@@ -26165,7 +26165,20 @@
 			"item": [
 				{
 					"name": "New Folder",
-					"item": [],
+					"item": [
+						{
+							"name": "New Request",
+							"id": "27f8576a-713f-40ac-975b-efaf0a0e294a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "9627040b-68ac-4190-85ff-57ff03a70df7"
 				}
 			],
