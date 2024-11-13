@@ -26887,18 +26887,15 @@
 									"script": {
 										"id": "45d1028b-1c5f-4868-840c-815f21bbe0ca",
 										"exec": [
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
+											"pm.test(\"Status code should indicate no authentication\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
 											"});\r",
 											"\r",
-											"\r",
-											"pm.test(\"Response has expected properties\", function () {\r",
-											"    pm.response.to.have.jsonBody('hasResult', false);\r",
-											"    pm.response.to.have.jsonBody('result', null);\r",
-											"    pm.response.to.have.jsonBody('resultType', \"Error\");\r",
-											"    pm.response.to.have.jsonBody('message', \"request not found\");\r",
-											"    pm.response.to.have.jsonBody('successful', false);\r",
+											" \r",
+											"pm.test(\"Error message should indicate missing authentication\", function () {\r",
+											"    let response = pm.response.json();\r",
+											"    pm.expect(response).to.have.property(\"message\");\r",
+											"    pm.expect(response.message).to.include(\"Unauthorized\"); \r",
 											"});\r",
 											"\r",
 											"\r",
@@ -26915,9 +26912,73 @@
 							},
 							"request": {
 								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/submit-request/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"submit-request",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Submit FX request- Invalid Auth Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "45d1028b-1c5f-4868-840c-815f21bbe0ca",
+										"exec": [
+											"pm.test(\"Status code should indicate no authentication\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
+											"});\r",
+											"\r",
+											" \r",
+											"pm.test(\"Error message should indicate missing authentication\", function () {\r",
+											"    let response = pm.response.json();\r",
+											"    pm.expect(response).to.have.property(\"message\");\r",
+											"    pm.expect(response.message).to.include(\"Unauthorized\"); \r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "0e4a1f3b-842d-4ec9-b3f6-b3edb7595d15",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "gbkhdjlnkxcltesdgxfhcjvkblgufydturytufygulhi;ugyftdrytfykgulh;kj"
 									}
 								},
 								"method": "POST",
@@ -26941,9 +27002,8 @@
 									],
 									"variable": [
 										{
-											"id": "711e4779-2e63-4394-9d96-e3fb6f7004a0",
 											"key": "id",
-											"value": "2001"
+											"value": "2"
 										}
 									]
 								}
@@ -26952,6 +27012,11 @@
 						}
 					],
 					"id": "7019aafa-b49d-4d8b-96b2-8e61fd752bf5"
+				},
+				{
+					"name": "New Folder",
+					"item": [],
+					"id": "6a12540b-75b7-4684-b0ea-149a3711a167"
 				}
 			],
 			"id": "105c2122-4cbe-46fc-a6f1-53c0e206de9c"
