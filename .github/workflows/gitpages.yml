@@ -35,12 +35,12 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      # - name: Copy existing content to allure-history
-      #   run: |
-      #     mkdir -p allure-history
-      #     if [ -d gh-pages ]; then
-      #       cp -r gh-pages/* allure-history/
-      #     fi
+      - name: Copy existing content to allure-history
+        run: |
+          mkdir -p allure-history
+          if [ -d gh-pages ]; then
+            cp -r gh-pages/* allure-history/
+          fi
 
       - name: Allure report action
         id: build
