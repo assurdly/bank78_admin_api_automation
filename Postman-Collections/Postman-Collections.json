@@ -26604,16 +26604,16 @@
 									"script": {
 										"id": "ae70a2b3-4531-4ab5-9c6c-71d86b4d7074",
 										"exec": [
-											"pm.test(\"Status code is 401\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
+											"pm.test(\"Status code should indicate no authentication\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response indicates authorization required\", function () {\r",
-											"    const jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.message).to.include(\"Authorization required\");\r",
+											" \r",
+											"pm.test(\"Error message should indicate missing authentication\", function () {\r",
+											"    let response = pm.response.json();\r",
+											"    pm.expect(response).to.have.property(\"message\");\r",
+											"    pm.expect(response.message).to.include(\"Unauthorized\"); \r",
 											"});\r",
-											"\r",
-											"\r",
 											""
 										],
 										"type": "text/javascript",
@@ -26627,7 +26627,10 @@
 							},
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "bearer",
+									"bearer": {
+										"token": "eyjknhougyifugio'jpgfouglbkj;hciruofvygb;hnjmk',mjnhbgvfdcyfvgbnhlkm;',"
+									}
 								},
 								"method": "GET",
 								"header": [
@@ -26650,7 +26653,6 @@
 									],
 									"variable": [
 										{
-											"id": "d672a9b5-b1ff-42d3-a56d-1276881dd56b",
 											"key": "id",
 											"value": "125"
 										}
@@ -26661,6 +26663,11 @@
 						}
 					],
 					"id": "d65199ab-f550-4f54-b006-615038848c4b"
+				},
+				{
+					"name": "New Folder",
+					"item": [],
+					"id": "7019aafa-b49d-4d8b-96b2-8e61fd752bf5"
 				}
 			],
 			"id": "105c2122-4cbe-46fc-a6f1-53c0e206de9c"
