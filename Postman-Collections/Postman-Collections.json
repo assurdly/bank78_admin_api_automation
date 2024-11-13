@@ -27549,6 +27549,70 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Account by Internalacctno. - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "25358a6b-444b-4dea-8bb4-abcc919140e0",
+										"exec": [
+											"pm.test(\"Status code should indicate no authentication\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([401, 403]);\r",
+											"});\r",
+											"\r",
+											" \r",
+											"pm.test(\"Error message should indicate missing authentication\", function () {\r",
+											"    let response = pm.response.json();\r",
+											"    pm.expect(response).to.have.property(\"message\");\r",
+											"    pm.expect(response.message).to.include(\"Unauthorized\"); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "0454f8d0-f54f-4709-8e4d-1c432c4e2062",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "svghxbjknudrysetryxctugvyhkbjlnuvyicturxyseatrxyctuvyubuvyitdursye"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/getaccount-by-internalaccount/:accountnumber",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"getaccount-by-internalaccount",
+										":accountnumber"
+									],
+									"variable": [
+										{
+											"key": "accountnumber",
+											"value": "0000000011"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "44a0da2f-a4e9-4ef2-a9c0-edf984ca9bcb"
