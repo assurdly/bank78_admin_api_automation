@@ -27353,14 +27353,44 @@
 					"name": "Get Account by Internalacctno.",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Get Account by Internalacctno. - Success",
 							"id": "1f51a9cf-9b03-46a5-9347-9ddc53975474",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/getaccount-by-internalaccount/:accountnumber",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"getaccount-by-internalaccount",
+										":accountnumber"
+									],
+									"variable": [
+										{
+											"key": "accountnumber",
+											"value": "0000069326"
+										}
+									]
+								}
 							},
 							"response": []
 						}
