@@ -27014,8 +27014,21 @@
 					"id": "7019aafa-b49d-4d8b-96b2-8e61fd752bf5"
 				},
 				{
-					"name": "New Folder",
-					"item": [],
+					"name": "Get Mapped Account",
+					"item": [
+						{
+							"name": "New Request",
+							"id": "8493228b-e05c-4b2f-b529-a17c82caab54",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "6a12540b-75b7-4684-b0ea-149a3711a167"
 				}
 			],
