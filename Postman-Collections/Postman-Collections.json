@@ -26665,10 +26665,40 @@
 					"id": "d65199ab-f550-4f54-b006-615038848c4b"
 				},
 				{
-					"name": "New Folder",
+					"name": "Submit FX request",
 					"item": [
 						{
 							"name": "Submit FX request- Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1a4961b-e968-4983-94ec-1b9cf9e45af0",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has expected properties\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult', true);\r",
+											"    pm.expect(pm.response.json()).to.have.property('result');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('message', 'Successful');\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType', 'Success');\r",
+											"    pm.expect(pm.response.json()).to.have.property('message', 'Success');\r",
+											"    pm.expect(pm.response.json()).to.have.property('successful', true);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "2748cb32-3aa5-41d1-9eb6-dbab4241e4c6",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -26701,9 +26731,8 @@
 									],
 									"variable": [
 										{
-											"id": "224a8658-17af-43d2-a8d8-a2ab7e45cb18",
 											"key": "id",
-											"value": "2"
+											"value": "4"
 										}
 									]
 								}
@@ -26774,6 +26803,147 @@
 										{
 											"key": "id",
 											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Submit FX request- Non Existent ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "45d1028b-1c5f-4868-840c-815f21bbe0ca",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has expected properties\", function () {\r",
+											"    pm.response.to.have.jsonBody('hasResult', false);\r",
+											"    pm.response.to.have.jsonBody('result', null);\r",
+											"    pm.response.to.have.jsonBody('resultType', \"Error\");\r",
+											"    pm.response.to.have.jsonBody('message', \"request not found\");\r",
+											"    pm.response.to.have.jsonBody('successful', false);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "e2b1ce34-8d88-4861-ae39-92365f3d98e3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/submit-request/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"submit-request",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Submit FX request- No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "45d1028b-1c5f-4868-840c-815f21bbe0ca",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has expected properties\", function () {\r",
+											"    pm.response.to.have.jsonBody('hasResult', false);\r",
+											"    pm.response.to.have.jsonBody('result', null);\r",
+											"    pm.response.to.have.jsonBody('resultType', \"Error\");\r",
+											"    pm.response.to.have.jsonBody('message', \"request not found\");\r",
+											"    pm.response.to.have.jsonBody('successful', false);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "921e7cf5-cdcd-4a2a-89f6-41f71f62c92c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/submit-request/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"submit-request",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "711e4779-2e63-4394-9d96-e3fb6f7004a0",
+											"key": "id",
+											"value": "2001"
 										}
 									]
 								}
