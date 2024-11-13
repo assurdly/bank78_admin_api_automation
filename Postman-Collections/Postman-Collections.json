@@ -26164,17 +26164,112 @@
 			"name": "Foreign Account",
 			"item": [
 				{
-					"name": "New Folder",
+					"name": "Get FX requests (Paged)",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Get FX requests (Paged)- Success",
 							"id": "27f8576a-713f-40ac-975b-efaf0a0e294a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/fx-requests/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"fx-requests",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get FX requests (Paged)- Success Copy",
+							"id": "7095727d-ab31-4827-acb7-5ba22d0b83cc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/fx-requests/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"fx-requests",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"id": "20cec42c-1a8a-4c85-9882-1c54c0fc6f5e",
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"id": "dc720950-a1f6-4e75-86c0-af8c9fd8d6d1",
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"id": "b1559800-96f6-447a-84c4-cefd9f852567",
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
 							},
 							"response": []
 						}
