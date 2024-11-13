@@ -26346,7 +26346,10 @@
 							},
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "bearer",
+									"bearer": {
+										"token": "eyjdjnfbdubljkncfojv;dknc.m,kvjcfgjvkhbln;jhfgdhfhcgjvbnkjbhfdtugjhn,gmbnkhgfdzxfcgjvhkbljn;kgfdtrctgjvhkbm.n,"
+									}
 								},
 								"method": "GET",
 								"header": [
@@ -26371,17 +26374,14 @@
 									],
 									"variable": [
 										{
-											"id": "8e014b0c-01a9-445c-b694-001de2c69a7e",
 											"key": "page",
 											"value": "1"
 										},
 										{
-											"id": "744b32c4-de4a-488c-8da1-dfcbf1f284a2",
 											"key": "pagesize",
 											"value": "10"
 										},
 										{
-											"id": "80f36788-80af-4613-bf58-622a68612175",
 											"key": "whereCondition",
 											"value": "{}"
 										}
@@ -26392,6 +26392,11 @@
 						}
 					],
 					"id": "9627040b-68ac-4190-85ff-57ff03a70df7"
+				},
+				{
+					"name": "Get  Foreign Accounts",
+					"item": [],
+					"id": "d65199ab-f550-4f54-b006-615038848c4b"
 				}
 			],
 			"id": "105c2122-4cbe-46fc-a6f1-53c0e206de9c"
