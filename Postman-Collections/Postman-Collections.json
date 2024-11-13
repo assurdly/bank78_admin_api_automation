@@ -27619,7 +27619,20 @@
 				},
 				{
 					"name": "Approve FX Request",
-					"item": [],
+					"item": [
+						{
+							"name": "Approve FX Request",
+							"id": "63fe051e-e661-4403-a3ab-c001046c96b7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "b8fd81f7-a499-42b1-adec-757f92c4471e"
 				}
 			],
