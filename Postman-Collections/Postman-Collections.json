@@ -26668,49 +26668,7 @@
 					"name": "New Folder",
 					"item": [
 						{
-							"name": "Submit FX request- Already Mapped Request",
-							"id": "0bcddb04-7c17-444c-b675-cdc1eac1ef7a",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{baseurlo}}/api/foreign-account/submit-request/:id",
-									"host": [
-										"{{baseurlo}}"
-									],
-									"path": [
-										"api",
-										"foreign-account",
-										"submit-request",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "2"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Submit FX request- Already Mapped Request Copy",
+							"name": "Submit FX request- Success",
 							"id": "2748cb32-3aa5-41d1-9eb6-dbab4241e4c6",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -26744,6 +26702,76 @@
 									"variable": [
 										{
 											"id": "224a8658-17af-43d2-a8d8-a2ab7e45cb18",
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Submit FX request- Already Mapped Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "45d1028b-1c5f-4868-840c-815f21bbe0ca",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has expected properties\", function () {\r",
+											"    pm.response.to.have.jsonBody('hasResult', false);\r",
+											"    pm.response.to.have.jsonBody('result', null);\r",
+											"    pm.response.to.have.jsonBody('resultType', \"Error\");\r",
+											"    pm.response.to.have.jsonBody('message', \"This request is currently not mapped as Pending\");\r",
+											"    pm.response.to.have.jsonBody('successful', false);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "0bcddb04-7c17-444c-b675-cdc1eac1ef7a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/submit-request/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"submit-request",
+										":id"
+									],
+									"variable": [
+										{
 											"key": "id",
 											"value": "2"
 										}
