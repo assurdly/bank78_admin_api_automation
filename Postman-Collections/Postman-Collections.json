@@ -27018,13 +27018,73 @@
 					"item": [
 						{
 							"name": "New Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "90850ca7-5fa6-4d50-a7e1-94bdb0eca734",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate account mapping details\", function () {\r",
+											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"    pm.expect(pm.response.json().result.internalAccountNumber).to.eql(\"0000069326\");\r",
+											"    pm.expect(pm.response.json().result.providerAccountNumber).to.eql(\"879112234\");\r",
+											"    pm.expect(pm.response.json().result.currencyCode).to.eql(\"USD\");\r",
+											"    pm.expect(pm.response.json().result.businessName).to.eql(\"CircleChurch\");\r",
+											"    pm.expect(pm.response.json().result.customerName).to.eql(\"test\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate message and result type\", function () {\r",
+											"    pm.expect(pm.response.json().resultType).to.eql(\"Success\");\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Success\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "8493228b-e05c-4b2f-b529-a17c82caab54",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/account-mapping/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"account-mapping",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
 							},
 							"response": []
 						}
