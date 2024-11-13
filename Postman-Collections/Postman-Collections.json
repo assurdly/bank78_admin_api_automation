@@ -27351,7 +27351,20 @@
 				},
 				{
 					"name": "New Folder",
-					"item": [],
+					"item": [
+						{
+							"name": "New Request",
+							"id": "1f51a9cf-9b03-46a5-9347-9ddc53975474",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "44a0da2f-a4e9-4ef2-a9c0-edf984ca9bcb"
 				}
 			],
