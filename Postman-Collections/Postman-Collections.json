@@ -27017,7 +27017,7 @@
 					"name": "Get Mapped Account",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Get Mapped Account - Success",
 							"event": [
 								{
 									"listen": "test",
@@ -27080,6 +27080,79 @@
 									],
 									"variable": [
 										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Mapped Account - Unmapped Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "90850ca7-5fa6-4d50-a7e1-94bdb0eca734",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate account mapping details\", function () {\r",
+											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"    pm.expect(pm.response.json().result.internalAccountNumber).to.eql(\"0000069326\");\r",
+											"    pm.expect(pm.response.json().result.providerAccountNumber).to.eql(\"879112234\");\r",
+											"    pm.expect(pm.response.json().result.currencyCode).to.eql(\"USD\");\r",
+											"    pm.expect(pm.response.json().result.businessName).to.eql(\"CircleChurch\");\r",
+											"    pm.expect(pm.response.json().result.customerName).to.eql(\"test\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate message and result type\", function () {\r",
+											"    pm.expect(pm.response.json().resultType).to.eql(\"Success\");\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Success\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "233f9c2e-a361-4d2d-b829-4c7cba2888ad",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurlo}}/api/foreign-account/account-mapping/:id",
+									"host": [
+										"{{baseurlo}}"
+									],
+									"path": [
+										"api",
+										"foreign-account",
+										"account-mapping",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "e2b51605-fcf3-4e87-82ca-802e1b31287b",
 											"key": "id",
 											"value": "2"
 										}
