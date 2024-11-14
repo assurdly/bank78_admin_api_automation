@@ -28898,24 +28898,32 @@
 									"script": {
 										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
 										"exec": [
-											"pm.test(\"Response status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Response status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response has no result and is unsuccessful\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result is null\", function () {\r",
+											"    pm.expect(pm.response.json().result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message indicate existing configuration\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.eql(\"Configuration already exists!\");\r",
+											"   \r",
+											"});\r",
+											"\r",
+											"pm.test(\"ValidationMessages and responseCode are null\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"});\r",
 											"\r",
 											"\r",
-											"pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"isActive\").that.is.a(\"boolean\");\r",
-											"    pm.expect(result).to.have.property(\"rateId\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"name\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"sourceCurrency\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"destinationCurrency\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"charges\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"vat\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"limit\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"vatTypeId\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"feeTypeId\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"rate\").that.is.a(\"number\");\r",
-											"});   \r",
 											""
 										],
 										"type": "text/javascript",
@@ -28924,6 +28932,79 @@
 								}
 							],
 							"id": "c6148005-3da9-4501-954d-783bc8c30eb5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Rate - Empty Required field",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response has no result and is unsuccessful\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result is null\", function () {\r",
+											"    pm.expect(pm.response.json().result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message indicate existing configuration\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.eql(\"Configuration already exists!\");\r",
+											"   \r",
+											"});\r",
+											"\r",
+											"pm.test(\"ValidationMessages and responseCode are null\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "371588d4-bea1-4b20-be38-e6b620664848",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
