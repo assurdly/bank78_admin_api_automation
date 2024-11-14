@@ -30894,24 +30894,16 @@
 									"script": {
 										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
 										"exec": [
+											"\r",
 											"pm.test(\"Response status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"\r",
-											"pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"isActive\").that.is.a(\"boolean\");\r",
-											"    pm.expect(result).to.have.property(\"rateId\").that.is.a(\"string\");\r",
+											"pm.test(\"Verify the response properties\", function () {\r",
+											"    const result = pm.response.json().result;\r",
+											"    pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
 											"    pm.expect(result).to.have.property(\"name\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"sourceCurrency\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"destinationCurrency\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"charges\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"vat\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"limit\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"vatTypeId\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"feeTypeId\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"rate\").that.is.a(\"number\");\r",
-											"});   \r",
+											"});\r",
 											""
 										],
 										"type": "text/javascript",
@@ -30940,19 +30932,19 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"raw": "{\r\n  \"name\": \"Testinggg\",\r\n  \"id\":5\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{baseUrltr}}/api/v1/rate/admin"
+								"url": "{{baseUrltr}}/api/v1/expense-categories/admin"
 							},
 							"response": []
 						},
 						{
-							"name": "Update Rate - Unchanged Data",
+							"name": "Update Expense Category - Unchanged Data",
 							"event": [
 								{
 									"listen": "test",
@@ -31025,7 +31017,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Rate - Empty Required field",
+							"name": "Update Expense Category- Empty Required field",
 							"event": [
 								{
 									"listen": "test",
@@ -31093,7 +31085,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Rate - No Auth",
+							"name": "Update Expense Category - No Auth",
 							"event": [
 								{
 									"listen": "test",
@@ -31143,7 +31135,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Rate - Invalid Token",
+							"name": "Update Expense Category- Invalid Token",
 							"event": [
 								{
 									"listen": "test",
