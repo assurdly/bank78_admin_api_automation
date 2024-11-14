@@ -27700,7 +27700,7 @@
 			"name": "Exchange Rate Management",
 			"item": [
 				{
-					"name": "Get FX Rates",
+					"name": "Get FX Rates (Paged)",
 					"item": [
 						{
 							"name": "Get FX Rates (Paged)- Success",
@@ -27777,156 +27777,174 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get FX Rates (Paged)- No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "11e80ab1-8245-4066-bf7c-97310299a486",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "70efe99b-3f11-438b-a074-a0e7061644de",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"getpaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get FX Rates (Paged)- Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "11e80ab1-8245-4066-bf7c-97310299a486",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "8cedf473-c1a9-4777-b3fa-8cda7b659246",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "yxdfrcugvyblni;hpuogyfitdrserytfgjreydfgbhkn;jl'iugyftdrsedfcgbjhnkjl'khgfytdrysetdrftghjk'lhgfhd"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"getpaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "be100e5e-341b-4442-825b-b2302d800859"
 				},
 				{
-					"name": "Get FX Rates (Paged)- No Auth",
-					"event": [
+					"name": "Get FX Rates (QueryPaged)",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "11e80ab1-8245-4066-bf7c-97310299a486",
-								"exec": [
-									"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error message indicates authentication failure\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
+							"name": "Get FX Rates (QueryPaged)",
+							"id": "1e9267d4-f93f-4df4-98b3-5eead091fcec",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
 						}
 					],
-					"id": "70efe99b-3f11-438b-a074-a0e7061644de",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
-							"host": [
-								"{{baseUrltr}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"rate",
-								"admin",
-								"getpaged",
-								":page",
-								":pagesize",
-								":whereCondition"
-							],
-							"variable": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "pagesize",
-									"value": "10"
-								},
-								{
-									"key": "whereCondition",
-									"value": "{}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get FX Rates (Paged)- Invalid Token",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "11e80ab1-8245-4066-bf7c-97310299a486",
-								"exec": [
-									"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error message indicates authentication failure\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "8cedf473-c1a9-4777-b3fa-8cda7b659246",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "yxdfrcugvyblni;hpuogyfitdrserytfgjreydfgbhkn;jl'iugyftdrsedfcgbjhnkjl'khgfytdrysetdrftghjk'lhgfhd"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
-							"host": [
-								"{{baseUrltr}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"rate",
-								"admin",
-								"getpaged",
-								":page",
-								":pagesize",
-								":whereCondition"
-							],
-							"variable": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "pagesize",
-									"value": "10"
-								},
-								{
-									"key": "whereCondition",
-									"value": "{}"
-								}
-							]
-						}
-					},
-					"response": []
+					"id": "acbdb846-ffc1-4f35-81c7-117822bbf368"
 				}
 			],
 			"id": "94f06308-6841-4ae4-b89c-73c4b6c55a71"
