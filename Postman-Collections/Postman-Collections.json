@@ -31474,21 +31474,20 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"raw": "{{baseUrltr}}/api/v1/expense-categories/admin/toggle-active/:id",
 									"host": [
 										"{{baseUrltr}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"rate",
+										"expense-categories",
 										"admin",
 										"toggle-active",
 										":id"
 									],
 									"variable": [
 										{
-											"id": "28d9a27f-e3ae-4e45-b2f1-a5797537406e",
 											"key": "id",
 											"value": "33"
 										}
