@@ -32640,13 +32640,130 @@
 						},
 						{
 							"name": "Get Funds (Querypaged)- No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f1170a3a-16c3-440a-8314-1090b4feb5b9",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "1b9eb933-10d6-4adf-9d0d-174b60f59ae9",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/FxAccountFunding/querypaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"FxAccountFunding",
+										"querypaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Funds (Querypaged)- Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f1170a3a-16c3-440a-8314-1090b4feb5b9",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3e41eb5c-74d2-4ce0-bb8a-33fb85520419",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "uftgvhkbjlcuxryzexryctuviyblkn;hxzrytucvfycgvjhkbjvhjcghfxycgvhj"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/FxAccountFunding/querypaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"FxAccountFunding",
+										"querypaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
 							},
 							"response": []
 						}
