@@ -32341,16 +32341,14 @@
 									"script": {
 										"id": "6ae218df-db0f-43b0-ab50-71be46b2b730",
 										"exec": [
+											"var responseBody = pm.response.text();\r",
 											"\r",
-											"\r",
-											"var responseBody = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response body contains error message for user does not exist\", function () {\r",
-											"    pm.expect(responseBody).to.have.property('message', 'Invalid email provided');\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(responseBody).to.include(\"Authentication required\");\r",
 											"});\r",
 											"\r",
 											"\r",
@@ -32398,7 +32396,20 @@
 				},
 				{
 					"name": "Get Funds (Paged)",
-					"item": [],
+					"item": [
+						{
+							"name": "New Request",
+							"id": "0f9149ed-89ad-46a6-a104-596e8e94861e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "014f7c99-7b2b-4186-be0e-bb95f67fa31d"
 				},
 				{
