@@ -29285,6 +29285,75 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Toggle Rate Status - Non Existent ID Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result has the correct structure\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('result', null);\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType', 2);\r",
+											"    pm.expect(pm.response.json()).to.have.property('message', \"Item not found!\");\r",
+											"    pm.expect(pm.response.json()).to.have.property('successful', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('errorCode', 0);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "03e39f81-2346-4e87-9c91-4aefdacfef4a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"toggle-active",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "a0b4cc5d-1d1d-4278-9dd5-b08663dd6ded",
+											"key": "id",
+											"value": "1002"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "b8fa3836-9c37-4cd0-b186-85281d46a897"
