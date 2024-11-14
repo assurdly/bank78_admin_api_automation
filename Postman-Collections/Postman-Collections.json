@@ -28513,6 +28513,15 @@
 										"type": "text"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": "{{baseUrltr}}/api/v1/rate/admin"
 							},
 							"response": []
