@@ -27700,22 +27700,103 @@
 			"name": "Exchange Rate Management",
 			"item": [
 				{
-					"name": "Get FX Rates (Paged)- Success",
+					"name": "Get FX Rates",
+					"item": [
+						{
+							"name": "Get FX Rates (Paged)- Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "11e80ab1-8245-4066-bf7c-97310299a486",
+										"exec": [
+											"\r",
+											"pm.test(\"Response code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has property 'hasResult' and 'resultType'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult');\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "e084235d-e196-41e9-8267-d177870e04b5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"getpaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "be100e5e-341b-4442-825b-b2302d800859"
+				},
+				{
+					"name": "Get FX Rates (Paged)- No Auth",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "11e80ab1-8245-4066-bf7c-97310299a486",
 								"exec": [
-									"\r",
-									"pm.test(\"Response code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response has property 'hasResult' and 'resultType'\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('hasResult');\r",
-									"    pm.expect(pm.response.json()).to.have.property('resultType');\r",
+									"pm.test(\"Error message indicates authentication failure\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
 									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -27723,16 +27804,13 @@
 							}
 						}
 					],
-					"id": "e084235d-e196-41e9-8267-d177870e04b5",
+					"id": "70efe99b-3f11-438b-a074-a0e7061644de",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [
@@ -27776,22 +27854,21 @@
 					"response": []
 				},
 				{
-					"name": "Get FX Rates (Paged)- No Auth",
+					"name": "Get FX Rates (Paged)- Invalid Token",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "11e80ab1-8245-4066-bf7c-97310299a486",
 								"exec": [
-									"\r",
-									"pm.test(\"Response code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response has property 'hasResult' and 'resultType'\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('hasResult');\r",
-									"    pm.expect(pm.response.json()).to.have.property('resultType');\r",
+									"pm.test(\"Error message indicates authentication failure\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
 									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -27799,7 +27876,7 @@
 							}
 						}
 					],
-					"id": "70efe99b-3f11-438b-a074-a0e7061644de",
+					"id": "8cedf473-c1a9-4777-b3fa-8cda7b659246",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -27807,7 +27884,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{admin_access_token}}"
+								"token": "yxdfrcugvyblni;hpuogyfitdrserytfgjreydfgbhkn;jl'iugyftdrsedfcgbjhnkjl'khgfytdrysetdrftghjk'lhgfhd"
 							}
 						},
 						"method": "GET",
@@ -27835,17 +27912,14 @@
 							],
 							"variable": [
 								{
-									"id": "0b0ae35c-1576-4598-a116-c1f09150e843",
 									"key": "page",
 									"value": "1"
 								},
 								{
-									"id": "1c49e1f6-f28b-488c-9e42-fd890a4199bb",
 									"key": "pagesize",
 									"value": "10"
 								},
 								{
-									"id": "6079ad4d-5c5f-4188-903f-bc3339f6be8a",
 									"key": "whereCondition",
 									"value": "{}"
 								}
