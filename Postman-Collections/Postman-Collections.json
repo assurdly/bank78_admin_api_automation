@@ -27932,7 +27932,7 @@
 					"name": "Get FX Rates (QueryPaged)",
 					"item": [
 						{
-							"name": "Get FX Rates (QueryPaged)- No Auth",
+							"name": "Get FX Rates (QueryPaged)- Success",
 							"event": [
 								{
 									"listen": "test",
@@ -29499,13 +29499,93 @@
 					"item": [
 						{
 							"name": "Get VAT Types - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
+											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "f319fe7f-b1db-4193-bcc7-7d41cad8b254",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/vat-types"
+							},
+							"response": []
+						},
+						{
+							"name": "Get VAT Types - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
+											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "f72e8b1e-ac69-4405-9185-245cd0b88ce1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/vat-types"
 							},
 							"response": []
 						}
