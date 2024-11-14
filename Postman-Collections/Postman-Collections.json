@@ -28827,6 +28827,37 @@
 					"item": [
 						{
 							"name": "Update Rate - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"isActive\").that.is.a(\"boolean\");\r",
+											"    pm.expect(result).to.have.property(\"rateId\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"name\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"sourceCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"destinationCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"charges\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vat\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"limit\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vatTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"feeTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"rate\").that.is.a(\"number\");\r",
+											"});   \r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "d30d57a8-72c2-492a-af30-181aa01cea59",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -28839,7 +28870,78 @@
 									}
 								},
 								"method": "PUT",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Rate - Success Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"isActive\").that.is.a(\"boolean\");\r",
+											"    pm.expect(result).to.have.property(\"rateId\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"name\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"sourceCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"destinationCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"charges\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vat\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"limit\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vatTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"feeTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"rate\").that.is.a(\"number\");\r",
+											"});   \r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c6148005-3da9-4501-954d-783bc8c30eb5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
