@@ -27774,6 +27774,85 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get FX Rates (Paged)- No Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "11e80ab1-8245-4066-bf7c-97310299a486",
+								"exec": [
+									"\r",
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has property 'hasResult' and 'resultType'\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('hasResult');\r",
+									"    pm.expect(pm.response.json()).to.have.property('resultType');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "70efe99b-3f11-438b-a074-a0e7061644de",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
+							"host": [
+								"{{baseUrltr}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rate",
+								"admin",
+								"getpaged",
+								":page",
+								":pagesize",
+								":whereCondition"
+							],
+							"variable": [
+								{
+									"id": "0b0ae35c-1576-4598-a116-c1f09150e843",
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"id": "1c49e1f6-f28b-488c-9e42-fd890a4199bb",
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"id": "6079ad4d-5c5f-4188-903f-bc3339f6be8a",
+									"key": "whereCondition",
+									"value": "{}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "94f06308-6841-4ae4-b89c-73c4b6c55a71"
