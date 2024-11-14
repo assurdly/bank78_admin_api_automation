@@ -32546,7 +32546,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Funds (Paged) - No Auth Copy",
+							"name": "Get Funds (Paged) - Invalid Token",
 							"event": [
 								{
 									"listen": "test",
@@ -32572,7 +32572,10 @@
 							},
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "bearer",
+									"bearer": {
+										"token": "Godnobeman"
+									}
 								},
 								"method": "GET",
 								"header": [
@@ -32601,17 +32604,14 @@
 									],
 									"variable": [
 										{
-											"id": "0bcea7a5-0042-43d7-aa89-77b5223b1eae",
 											"key": "page",
 											"value": "1"
 										},
 										{
-											"id": "7ca89cd0-faf1-413c-a0de-b23772a1ac2d",
 											"key": "pagesize",
 											"value": "10"
 										},
 										{
-											"id": "00403e88-f43e-4d06-bd9d-ea1513cf5bc5",
 											"key": "whereCondition",
 											"value": ""
 										}
