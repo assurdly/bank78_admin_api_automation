@@ -29490,13 +29490,26 @@
 					"id": "b8fa3836-9c37-4cd0-b186-85281d46a897"
 				},
 				{
-					"name": "New Folder",
+					"name": "Get Charge Types",
 					"item": [],
 					"id": "f8394758-0189-4656-bcac-11055f6d9036"
 				},
 				{
-					"name": "New Folder",
-					"item": [],
+					"name": "Get VAT Types",
+					"item": [
+						{
+							"name": "Get VAT Types - Success",
+							"id": "f319fe7f-b1db-4193-bcc7-7d41cad8b254",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "747f29ab-2718-4dae-b3cc-cae34d4ddf43"
 				}
 			],
