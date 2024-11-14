@@ -29422,6 +29422,75 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Toggle Rate Status -No Auth Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result has the correct structure\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('result', null);\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType', 2);\r",
+											"    pm.expect(pm.response.json()).to.have.property('message', \":id is required\");\r",
+											"    pm.expect(pm.response.json()).to.have.property('successful', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('errorCode', 0);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "4d403e10-067f-492f-bf42-89ad818c187e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"toggle-active",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "67519f6a-6631-418f-83f0-3298f084f99d",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "b8fa3836-9c37-4cd0-b186-85281d46a897"
