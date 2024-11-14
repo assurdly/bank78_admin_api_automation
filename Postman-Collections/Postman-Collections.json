@@ -27933,13 +27933,174 @@
 					"item": [
 						{
 							"name": "Get FX Rates (QueryPaged)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "19bd7d1d-23cb-4496-b715-946d0f5f2200",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has the correct structure\", function () {\r",
+											"    pm.response.to.have.jsonBody(\"hasResult\", true);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].id\", 32);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].name\", \"USD to USD\");\r",
+											"    pm.response.to.have.jsonBody(\"result[0].sourceCurrency\", \"USD\");\r",
+											"    pm.response.to.have.jsonBody(\"result[0].destinationCurrency\", \"USD\");\r",
+											"    pm.response.to.have.jsonBody(\"result[0].charges\", 5);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].vat\", 0);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].limit\", 50000);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].vatTypeId\", 1);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].feeTypeId\", 1);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].rate\", 1);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "1e9267d4-f93f-4df4-98b3-5eead091fcec",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/querypaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"querypaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get FX Rates (QueryPaged) Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "19bd7d1d-23cb-4496-b715-946d0f5f2200",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has the correct structure\", function () {\r",
+											"    pm.response.to.have.jsonBody(\"hasResult\", true);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].id\", 32);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].name\", \"USD to USD\");\r",
+											"    pm.response.to.have.jsonBody(\"result[0].sourceCurrency\", \"USD\");\r",
+											"    pm.response.to.have.jsonBody(\"result[0].destinationCurrency\", \"USD\");\r",
+											"    pm.response.to.have.jsonBody(\"result[0].charges\", 5);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].vat\", 0);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].limit\", 50000);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].vatTypeId\", 1);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].feeTypeId\", 1);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].rate\", 1);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "04cdbe11-a84a-41ae-b51d-7fa75d41fab9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/querypaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"querypaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"id": "f137822d-dc7a-4cac-a045-76f76206f0b2",
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"id": "75546702-dc7b-474d-9954-69af8407c58e",
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"id": "8ad58f57-168e-4eab-b846-542cab463cec",
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
 							},
 							"response": []
 						}
