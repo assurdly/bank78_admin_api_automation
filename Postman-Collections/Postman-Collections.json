@@ -29142,13 +29142,158 @@
 					"item": [
 						{
 							"name": "Toggle Rate Status - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											"pm.test(\"Result has the correct structure\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult', true);\r",
+											"    pm.expect(pm.response.json().result).to.have.property('id');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('isActive');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('rateId');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('name');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('sourceCurrency');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('destinationCurrency');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('charges');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('vat');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('limit');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('vatTypeId');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('feeTypeId');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('rate');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "96b6e99e-16dc-47a2-96ec-0d5121b26e73",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"toggle-active",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "33"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Toggle Rate Status - Non Existent ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											"pm.test(\"Result has the correct structure\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult', true);\r",
+											"    pm.expect(pm.response.json().result).to.have.property('id');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('isActive');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('rateId');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('name');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('sourceCurrency');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('destinationCurrency');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('charges');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('vat');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('limit');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('vatTypeId');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('feeTypeId');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('rate');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3fe05b5f-0bb5-4466-ae1e-26c9cb8fca42",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"toggle-active",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "68c5d294-2cee-4010-beae-c83d751da7b4",
+											"key": "id",
+											"value": "33"
+										}
+									]
+								}
 							},
 							"response": []
 						}
