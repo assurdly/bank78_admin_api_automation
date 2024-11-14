@@ -29842,6 +29842,81 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Current Rate - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "42d6ea72-bcd7-4035-a47c-9018110e5f26",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response body has result\", function () {\r",
+											"    const responseBody = pm.response.json();\r",
+											"    pm.expect(responseBody).to.have.property(\"hasResult\", true);\r",
+											"    pm.expect(responseBody.result).to.have.keys(\"rate\", \"from\", \"to\", \"fees\", \"currency\", \"rateId\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3e634d5d-322b-4b15-8505-1ce54cec595d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/current?from=USD&to=JPY&amount=150000",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"current"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "USD"
+										},
+										{
+											"key": "to",
+											"value": "JPY"
+										},
+										{
+											"key": "amount",
+											"value": "150000"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "a99eb5d6-e664-4782-9042-9d8de4b5f68c"
@@ -31633,6 +31708,31 @@
 						{
 							"name": "Get Expense Categories",
 							"id": "55f76dae-f149-4043-8972-6d97a7febbad",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin_access_token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/expense-categories"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Expense Categories - No Auth",
+							"id": "65ea8223-00ef-4d48-ac79-3884ee9844f8",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
