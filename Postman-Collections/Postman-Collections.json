@@ -32169,8 +32169,8 @@
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response body contains error message for missing transaction reference\", function () {\r",
-											"    pm.expect(pm.response.json()).to.have.property('message', 'The TransactionReference field is required');\r",
+											"pm.test(\"Response body contains error message for exceeded daily limit\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('message', 'You cannot exceed the single transaction limit for this product');\r",
 											"});\r",
 											"\r",
 											"\r",
@@ -32202,7 +32202,67 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"amount\": 2000,\r\n  \"accountNumber\": \"0000076205\",\r\n  \"externalAccountNumber\": \"0000002110\",\r\n  \"senderName\": \"Jack Daniels\",\r\n  \"transactionReference\": \"\",\r\n  \"senderBank\": \"Bank of America\",\r\n  \"otherInfo\": \"Test\",\r\n  \"remark\": \"Test Funds\",\r\n  \"currency\": \"USD\",\r\n  \"channel\": \"Web\",\r\n  \"senderAccountNo\": \"9876543210\",\r\n  \"charges\": 0,\r\n  \"emailAddress\": \"Udeme+1112@assurdly.com\"\r\n}",
+									"raw": "{\r\n  \"amount\": 20000000,\r\n  \"accountNumber\": \"0000076205\",\r\n  \"externalAccountNumber\": \"0000002110\",\r\n  \"senderName\": \"Jack Daniels\",\r\n  \"transactionReference\": \"{{$randomWords}}\",\r\n  \"senderBank\": \"Bank of America\",\r\n  \"otherInfo\": \"Test\",\r\n  \"remark\": \"Test Funds\",\r\n  \"currency\": \"USD\",\r\n  \"channel\": \"Web\",\r\n  \"senderAccountNo\": \"9876543210\",\r\n  \"charges\": 0,\r\n  \"emailAddress\": \"Udeme+1112@assurdly.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/FxAccountFunding"
+							},
+							"response": []
+						},
+						{
+							"name": "Add Funds -Invalid Email format",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6ae218df-db0f-43b0-ab50-71be46b2b730",
+										"exec": [
+											"\r",
+											"\r",
+											"var responseBody = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response body contains error message for user does not exist\", function () {\r",
+											"    pm.expect(responseBody).to.have.property('message', 'Invalid email provided');\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "838f2371-122b-44af-a1e3-ac5f22d192c6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 200000,\r\n  \"accountNumber\": \"0000076205\",\r\n  \"externalAccountNumber\": \"0000002110\",\r\n  \"senderName\": \"Jack Daniels\",\r\n  \"transactionReference\": \"{{$randomWords}}\",\r\n  \"senderBank\": \"Bank of America\",\r\n  \"otherInfo\": \"Test\",\r\n  \"remark\": \"Test Funds\",\r\n  \"currency\": \"USD\",\r\n  \"channel\": \"Web\",\r\n  \"senderAccountNo\": \"9876543210\",\r\n  \"charges\": 0,\r\n  \"emailAddress\": \"Udeme+1112assurdly.com\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
