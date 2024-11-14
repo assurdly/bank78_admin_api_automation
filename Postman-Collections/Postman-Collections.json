@@ -31342,7 +31342,7 @@
 							"response": []
 						},
 						{
-							"name": "Toggle Rate Status - Empty ID",
+							"name": "Toggle Expense Category Status  - Empty ID",
 							"event": [
 								{
 									"listen": "test",
@@ -31411,7 +31411,7 @@
 							"response": []
 						},
 						{
-							"name": "Toggle Rate Status -No Auth",
+							"name": "Toggle Expense Category Status  -No Auth",
 							"event": [
 								{
 									"listen": "test",
@@ -31480,7 +31480,7 @@
 							"response": []
 						},
 						{
-							"name": "Toggle Rate Status - Invalid Token",
+							"name": "Toggle Expense Category Status - Invalid Token",
 							"event": [
 								{
 									"listen": "test",
