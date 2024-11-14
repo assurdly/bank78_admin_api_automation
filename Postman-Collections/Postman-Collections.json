@@ -30318,7 +30318,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message indicates rate not found\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Rate not found\");\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Expense category not found\");\r",
 											"});\r",
 											"\r",
 											""
@@ -30348,20 +30348,19 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"raw": "{{baseUrltr}}/api/v1/expense-categories/admin/:id",
 									"host": [
 										"{{baseUrltr}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"rate",
+										"expense-categories",
 										"admin",
 										":id"
 									],
 									"variable": [
 										{
-											"id": "14b1a81c-ebb6-4fe1-ac1a-ebab37fdb955",
 											"key": "id",
 											"value": "1001"
 										}
