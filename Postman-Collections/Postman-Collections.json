@@ -28359,19 +28359,19 @@
 							"response": []
 						},
 						{
-							"name": "Get Single Rate - No Auth Copy",
+							"name": "Get Single Rate -Invalid Token",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
 										"exec": [
-											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"pm.test(\"Status code is 401 for Invalid  token\", function () {\r",
 											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Error message indicates authentication required\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Valid Authentication required\");\r",
 											"});\r",
 											"\r",
 											""
@@ -28387,7 +28387,10 @@
 							},
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "bearer",
+									"bearer": {
+										"token": "unknowngunmen"
+									}
 								},
 								"method": "GET",
 								"header": [
@@ -28411,9 +28414,72 @@
 									],
 									"variable": [
 										{
-											"id": "1544f6c7-be13-45f1-8a77-06a1577ba55e",
 											"key": "id",
 											"value": "1001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Rate -Empty ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 400 for missing required fields\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates missing fields\", function () {\r",
+											"    pm.expect(pm.response.json().validationMessages).to.include(\":id is required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "a0eb98f6-1b87-4dd2-a1ed-d49902979a5c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
 										}
 									]
 								}
