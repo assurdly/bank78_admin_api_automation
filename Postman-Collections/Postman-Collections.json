@@ -31626,6 +31626,37 @@
 						}
 					],
 					"id": "f6a2a2d8-91de-4c51-9b4e-f7438c3ebbab"
+				},
+				{
+					"name": "Get Expense Categories",
+					"item": [
+						{
+							"name": "Get Expense Categories",
+							"id": "55f76dae-f149-4043-8972-6d97a7febbad",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{admin_access_token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/expense-categories"
+							},
+							"response": []
+						}
+					],
+					"id": "78f1f770-5ac1-4b2e-b3a9-6ac4e68e3adc"
 				}
 			],
 			"id": "6b60e4e8-f5e7-48fc-9a6e-091ffa42e056"
