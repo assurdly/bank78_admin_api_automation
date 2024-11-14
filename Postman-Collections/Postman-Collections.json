@@ -27700,14 +27700,78 @@
 			"name": "Exchange Rate Management",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Get FX Rates (Paged)- Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "11e80ab1-8245-4066-bf7c-97310299a486",
+								"exec": [
+									"\r",
+									"pm.test(\"Response code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has property 'hasResult' and 'resultType'\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('hasResult');\r",
+									"    pm.expect(pm.response.json()).to.have.property('resultType');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "e084235d-e196-41e9-8267-d177870e04b5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
+							"host": [
+								"{{baseUrltr}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rate",
+								"admin",
+								"getpaged",
+								":page",
+								":pagesize",
+								":whereCondition"
+							],
+							"variable": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "whereCondition",
+									"value": "{}"
+								}
+							]
+						}
 					},
 					"response": []
 				}
