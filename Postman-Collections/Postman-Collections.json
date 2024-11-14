@@ -29764,6 +29764,62 @@
 						}
 					],
 					"id": "747f29ab-2718-4dae-b3cc-cae34d4ddf43"
+				},
+				{
+					"name": "Get Current Rate",
+					"item": [
+						{
+							"name": "Get Current Rate",
+							"id": "35fa861a-cff6-4a7f-ac18-2c4849194822",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/current?from=USD&to=JPY&amount=150000",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"current"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "USD"
+										},
+										{
+											"key": "to",
+											"value": "JPY"
+										},
+										{
+											"key": "amount",
+											"value": "150000"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "a99eb5d6-e664-4782-9042-9d8de4b5f68c"
 				}
 			],
 			"id": "94f06308-6841-4ae4-b89c-73c4b6c55a71"
