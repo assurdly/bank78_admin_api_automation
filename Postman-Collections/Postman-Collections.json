@@ -32637,6 +32637,18 @@
 								"header": []
 							},
 							"response": []
+						},
+						{
+							"name": "Get Funds (Querypaged)- No Auth",
+							"id": "1b9eb933-10d6-4adf-9d0d-174b60f59ae9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
 						}
 					],
 					"id": "b4a599da-c08c-40c6-9528-2653bc8793fd"
