@@ -29491,7 +29491,20 @@
 				},
 				{
 					"name": "Get Charge Types",
-					"item": [],
+					"item": [
+						{
+							"name": "Get Charges Types",
+							"id": "5c1c7dba-cc5a-437f-aa31-34104e9f49d0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "f8394758-0189-4656-bcac-11055f6d9036"
 				},
 				{
@@ -29551,13 +29564,12 @@
 									"script": {
 										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
-											"\r",
-											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
-											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
 											"});\r",
 											""
 										],
@@ -29572,9 +29584,51 @@
 							},
 							"request": {
 								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/vat-types"
+							},
+							"response": []
+						},
+						{
+							"name": "Get VAT Types - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "9bba4d76-8163-4a92-a969-0bf7889b47e3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "Godnobeman"
 									}
 								},
 								"method": "GET",
