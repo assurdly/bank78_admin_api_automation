@@ -30409,20 +30409,19 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"raw": "{{baseUrltr}}/api/v1/expense-categories/admin/:id",
 									"host": [
 										"{{baseUrltr}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"rate",
+										"expense-categories",
 										"admin",
 										":id"
 									],
 									"variable": [
 										{
-											"id": "c25ac89c-fc69-4a48-a141-ca7481bb1a60",
 											"key": "id",
 											"value": "1001"
 										}
@@ -30474,20 +30473,19 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"raw": "{{baseUrltr}}/api/v1/expense-categories/admin/:id",
 									"host": [
 										"{{baseUrltr}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"rate",
+										"expense-categories",
 										"admin",
 										":id"
 									],
 									"variable": [
 										{
-											"id": "91807f1e-b55f-40d1-88b7-a43a53570527",
 											"key": "id",
 											"value": "1001"
 										}
@@ -30565,10 +30563,10 @@
 					"id": "f5a528a5-e9a8-48d9-9276-4b273bbf1fc0"
 				},
 				{
-					"name": "Create Rate",
+					"name": "Create Expense Category",
 					"item": [
 						{
-							"name": "Create Rate - Success",
+							"name": "Create Expense Category - Success",
 							"event": [
 								{
 									"listen": "test",
