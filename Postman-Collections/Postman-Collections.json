@@ -32625,7 +32625,20 @@
 				},
 				{
 					"name": "Get Funds (QueryPaged)",
-					"item": [],
+					"item": [
+						{
+							"name": "Get Funds (Querypaged)- Success",
+							"id": "9a0e0a0a-91c6-4b64-a28f-8456149f46c6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "b4a599da-c08c-40c6-9528-2653bc8793fd"
 				},
 				{
