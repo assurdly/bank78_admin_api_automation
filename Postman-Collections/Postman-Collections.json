@@ -28234,25 +28234,21 @@
 							"response": []
 						},
 						{
-							"name": "Get Single Rate - Invalid ID",
+							"name": "Get Single Rate - Non-existent ID",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response contains rate details\", function () {\r",
-											"    const jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.result).to.have.property(\"id\", 1); \r",
-											"    pm.expect(jsonData.result).to.have.property(\"rate\");\r",
-											"    pm.expect(jsonData.result).to.have.property(\"sourceCurrency\");\r",
-											"     pm.expect(jsonData.result).to.have.property(\"destinationCurrency\");\r",
-											"\r",
+											"pm.test(\"Error message indicates rate not found\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Rate not found\");\r",
 											"});\r",
+											"\r",
 											""
 										],
 										"type": "text/javascript",
@@ -28293,9 +28289,131 @@
 									],
 									"variable": [
 										{
-											"id": "edcc9a03-4078-4a6e-8df4-865888e043e6",
 											"key": "id",
-											"value": "1"
+											"value": "1001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Rate - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ba9641c9-490b-4bbe-a967-6b27a3951917",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Rate - No Auth Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "be4aa657-3a88-4181-8b4c-9acd81ec64f7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "1544f6c7-be13-45f1-8a77-06a1577ba55e",
+											"key": "id",
+											"value": "1001"
 										}
 									]
 								}
