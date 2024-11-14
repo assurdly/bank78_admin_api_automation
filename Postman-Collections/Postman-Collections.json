@@ -29424,24 +29424,19 @@
 							"response": []
 						},
 						{
-							"name": "Toggle Rate Status -No Auth Copy",
+							"name": "Toggle Rate Status - Invalid Token",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
 										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Result has the correct structure\", function () {\r",
-											"    pm.expect(pm.response.json()).to.have.property('hasResult', false);\r",
-											"    pm.expect(pm.response.json()).to.have.property('result', null);\r",
-											"    pm.expect(pm.response.json()).to.have.property('resultType', 2);\r",
-											"    pm.expect(pm.response.json()).to.have.property('message', \":id is required\");\r",
-											"    pm.expect(pm.response.json()).to.have.property('successful', false);\r",
-											"    pm.expect(pm.response.json()).to.have.property('errorCode', 0);\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -29457,7 +29452,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "ybnmgftudryestfxcgvhbjknuryedxfhcgjv"
 									}
 								},
 								"method": "POST",
@@ -29483,7 +29478,6 @@
 									],
 									"variable": [
 										{
-											"id": "67519f6a-6631-418f-83f0-3298f084f99d",
 											"key": "id",
 											"value": ""
 										}
