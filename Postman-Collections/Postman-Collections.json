@@ -31191,10 +31191,10 @@
 					"id": "a7c9bae7-ad54-48a9-b9b7-76979fecc98e"
 				},
 				{
-					"name": "Toggle Rate Status",
+					"name": "Toggle Expense Category Status",
 					"item": [
 						{
-							"name": "Toggle Rate Status - Success",
+							"name": "Toggle Expense Category Status - Success",
 							"event": [
 								{
 									"listen": "test",
@@ -31273,7 +31273,7 @@
 							"response": []
 						},
 						{
-							"name": "Toggle Rate Status - Non Existent ID",
+							"name": "Toggle Expense Category Status - Non Existent ID",
 							"event": [
 								{
 									"listen": "test",
