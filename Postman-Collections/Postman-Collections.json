@@ -29545,13 +29545,12 @@
 									"script": {
 										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 401 for missing  auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
-											"\r",
-											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
-											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -29587,14 +29586,14 @@
 									"script": {
 										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
-											"\r",
-											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
-											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
-											"});"
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -29607,7 +29606,10 @@
 							},
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "bearer",
+									"bearer": {
+										"token": "Godnobeman"
+									}
 								},
 								"method": "GET",
 								"header": [
@@ -29765,6 +29767,2105 @@
 				}
 			],
 			"id": "94f06308-6841-4ae4-b89c-73c4b6c55a71"
+		},
+		{
+			"name": "Expense Category Management",
+			"item": [
+				{
+					"name": "Get Expense Categories (Paged)",
+					"item": [
+						{
+							"name": "Get Expense Categories (Paged)- Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "11e80ab1-8245-4066-bf7c-97310299a486",
+										"exec": [
+											"\r",
+											"pm.test(\"Response code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has property 'hasResult' and 'resultType'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult');\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "11a043d0-7025-4a58-80c0-171378b64352",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"getpaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"id": "c4b8e8a4-0aa7-414b-837a-c4b85df3f7f5",
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"id": "c1becdd5-154f-4124-8c8b-1b97448646e4",
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"id": "44f4dade-ebc3-485c-a3c0-bb60e2b22800",
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get FX Rates (Paged)- No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "11e80ab1-8245-4066-bf7c-97310299a486",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "25f3b173-ef62-4dea-b761-cad12d07071f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"getpaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"id": "62899d8e-bb5e-467d-b265-1e2e272bc19b",
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"id": "84971aa1-72b2-43e8-a496-71da58d28280",
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"id": "fe55d5c9-a0ae-413e-9329-536f021c30f6",
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get FX Rates (Paged)- Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "11e80ab1-8245-4066-bf7c-97310299a486",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "42396d42-45ad-4b29-a72f-0e0bdffb7965",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "yxdfrcugvyblni;hpuogyfitdrserytfgjreydfgbhkn;jl'iugyftdrsedfcgbjhnkjl'khgfytdrysetdrftghjk'lhgfhd"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/getpaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"getpaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"id": "f274d9a7-889a-4969-9e93-8177c8e3273e",
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"id": "53aa145b-405d-4c16-b05d-2390874d5151",
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"id": "d9258921-c675-4989-a8f2-99053bea0d79",
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "3e59d4cf-b19a-4e0f-bf0c-139a0c62a69f"
+				},
+				{
+					"name": "Get FX Rates (QueryPaged)",
+					"item": [
+						{
+							"name": "Get FX Rates (QueryPaged)- Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "19bd7d1d-23cb-4496-b715-946d0f5f2200",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has the correct structure\", function () {\r",
+											"    pm.response.to.have.jsonBody(\"hasResult\", true);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].id\", 32);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].name\", \"USD to USD\");\r",
+											"    pm.response.to.have.jsonBody(\"result[0].sourceCurrency\", \"USD\");\r",
+											"    pm.response.to.have.jsonBody(\"result[0].destinationCurrency\", \"USD\");\r",
+											"    pm.response.to.have.jsonBody(\"result[0].charges\", 5);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].vat\", 0);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].limit\", 50000);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].vatTypeId\", 1);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].feeTypeId\", 1);\r",
+											"    pm.response.to.have.jsonBody(\"result[0].rate\", 1);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "2b8cf704-256e-4dac-a063-d7c257e35298",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/querypaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"querypaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"id": "59333c5a-d3ad-4e83-a47f-ac7f3f92b496",
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"id": "cd966e69-d6e1-481d-94a1-19823a5af860",
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"id": "3ae35dc1-6b4e-4f50-a3ec-d4cde51f6c83",
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get FX Rates (QueryPaged) - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "19bd7d1d-23cb-4496-b715-946d0f5f2200",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "4e650573-48fe-4c35-9513-60174448d5db",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/querypaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"querypaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"id": "de7afae0-ce67-43ed-95e9-2a03e2490f2e",
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"id": "ed0cd394-1ec1-4c84-9b3c-2f30b21eea2f",
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"id": "1c3c73a2-e285-48a4-8794-72d52bb208e6",
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get FX Rates (QueryPaged) - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "19bd7d1d-23cb-4496-b715-946d0f5f2200",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "7408dcdb-1273-41d9-b72c-cf5779e29d92",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "yihevkbjlk;dfihuogyiftudryserdutfgykuhlugfydtsr7stdfhvjblkhboiufewusfdgkhiljesw3srdtfyguhklkuyty"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/querypaged/:page/:pagesize/:whereCondition",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"querypaged",
+										":page",
+										":pagesize",
+										":whereCondition"
+									],
+									"variable": [
+										{
+											"id": "c66a9f35-a34a-4d3d-9eee-6682a7cf5407",
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"id": "1d4005a9-be55-426f-a508-74a5851bdd92",
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"id": "ac97521f-2f3d-4e1f-8edc-d24033450af8",
+											"key": "whereCondition",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "b30fc13d-a284-4352-95e4-27f426b3fb33"
+				},
+				{
+					"name": "Get Single Rate",
+					"item": [
+						{
+							"name": "Get Single Rate - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response contains rate details\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result).to.have.property(\"id\", 1); \r",
+											"    pm.expect(jsonData.result).to.have.property(\"rate\");\r",
+											"    pm.expect(jsonData.result).to.have.property(\"sourceCurrency\");\r",
+											"     pm.expect(jsonData.result).to.have.property(\"destinationCurrency\");\r",
+											"\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "780f0d38-0229-40ca-8a7e-db20ae1f4a99",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "527fab97-b148-4344-a72d-994ad1a04f08",
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Rate - Non-existent ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates rate not found\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Rate not found\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "b106dd12-71f5-45f2-be2a-bad11d2993b8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "14b1a81c-ebb6-4fe1-ac1a-ebab37fdb955",
+											"key": "id",
+											"value": "1001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Rate - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "93aa32a1-d728-4db8-aca3-5a369ffa8685",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "c25ac89c-fc69-4a48-a141-ca7481bb1a60",
+											"key": "id",
+											"value": "1001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Rate -Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 401 for Invalid  token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Valid Authentication required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "b5e56a2c-2fab-4709-8e84-921ffc97bf09",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "unknowngunmen"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "91807f1e-b55f-40d1-88b7-a43a53570527",
+											"key": "id",
+											"value": "1001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Rate -Empty ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 400 for missing required fields\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates missing fields\", function () {\r",
+											"    pm.expect(pm.response.json().validationMessages).to.include(\":id is required\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "9faa992a-d9af-40f9-a6ad-bc25548c5fb8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "c4a8446b-2722-4fae-a8a7-38db686306cd",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "f5a528a5-e9a8-48d9-9276-4b273bbf1fc0"
+				},
+				{
+					"name": "Create Rate",
+					"item": [
+						{
+							"name": "Create Rate - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24a0b05b-a8b5-416a-ad1a-4fb2b3f2a2d7",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has a result and was successful\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+											"    pm.expect(jsonData.successful).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate FX rate details in the response (universal)\", function () {\r",
+											"    const result = pm.response.json().result;\r",
+											"    \r",
+											"    pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"isActive\").that.is.a(\"boolean\");\r",
+											"    pm.expect(result).to.have.property(\"rateId\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"name\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"sourceCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"destinationCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"charges\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vat\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"limit\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vatTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"feeTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"rate\").that.is.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ef8e9b92-163a-433b-8555-c11a1679428b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Rate - Already existing rate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24a0b05b-a8b5-416a-ad1a-4fb2b3f2a2d7",
+										"exec": [
+											"pm.test(\"Status code is 400 for duplicate configuration\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has no result and is unsuccessful\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result is null\", function () {\r",
+											"    pm.expect(pm.response.json().result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message and resultType indicate existing configuration\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.eql(\"Configuration already exists!\");\r",
+											"    pm.expect(jsonData.resultType).to.eql(2);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"ValidationMessages and responseCode are null\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error code is 0\", function () {\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "6bf1ee07-4cec-4b4b-8cd1-936b7a14a80a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Rate - Empty Required Fields",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24a0b05b-a8b5-416a-ad1a-4fb2b3f2a2d7",
+										"exec": [
+											"pm.test(\"Status code is 400 for missing required fields\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response indicates validation errors\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"ResultType and message indicate validation errors\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.resultType).to.eql(3);\r",
+											"    pm.expect(jsonData.message).to.eql(\"Response has validation errors\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validation messages detail required fields\", function () {\r",
+											"    const validationMessages = pm.response.json().validationMessages;\r",
+											"\r",
+											"    pm.expect(validationMessages).to.be.an(\"array\").that.is.not.empty;\r",
+											"    pm.expect(validationMessages).to.include(\"The SourceCurrency field is required.\");\r",
+											"    pm.expect(validationMessages).to.include(\"The DestinationCurrency field is required.\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3bf0f41e-1e05-4db2-a319-ecd28a0b95af",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"\",\r\n  \"destinationCurrency\": \"\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Rate - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24a0b05b-a8b5-416a-ad1a-4fb2b3f2a2d7",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ffe0ea04-c7b5-412a-9083-baa824e48530",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Rate - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24a0b05b-a8b5-416a-ad1a-4fb2b3f2a2d7",
+										"exec": [
+											"pm.test(\"Status code is 401 for Invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Valid Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "8153c931-f41d-45a1-b62f-5b03a8732dd3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "Unknowngunmen"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						}
+					],
+					"id": "8155f3f2-45cb-42dc-b242-46cc7b312411"
+				},
+				{
+					"name": "Update Rate",
+					"item": [
+						{
+							"name": "Update Rate - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"isActive\").that.is.a(\"boolean\");\r",
+											"    pm.expect(result).to.have.property(\"rateId\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"name\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"sourceCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"destinationCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"charges\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vat\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"limit\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vatTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"feeTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"rate\").that.is.a(\"number\");\r",
+											"});   \r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "267d6912-6425-4f23-9889-1d121d154f97",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Rate - Unchanged Data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response has no result and is unsuccessful\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result is null\", function () {\r",
+											"    pm.expect(pm.response.json().result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message indicate existing configuration\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.eql(\"Configuration already exists!\");\r",
+											"   \r",
+											"});\r",
+											"\r",
+											"pm.test(\"ValidationMessages and responseCode are null\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "fb6aae69-4f8c-47c2-8fbe-2fef6502a6fe",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Rate - Empty Required field",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response has no result and is unsuccessful\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result is null\", function () {\r",
+											"    pm.expect(pm.response.json().result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message indicates validation errors\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.eql(\"Response has validation errors\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "1c648a14-c6e2-4194-8b29-8a60295cb520",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Rate - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "2a9d9d54-7124-4c9b-a4bf-383424c5fa8a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Rate - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "18cfcb76-79fe-4845-9013-17d738f88323",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Valid Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "49e94f7f-1888-4bd7-8b25-f0bd089c1c1d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "UnkonownGunmen"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						}
+					],
+					"id": "a7c9bae7-ad54-48a9-b9b7-76979fecc98e"
+				},
+				{
+					"name": "Toggle Rate Status",
+					"item": [
+						{
+							"name": "Toggle Rate Status - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											"pm.test(\"Result has the correct structure\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult', true);\r",
+											"    pm.expect(pm.response.json().result).to.have.property('id');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('isActive');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('rateId');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('name');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('sourceCurrency');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('destinationCurrency');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('charges');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('vat');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('limit');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('vatTypeId');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('feeTypeId');\r",
+											"    pm.expect(pm.response.json().result).to.have.property('rate');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "e8c2482b-46ff-443a-8814-60f69597b4f2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"toggle-active",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "28d9a27f-e3ae-4e45-b2f1-a5797537406e",
+											"key": "id",
+											"value": "33"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Toggle Rate Status - Non Existent ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result has the correct structure\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('result', null);\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType', 2);\r",
+											"    pm.expect(pm.response.json()).to.have.property('message', \"Item not found!\");\r",
+											"    pm.expect(pm.response.json()).to.have.property('successful', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('errorCode', 0);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "b90a4f75-8588-49e9-8dac-eddf6f601ae9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"toggle-active",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "c038162e-6753-471e-a08b-d7618665687f",
+											"key": "id",
+											"value": "1002"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Toggle Rate Status - Empty ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result has the correct structure\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('result', null);\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType', 2);\r",
+											"    pm.expect(pm.response.json()).to.have.property('message', \":id is required\");\r",
+											"    pm.expect(pm.response.json()).to.have.property('successful', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('errorCode', 0);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "cbf0db5a-44b5-4bf2-80a5-9f1c9cc8bf85",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"toggle-active",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "f234c6b8-3390-4e4f-9057-c18ab7833eaa",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Toggle Rate Status -No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result has the correct structure\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('result', null);\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType', 2);\r",
+											"    pm.expect(pm.response.json()).to.have.property('message', \":id is required\");\r",
+											"    pm.expect(pm.response.json()).to.have.property('successful', false);\r",
+											"    pm.expect(pm.response.json()).to.have.property('errorCode', 0);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "94370f6a-1965-47e3-9fe8-5b37ab898e5b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"toggle-active",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "67519f6a-6631-418f-83f0-3298f084f99d",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Toggle Rate Status - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3fd973d2-a760-4997-9438-bcd408557d73",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "d12a882e-6ba8-4ec3-8d39-a6c4e0f32b96",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "ybnmgftudryestfxcgvhbjknuryedxfhcgjv"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/toggle-active/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										"toggle-active",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "97ae55e0-2453-4685-8697-8415a07634d9",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "f6a2a2d8-91de-4c51-9b4e-f7438c3ebbab"
+				},
+				{
+					"name": "Get Charge Types",
+					"item": [
+						{
+							"name": "Get Charges Types",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
+											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "cd8adf71-4d17-4393-984c-6c684ae2ba0b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/charge-types"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Charges Types - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing  auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "0ffe69ea-0800-4ada-8fb4-0b998300cf76",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/charge-types"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Charges Types - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "05baabc1-634d-47a7-85bc-5cf59839d5c8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "Godnobeman"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/charge-types"
+							},
+							"response": []
+						}
+					],
+					"id": "e25c76aa-b48b-4106-848a-e5588097267b"
+				},
+				{
+					"name": "Get VAT Types",
+					"item": [
+						{
+							"name": "Get VAT Types - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
+											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "07ad2dfe-56b6-4c4a-9bcf-3235e519c194",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/vat-types"
+							},
+							"response": []
+						},
+						{
+							"name": "Get VAT Types - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "2819cb08-ffc6-4b97-85b1-3ae26c87899f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/vat-types"
+							},
+							"response": []
+						},
+						{
+							"name": "Get VAT Types - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
+										"exec": [
+											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication failure\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "aad84929-680c-4ce1-8cc0-959f11996912",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "Godnobeman"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/vat-types"
+							},
+							"response": []
+						}
+					],
+					"id": "03c7393e-9fd2-4310-bf56-a34fb69852ce"
+				}
+			],
+			"id": "6b60e4e8-f5e7-48fc-9a6e-091ffa42e056"
 		},
 		{
 			"name": "https://referral-dev.bank78.co/api/referral/query/referrals/1/20/%7B%7D",
