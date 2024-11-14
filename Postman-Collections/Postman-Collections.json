@@ -28821,6 +28821,40 @@
 						}
 					],
 					"id": "3bbbb3fe-b9ac-4e48-b37e-2a20c3c364d3"
+				},
+				{
+					"name": "Update Rate",
+					"item": [
+						{
+							"name": "Update Rate - Success",
+							"id": "d30d57a8-72c2-492a-af30-181aa01cea59",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						}
+					],
+					"id": "eecb526d-c570-4669-9a38-33e7d37e4cd0"
 				}
 			],
 			"id": "94f06308-6841-4ae4-b89c-73c4b6c55a71"
