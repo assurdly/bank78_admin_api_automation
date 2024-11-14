@@ -28724,34 +28724,13 @@
 									"script": {
 										"id": "24a0b05b-a8b5-416a-ad1a-4fb2b3f2a2d7",
 										"exec": [
-											"pm.test(\"Status code is 400 for missing required fields\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
+											"pm.test(\"Status code is 401 for missing auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response indicates validation errors\", function () {\r",
-											"    const jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
-											"    pm.expect(jsonData.successful).to.eql(false);\r",
-											"    pm.expect(jsonData.result).to.be.null;\r",
-											"});\r",
-											"\r",
-											"pm.test(\"ResultType and message indicate validation errors\", function () {\r",
-											"    const jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.resultType).to.eql(3);\r",
-											"    pm.expect(jsonData.message).to.eql(\"Response has validation errors\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Validation messages detail required fields\", function () {\r",
-											"    const validationMessages = pm.response.json().validationMessages;\r",
-											"\r",
-											"    pm.expect(validationMessages).to.be.an(\"array\").that.is.not.empty;\r",
-											"    pm.expect(validationMessages).to.include(\"The SourceCurrency field is required.\");\r",
-											"    pm.expect(validationMessages).to.include(\"The DestinationCurrency field is required.\");\r",
-											"});\r",
-											"\r",
-											"\r",
-											"\r",
-											""
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -28764,9 +28743,59 @@
 							},
 							"request": {
 								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Rate - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24a0b05b-a8b5-416a-ad1a-4fb2b3f2a2d7",
+										"exec": [
+											"pm.test(\"Status code is 401 for Invalid auth token\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message indicates authentication required\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.include(\"Valid Authentication required\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "9bd0e68f-411a-4ab4-8a6b-96e1252cb763",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "Unknowngunmen"
 									}
 								},
 								"method": "POST",
@@ -28779,7 +28808,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"\",\r\n  \"destinationCurrency\": \"\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
