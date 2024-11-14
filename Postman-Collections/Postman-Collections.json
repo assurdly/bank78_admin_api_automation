@@ -29136,6 +29136,24 @@
 						}
 					],
 					"id": "eecb526d-c570-4669-9a38-33e7d37e4cd0"
+				},
+				{
+					"name": "Toggle Rate Status",
+					"item": [
+						{
+							"name": "New Request",
+							"id": "96b6e99e-16dc-47a2-96ec-0d5121b26e73",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
+					"id": "b8fa3836-9c37-4cd0-b186-85281d46a897"
 				}
 			],
 			"id": "94f06308-6841-4ae4-b89c-73c4b6c55a71"
