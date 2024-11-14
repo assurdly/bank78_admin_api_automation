@@ -32399,13 +32399,156 @@
 					"item": [
 						{
 							"name": "Get Funds (Paged) - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "059eca26-72b2-466e-8a57-a775b9470130",
+										"exec": [
+											"pm.test(\"Response code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has property 'hasResult' and 'resultType'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult');\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "0f9149ed-89ad-46a6-a104-596e8e94861e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://transfer-dev.bank78.co/api/v1/FxAccountFunding/getpaged/:page/:pagesize/:whereCondittion",
+									"protocol": "https",
+									"host": [
+										"transfer-dev",
+										"bank78",
+										"co"
+									],
+									"path": [
+										"api",
+										"v1",
+										"FxAccountFunding",
+										"getpaged",
+										":page",
+										":pagesize",
+										":whereCondittion"
+									],
+									"variable": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"key": "whereCondittion",
+											"value": "{}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Funds (Paged) - Success Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "059eca26-72b2-466e-8a57-a775b9470130",
+										"exec": [
+											"pm.test(\"Response code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has property 'hasResult' and 'resultType'\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('hasResult');\r",
+											"    pm.expect(pm.response.json()).to.have.property('resultType');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "a1e5ce64-92a5-45b4-b046-af8e51172215",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://transfer-dev.bank78.co/api/v1/FxAccountFunding/getpaged/:page/:pagesize/:whereCondittion",
+									"protocol": "https",
+									"host": [
+										"transfer-dev",
+										"bank78",
+										"co"
+									],
+									"path": [
+										"api",
+										"v1",
+										"FxAccountFunding",
+										"getpaged",
+										":page",
+										":pagesize",
+										":whereCondittion"
+									],
+									"variable": [
+										{
+											"id": "ab413eec-aece-4eea-a561-6d438420929c",
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"id": "2d0549db-a712-4364-a6d0-6aa6f06143e0",
+											"key": "pagesize",
+											"value": "10"
+										},
+										{
+											"id": "7c2a124a-2453-4e95-a20e-707f91c52291",
+											"key": "whereCondittion",
+											"value": "{}"
+										}
+									]
+								}
 							},
 							"response": []
 						}
