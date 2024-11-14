@@ -29494,13 +29494,130 @@
 					"item": [
 						{
 							"name": "Get Charges Types",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
+											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "5c1c7dba-cc5a-437f-aa31-34104e9f49d0",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/charge-types"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Charges Types - No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
+											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "209b0974-c7c1-482a-90cd-31b4972c1dec",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/charge-types"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Charges Types - Invalid Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
+											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "db0f7874-9f16-427a-94cf-a00529ba859c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin/charge-types"
 							},
 							"response": []
 						}
