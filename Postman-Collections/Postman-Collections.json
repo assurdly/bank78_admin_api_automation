@@ -29770,6 +29770,31 @@
 					"item": [
 						{
 							"name": "Get Current Rate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "42d6ea72-bcd7-4035-a47c-9018110e5f26",
+										"exec": [
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response body has result\", function () {\r",
+											"    const responseBody = pm.response.json();\r",
+											"    pm.expect(responseBody).to.have.property(\"hasResult\", true);\r",
+											"    pm.expect(responseBody.result).to.have.keys(\"rate\", \"from\", \"to\", \"fees\", \"currency\", \"rateId\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "35fa861a-cff6-4a7f-ac18-2c4849194822",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
