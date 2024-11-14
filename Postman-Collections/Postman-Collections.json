@@ -28494,7 +28494,123 @@
 					"item": [
 						{
 							"name": "Create Rate - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24a0b05b-a8b5-416a-ad1a-4fb2b3f2a2d7",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has a result and was successful\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+											"    pm.expect(jsonData.successful).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate FX rate details in the response (universal)\", function () {\r",
+											"    const result = pm.response.json().result;\r",
+											"    \r",
+											"    pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"isActive\").that.is.a(\"boolean\");\r",
+											"    pm.expect(result).to.have.property(\"rateId\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"name\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"sourceCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"destinationCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"charges\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vat\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"limit\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vatTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"feeTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"rate\").that.is.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "3ae52e12-7a2e-4018-8468-03f41cdb16fd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Rate - Already existing rate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "24a0b05b-a8b5-416a-ad1a-4fb2b3f2a2d7",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has a result and was successful\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+											"    pm.expect(jsonData.successful).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate FX rate details in the response (universal)\", function () {\r",
+											"    const result = pm.response.json().result;\r",
+											"    \r",
+											"    pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"isActive\").that.is.a(\"boolean\");\r",
+											"    pm.expect(result).to.have.property(\"rateId\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"name\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"sourceCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"destinationCurrency\").that.is.a(\"string\");\r",
+											"    pm.expect(result).to.have.property(\"charges\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vat\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"limit\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"vatTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"feeTypeId\").that.is.a(\"number\");\r",
+											"    pm.expect(result).to.have.property(\"rate\").that.is.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "28506bac-652b-4e53-b6b4-103bb0093fa7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
