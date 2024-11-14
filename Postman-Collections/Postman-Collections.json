@@ -30629,7 +30629,7 @@
 							"response": []
 						},
 						{
-							"name": "Create Rate - Already existing rate",
+							"name": "Create Expense Category- Already existing rate",
 							"event": [
 								{
 									"listen": "test",
@@ -30652,7 +30652,7 @@
 											"\r",
 											"pm.test(\"Message and resultType indicate existing configuration\", function () {\r",
 											"    const jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.message).to.eql(\"Configuration already exists!\");\r",
+											"    pm.expect(jsonData.message).to.eql(\"Expense category already exist!\");\r",
 											"    pm.expect(jsonData.resultType).to.eql(2);\r",
 											"});\r",
 											"\r",
@@ -30692,19 +30692,19 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"raw": "{\r\n  \"name\": \"Testing my Category\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{baseUrltr}}/api/v1/rate/admin"
+								"url": "{{baseUrltr}}/api/v1/expense-categories/admin"
 							},
 							"response": []
 						},
 						{
-							"name": "Create Rate - Empty Required Fields",
+							"name": "Create Expense Category - Empty Required Fields",
 							"event": [
 								{
 									"listen": "test",
@@ -30778,7 +30778,7 @@
 							"response": []
 						},
 						{
-							"name": "Create Rate - No Auth",
+							"name": "Create Expense Category - No Auth",
 							"event": [
 								{
 									"listen": "test",
@@ -30828,7 +30828,7 @@
 							"response": []
 						},
 						{
-							"name": "Create Rate - Invalid Token",
+							"name": "Create Expense Category - Invalid Token",
 							"event": [
 								{
 									"listen": "test",
