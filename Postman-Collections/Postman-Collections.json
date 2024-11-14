@@ -28435,7 +28435,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message indicates missing fields\", function () {\r",
-											"    pm.expect(pm.response.json().validationMessages).to.include(\":id is required\");\r",
+											"    pm.expect(pm.response.json().validationMessages).to.include(\"The Value ':id'should not be empty\");\r",
 											"});\r",
 											"\r",
 											""
