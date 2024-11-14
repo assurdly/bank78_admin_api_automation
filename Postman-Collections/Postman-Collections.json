@@ -32110,8 +32110,8 @@
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response body contains error message for missing transaction reference\", function () {\r",
-											"    pm.expect(pm.response.json()).to.have.property('message', 'The TransactionReference field is required');\r",
+											"pm.test(\"Response body contains error message for Duplicate Transaction Reference\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property('message', 'Duplicate Transaction Reference');\r",
 											"});\r",
 											"\r",
 											"\r",
@@ -32143,7 +32143,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"amount\": 2000,\r\n  \"accountNumber\": \"0000076205\",\r\n  \"externalAccountNumber\": \"0000002110\",\r\n  \"senderName\": \"Jack Daniels\",\r\n  \"transactionReference\": \"\",\r\n  \"senderBank\": \"Bank of America\",\r\n  \"otherInfo\": \"Test\",\r\n  \"remark\": \"Test Funds\",\r\n  \"currency\": \"USD\",\r\n  \"channel\": \"Web\",\r\n  \"senderAccountNo\": \"9876543210\",\r\n  \"charges\": 0,\r\n  \"emailAddress\": \"Udeme+1112@assurdly.com\"\r\n}",
+									"raw": "{\r\n  \"amount\": 200000,\r\n  \"accountNumber\": \"0000076205\",\r\n  \"externalAccountNumber\": \"0000002110\",\r\n  \"senderName\": \"Jack Daniels\",\r\n  \"transactionReference\": \"Godnobemanatall\",\r\n  \"senderBank\": \"Bank of America\",\r\n  \"otherInfo\": \"Test\",\r\n  \"remark\": \"Test Funds\",\r\n  \"currency\": \"USD\",\r\n  \"channel\": \"Web\",\r\n  \"senderAccountNo\": \"9876543210\",\r\n  \"charges\": 0,\r\n  \"emailAddress\": \"Udeme+1112@assurdly.com\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -32155,7 +32155,7 @@
 							"response": []
 						},
 						{
-							"name": "Add Funds -Missing Transaction Reference Copy",
+							"name": "Add Funds -Exceeding Daily Limit",
 							"event": [
 								{
 									"listen": "test",
