@@ -27697,6 +27697,24 @@
 			"id": "105c2122-4cbe-46fc-a6f1-53c0e206de9c"
 		},
 		{
+			"name": "Exchange Rate Management",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "e084235d-e196-41e9-8267-d177870e04b5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "94f06308-6841-4ae4-b89c-73c4b6c55a71"
+		},
+		{
 			"name": "https://referral-dev.bank78.co/api/referral/query/referrals/1/20/%7B%7D",
 			"event": [
 				{
