@@ -31859,22 +31859,35 @@
 			"name": "Fx Account Funding",
 			"item": [
 				{
-					"name": "Add Funding",
-					"item": [],
+					"name": "Add Funds",
+					"item": [
+						{
+							"name": "Add Funds - Success",
+							"id": "9317a4e3-533c-440d-8866-4cf889b32ecd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "67e0c79d-2738-48c9-a74b-d1fe31b3e981"
 				},
 				{
-					"name": "Get Funding (Paged)",
+					"name": "Get Funds (Paged)",
 					"item": [],
 					"id": "014f7c99-7b2b-4186-be0e-bb95f67fa31d"
 				},
 				{
-					"name": "Get Funding (QueryPaged)",
+					"name": "Get Funds (QueryPaged)",
 					"item": [],
 					"id": "b4a599da-c08c-40c6-9528-2653bc8793fd"
 				},
 				{
-					"name": "New Folder Copy 3",
+					"name": "Get Single Funds",
 					"item": [],
 					"id": "b2319817-c897-45d8-8883-2af45ffff4c2"
 				}
