@@ -30766,14 +30766,14 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"\",\r\n  \"destinationCurrency\": \"\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"raw": "{\r\n  \"name\": \"\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{baseUrltr}}/api/v1/rate/admin"
+								"url": "{{baseUrltr}}/api/v1/expense-categories/admin"
 							},
 							"response": []
 						},
@@ -30816,14 +30816,14 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"raw": "{\r\n  \"name\": \"Testing my Category\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{baseUrltr}}/api/v1/rate/admin"
+								"url": "{{baseUrltr}}/api/v1/expense-categories/admin"
 							},
 							"response": []
 						},
@@ -30869,14 +30869,14 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"raw": "{\r\n  \"name\": \"Testing my Category\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{baseUrltr}}/api/v1/rate/admin"
+								"url": "{{baseUrltr}}/api/v1/expense-categories/admin"
 							},
 							"response": []
 						}
