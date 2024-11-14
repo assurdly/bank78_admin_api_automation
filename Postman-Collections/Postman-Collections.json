@@ -28161,6 +28161,55 @@
 						}
 					],
 					"id": "acbdb846-ffc1-4f35-81c7-117822bbf368"
+				},
+				{
+					"name": "Get Single Rate",
+					"item": [
+						{
+							"name": "Get Single Rate - Success",
+							"id": "59c95a31-3243-4168-978d-8aa367cf527e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "d0abeec0-5ec9-481c-9c43-bc70ab55ac56"
 				}
 			],
 			"id": "94f06308-6841-4ae4-b89c-73c4b6c55a71"
