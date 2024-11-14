@@ -32772,7 +32772,20 @@
 				},
 				{
 					"name": "Get Single Funds",
-					"item": [],
+					"item": [
+						{
+							"name": "New Request",
+							"id": "79772c59-8867-42be-a9a2-4e0c80ac99e4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "b2319817-c897-45d8-8883-2af45ffff4c2"
 				}
 			],
