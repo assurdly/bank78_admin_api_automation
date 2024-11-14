@@ -30235,10 +30235,10 @@
 					"id": "b30fc13d-a284-4352-95e4-27f426b3fb33"
 				},
 				{
-					"name": "Get Single Rate",
+					"name": "Get Single Exp. Category",
 					"item": [
 						{
-							"name": "Get Single Rate - Success",
+							"name": "Get Single Exp. Category - Success",
 							"event": [
 								{
 									"listen": "test",
@@ -30307,7 +30307,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Single Rate - Non-existent ID",
+							"name": "Get Single Exp. Category - Non-existent ID",
 							"event": [
 								{
 									"listen": "test",
@@ -30372,7 +30372,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Single Rate - No Auth",
+							"name": "Get Single Exp. Category- No Auth",
 							"event": [
 								{
 									"listen": "test",
@@ -30434,7 +30434,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Single Rate -Invalid Token",
+							"name": "Get Single Exp. Category-Invalid Token",
 							"event": [
 								{
 									"listen": "test",
@@ -30499,7 +30499,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Single Rate -Empty ID",
+							"name": "Get Single Exp. Category -Empty ID",
 							"event": [
 								{
 									"listen": "test",
@@ -31569,282 +31569,6 @@
 						}
 					],
 					"id": "f6a2a2d8-91de-4c51-9b4e-f7438c3ebbab"
-				},
-				{
-					"name": "Get Charge Types",
-					"item": [
-						{
-							"name": "Get Charges Types",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"\r",
-											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
-											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "cd8adf71-4d17-4393-984c-6c684ae2ba0b",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"url": "{{baseUrltr}}/api/v1/rate/admin/charge-types"
-							},
-							"response": []
-						},
-						{
-							"name": "Get Charges Types - No Auth",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
-										"exec": [
-											"pm.test(\"Status code is 401 for missing  auth token\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Error message indicates authentication failure\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "0ffe69ea-0800-4ada-8fb4-0b998300cf76",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"url": "{{baseUrltr}}/api/v1/rate/admin/charge-types"
-							},
-							"response": []
-						},
-						{
-							"name": "Get Charges Types - Invalid Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "8f5048d1-ca36-4413-b6bf-6f2eb7a7471d",
-										"exec": [
-											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Error message indicates authentication failure\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "05baabc1-634d-47a7-85bc-5cf59839d5c8",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "Godnobeman"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"url": "{{baseUrltr}}/api/v1/rate/admin/charge-types"
-							},
-							"response": []
-						}
-					],
-					"id": "e25c76aa-b48b-4106-848a-e5588097267b"
-				},
-				{
-					"name": "Get VAT Types",
-					"item": [
-						{
-							"name": "Get VAT Types - Success",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"\r",
-											"pm.test(\"Body has property 'hasResult' with value true\", function () {\r",
-											"    pm.expect(pm.response.json().hasResult).to.eql(true);\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "07ad2dfe-56b6-4c4a-9bcf-3235e519c194",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"url": "{{baseUrltr}}/api/v1/rate/admin/vat-types"
-							},
-							"response": []
-						},
-						{
-							"name": "Get VAT Types - No Auth",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
-										"exec": [
-											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Error message indicates authentication failure\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "2819cb08-ffc6-4b97-85b1-3ae26c87899f",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"url": "{{baseUrltr}}/api/v1/rate/admin/vat-types"
-							},
-							"response": []
-						},
-						{
-							"name": "Get VAT Types - Invalid Token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "bf72cdd2-3eed-465e-a9ce-17838b9feea2",
-										"exec": [
-											"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
-											"    pm.response.to.have.status(401);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Error message indicates authentication failure\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "aad84929-680c-4ce1-8cc0-959f11996912",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "Godnobeman"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"url": "{{baseUrltr}}/api/v1/rate/admin/vat-types"
-							},
-							"response": []
-						}
-					],
-					"id": "03c7393e-9fd2-4310-bf56-a34fb69852ce"
 				}
 			],
 			"id": "6b60e4e8-f5e7-48fc-9a6e-091ffa42e056"
