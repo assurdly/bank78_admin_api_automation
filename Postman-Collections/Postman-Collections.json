@@ -28488,6 +28488,37 @@
 						}
 					],
 					"id": "d0abeec0-5ec9-481c-9c43-bc70ab55ac56"
+				},
+				{
+					"name": "Create Rate",
+					"item": [
+						{
+							"name": "Create Rate - Success",
+							"id": "3ae52e12-7a2e-4018-8468-03f41cdb16fd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrltr}}/api/v1/rate/admin"
+							},
+							"response": []
+						}
+					],
+					"id": "3bbbb3fe-b9ac-4e48-b37e-2a20c3c364d3"
 				}
 			],
 			"id": "94f06308-6841-4ae4-b89c-73c4b6c55a71"
