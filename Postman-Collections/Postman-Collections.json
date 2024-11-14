@@ -30583,24 +30583,12 @@
 											"    pm.expect(jsonData.successful).to.eql(true);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Validate FX rate details in the response (universal)\", function () {\r",
+											"pm.test(\"Validate expense category details in the response\", function () {\r",
 											"    const result = pm.response.json().result;\r",
 											"    \r",
 											"    pm.expect(result).to.have.property(\"id\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"isActive\").that.is.a(\"boolean\");\r",
-											"    pm.expect(result).to.have.property(\"rateId\").that.is.a(\"string\");\r",
 											"    pm.expect(result).to.have.property(\"name\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"sourceCurrency\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"destinationCurrency\").that.is.a(\"string\");\r",
-											"    pm.expect(result).to.have.property(\"charges\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"vat\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"limit\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"vatTypeId\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"feeTypeId\").that.is.a(\"number\");\r",
-											"    pm.expect(result).to.have.property(\"rate\").that.is.a(\"number\");\r",
 											"});\r",
-											"\r",
-											"\r",
 											""
 										],
 										"type": "text/javascript",
@@ -30629,14 +30617,14 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"JPY to USD\",\r\n  \"sourceCurrency\": \"JPY\",\r\n  \"destinationCurrency\": \"USD\",\r\n  \"charges\": 7.5,\r\n  \"vat\": 0,\r\n  \"limit\": 2000000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 0.00064\r\n}",
+									"raw": "{\r\n  \"name\": \"Testing my Category\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{baseUrltr}}/api/v1/rate/admin"
+								"url": "{{baseUrltr}}/api/v1/expense-categories/admin"
 							},
 							"response": []
 						},
