@@ -28167,6 +28167,31 @@
 					"item": [
 						{
 							"name": "Get Single Rate - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response contains rate details\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result).to.have.property(\"id\", 1); \r",
+											"    pm.expect(jsonData.result).to.have.property(\"rate\");\r",
+											"    pm.expect(jsonData.result).to.have.property(\"sourceCurrency\");\r",
+											"     pm.expect(jsonData.result).to.have.property(\"destinationCurrency\");\r",
+											"\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "59c95a31-3243-4168-978d-8aa367cf527e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -28200,6 +28225,75 @@
 									],
 									"variable": [
 										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Rate - Invalid ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8dde6fe2-cafc-42be-9fd3-896068a12ae2",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response contains rate details\", function () {\r",
+											"    const jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result).to.have.property(\"id\", 1); \r",
+											"    pm.expect(jsonData.result).to.have.property(\"rate\");\r",
+											"    pm.expect(jsonData.result).to.have.property(\"sourceCurrency\");\r",
+											"     pm.expect(jsonData.result).to.have.property(\"destinationCurrency\");\r",
+											"\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3d279574-cc9d-414b-8d1a-9745524ac5a7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrltr}}/api/v1/rate/admin/:id",
+									"host": [
+										"{{baseUrltr}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"rate",
+										"admin",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "edcc9a03-4078-4a6e-8df4-865888e043e6",
 											"key": "id",
 											"value": "1"
 										}
