@@ -32791,8 +32791,21 @@
 			"id": "21a3e734-33e2-4e31-918b-8824bf64a139"
 		},
 		{
-			"name": "New Folder",
-			"item": [],
+			"name": "FX Transferlogs (QueryPaged)",
+			"item": [
+				{
+					"name": "FX Transferlogs (QueryPaged) - Success",
+					"id": "fc402c4d-8643-424b-81e8-b809cb9d9733",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "4182c552-1894-4493-ab8e-3051fd7823ac"
 		},
 		{
