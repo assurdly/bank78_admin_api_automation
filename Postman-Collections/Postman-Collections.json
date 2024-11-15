@@ -33220,14 +33220,14 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"requestId\":103206\r\n}",
+									"raw": "{\r\n  \"requestId\": 103206,\r\n  \"comment\": \"Noooo\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{baseUrltr}}/api/v1/TransferLogs/approve-fx-request"
+								"url": "{{baseUrltr}}/api/v1/TransferLogs/decline-fx-request"
 							},
 							"response": []
 						}
