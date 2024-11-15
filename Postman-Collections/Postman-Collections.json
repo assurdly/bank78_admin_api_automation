@@ -32795,6 +32795,90 @@
 			"item": [
 				{
 					"name": "FX Transferlogs (QueryPaged) - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7303cc8-b4d1-4bfb-bbe5-893531ab31fb",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Result array is present and contains the expected number of elements\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.result).to.exist.and.to.be.an('array');\r",
+									"    pm.expect(responseData.result).to.have.lengthOf.at.least(1, \"Result array should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate the structure and data types of the 'result' array elements\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.result).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+									"    responseData.result.forEach(function (element) {\r",
+									"        pm.expect(element).to.be.an('object');\r",
+									"        pm.expect(element.statusName).to.be.a('string');\r",
+									"        pm.expect(element.paymentGatewayName).to.be.a('string');\r",
+									"        pm.expect(element.id).to.be.a('number');\r",
+									"        pm.expect(element.statusId).to.be.a('number');\r",
+									"        pm.expect(element.reference).to.be.a('string');\r",
+									"        pm.expect(element.accountName).to.be.a('string');\r",
+									"        pm.expect(element.accountNumber).to.be.a('string');\r",
+									"        pm.expect(element.amount).to.be.a('number');\r",
+									"        pm.expect(element.phoneNumber).to.be.a('string');\r",
+									"        pm.expect(element.paymentGatewayId).to.be.a('number');\r",
+									"        pm.expect(element.responseCode).to.be.null;\r",
+									"        pm.expect(element.deviceId).to.be.a('string');\r",
+									"        pm.expect(element.channel).to.be.a('number');\r",
+									"        pm.expect(element.userId).to.be.a('string');\r",
+									"        pm.expect(element.charge).to.be.a('number');\r",
+									"        pm.expect(element.cbaReference).to.be.null;\r",
+									"        pm.expect(element.retryCount).to.be.a('number');\r",
+									"        pm.expect(element.vendorReference).to.be.null;\r",
+									"        pm.expect(element.emailAddress).to.be.a('string');\r",
+									"        pm.expect(element.sourceAccount).to.be.a('string');\r",
+									"        pm.expect(element.feeTypeId).to.be.a('number');\r",
+									"        pm.expect(element.currencyId).to.be.a('string');\r",
+									"        pm.expect(element.bankCode).to.be.a('string');\r",
+									"        pm.expect(element.bankName).to.be.a('string');\r",
+									"        pm.expect(element.sessionId).to.be.null;\r",
+									"        pm.expect(element.senderName).to.be.a('string');\r",
+									"        pm.expect(element.vat).to.be.a('number');\r",
+									"        pm.expect(element.transferTypeId).to.be.a('number');\r",
+									"        pm.expect(element.narration).to.be.a('string');\r",
+									"        pm.expect(element.totalAmount).to.be.a('number');\r",
+									"        pm.expect(element.bankId).to.be.null;\r",
+									"        pm.expect(element.dateCreated).to.be.a('string');\r",
+									"        pm.expect(element.destinationUserId).to.be.null;\r",
+									"        pm.expect(element.destinationUserEmail).to.be.null;\r",
+									"        pm.expect(element.batchReference).to.be.a('string');\r",
+									"        pm.expect(element.batchId).to.be.null;\r",
+									"        pm.expect(element.responseMessage).to.be.null;\r",
+									"        pm.expect(element.processedByVendor).to.be.a('boolean');\r",
+									"        pm.expect(element.completedDate).to.be.null;\r",
+									"        pm.expect(element.exchangeRate).to.be.a('number');\r",
+									"        pm.expect(element.beneficiaryCountryCode).to.be.a('string');\r",
+									"        pm.expect(element.beneficiaryCurrency).to.be.a('string');\r",
+									"        pm.expect(element.beneficiaryAddress).to.be.a('string');\r",
+									"        pm.expect(element.destinationAmount).to.be.a('number');\r",
+									"        pm.expect(element.isIndividual).to.be.a('boolean');\r",
+									"        pm.expect(element.routingNumber).to.be.a('string');\r",
+									"        pm.expect(element.swiftCode).to.be.a('string');\r",
+									"        pm.expect(element.routingType).to.be.a('number');\r",
+									"        pm.expect(element.expenseCategory).to.be.null;\r",
+									"        pm.expect(element.isFx).to.be.a('boolean');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "fc402c4d-8643-424b-81e8-b809cb9d9733",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -32838,6 +32922,62 @@
 									"value": "10"
 								},
 								{
+									"key": "whereCondition",
+									"value": "{\"isFx\":true}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FX Transferlogs (QueryPaged) - No Auth",
+					"id": "bdf8c90f-9acf-43eb-a719-e8ad33ea3080",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrltr}}/api/v1/TransferLogs/querypaged/:page/:pagesize/:whereCondition",
+							"host": [
+								"{{baseUrltr}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"TransferLogs",
+								"querypaged",
+								":page",
+								":pagesize",
+								":whereCondition"
+							],
+							"variable": [
+								{
+									"id": "56197244-83f7-4194-a6c5-40f0c6e0d790",
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"id": "0b37f5c5-8e73-4f79-b3aa-9aa9f94afbe8",
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"id": "bdcb9f0d-d9a3-4a23-b1cf-a53e9624ac4d",
 									"key": "whereCondition",
 									"value": "{\"isFx\":true}"
 								}
