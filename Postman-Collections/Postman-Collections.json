@@ -33195,10 +33195,10 @@
 					"id": "657a8acc-f628-46e8-b041-fa49a703dddb"
 				},
 				{
-					"name": "Approve FX request Copy",
+					"name": "Reject FX request",
 					"item": [
 						{
-							"name": "Approve fx request",
+							"name": "Reject fx request",
 							"id": "1db93236-4d71-4310-8650-2dba3bb708e9",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -33233,11 +33233,6 @@
 						}
 					],
 					"id": "e3803787-161f-4075-842b-6c9c0f4ea2c2"
-				},
-				{
-					"name": "Reject FX Request",
-					"item": [],
-					"id": "cf9888c1-edd5-4489-8801-a99c74d49e2a"
 				}
 			],
 			"id": "8e0f9f18-6d3c-439d-8f3c-400ffe6e7e60"
