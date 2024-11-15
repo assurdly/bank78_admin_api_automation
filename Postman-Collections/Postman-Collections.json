@@ -32800,8 +32800,49 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrltr}}/api/v1/TransferLogs/querypaged/:page/:pagesize/:whereCondition",
+							"host": [
+								"{{baseUrltr}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"TransferLogs",
+								"querypaged",
+								":page",
+								":pagesize",
+								":whereCondition"
+							],
+							"variable": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "whereCondition",
+									"value": "{\"isFx\":true}"
+								}
+							]
+						}
 					},
 					"response": []
 				}
