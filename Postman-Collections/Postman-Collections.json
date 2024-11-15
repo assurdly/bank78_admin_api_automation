@@ -33195,6 +33195,46 @@
 					"id": "657a8acc-f628-46e8-b041-fa49a703dddb"
 				},
 				{
+					"name": "Approve FX request Copy",
+					"item": [
+						{
+							"name": "Approve fx request",
+							"id": "1db93236-4d71-4310-8650-2dba3bb708e9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"requestId\":103206\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/TransferLogs/approve-fx-request"
+							},
+							"response": []
+						}
+					],
+					"id": "e3803787-161f-4075-842b-6c9c0f4ea2c2"
+				},
+				{
 					"name": "Reject FX Request",
 					"item": [],
 					"id": "cf9888c1-edd5-4489-8801-a99c74d49e2a"
