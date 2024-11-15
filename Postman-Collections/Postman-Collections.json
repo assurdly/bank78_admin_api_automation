@@ -33000,10 +33000,10 @@
 			"id": "4182c552-1894-4493-ab8e-3051fd7823ac"
 		},
 		{
-			"name": "FX Transferlogs (QueryPaged) Copy",
+			"name": "FX Transferlogs (Getpaged)",
 			"item": [
 				{
-					"name": "FX Transferlogs (QueryPaged) - Success",
+					"name": "FX Transferlogs (getpaged) - Success",
 					"event": [
 						{
 							"listen": "test",
@@ -33140,7 +33140,7 @@
 					"response": []
 				},
 				{
-					"name": "FX Transferlogs (QueryPaged) - No Auth",
+					"name": "FX Transferlogs (getpaged) - No Auth",
 					"event": [
 						{
 							"listen": "test",
@@ -33177,7 +33177,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrltr}}/api/v1/TransferLogs/querypaged/:page/:pagesize/:whereCondition",
+							"raw": "{{baseUrltr}}/api/v1/TransferLogs/getpaged/:page/:pagesize/:whereCondition",
 							"host": [
 								"{{baseUrltr}}"
 							],
@@ -33185,24 +33185,21 @@
 								"api",
 								"v1",
 								"TransferLogs",
-								"querypaged",
+								"getpaged",
 								":page",
 								":pagesize",
 								":whereCondition"
 							],
 							"variable": [
 								{
-									"id": "e70dc6cf-f0a1-431c-9cd2-8371fc86e2c3",
 									"key": "page",
 									"value": "1"
 								},
 								{
-									"id": "9f5433a9-92d9-445d-86f6-8e9439f7b429",
 									"key": "pagesize",
 									"value": "10"
 								},
 								{
-									"id": "66db5a1e-a538-4558-acf4-2220f0f296a5",
 									"key": "whereCondition",
 									"value": "{\"isFx\":true}"
 								}
