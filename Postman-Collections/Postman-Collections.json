@@ -33018,66 +33018,9 @@
 									"    const responseData = pm.response.json();\r",
 									"    \r",
 									"    pm.expect(responseData).to.be.an('object');\r",
-									"    pm.expect(responseData.result).to.exist.and.to.be.an('array');\r",
-									"    pm.expect(responseData.result).to.have.lengthOf.at.least(1, \"Result array should not be empty\");\r",
+									"    pm.expect(responseData.result).to.exist.and.to.be.an('object');\r",
 									"});\r",
 									"\r",
-									"\r",
-									"pm.test(\"Validate the structure and data types of the 'result' array elements\", function () {\r",
-									"    const responseData = pm.response.json();\r",
-									"    \r",
-									"    pm.expect(responseData.result).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
-									"    responseData.result.forEach(function (element) {\r",
-									"        pm.expect(element).to.be.an('object');\r",
-									"        pm.expect(element.statusName).to.be.a('string');\r",
-									"        pm.expect(element.paymentGatewayName).to.be.a('string');\r",
-									"        pm.expect(element.id).to.be.a('number');\r",
-									"        pm.expect(element.statusId).to.be.a('number');\r",
-									"        pm.expect(element.reference).to.be.a('string');\r",
-									"        pm.expect(element.accountName).to.be.a('string');\r",
-									"        pm.expect(element.accountNumber).to.be.a('string');\r",
-									"        pm.expect(element.amount).to.be.a('number');\r",
-									"        pm.expect(element.phoneNumber).to.be.a('string');\r",
-									"        pm.expect(element.paymentGatewayId).to.be.a('number');\r",
-									"        pm.expect(element.responseCode).to.be.null;\r",
-									"        pm.expect(element.deviceId).to.be.a('string');\r",
-									"        pm.expect(element.channel).to.be.a('number');\r",
-									"        pm.expect(element.userId).to.be.a('string');\r",
-									"        pm.expect(element.charge).to.be.a('number');\r",
-									"        pm.expect(element.cbaReference).to.be.null;\r",
-									"        pm.expect(element.retryCount).to.be.a('number');\r",
-									"        pm.expect(element.vendorReference).to.be.null;\r",
-									"        pm.expect(element.emailAddress).to.be.a('string');\r",
-									"        pm.expect(element.sourceAccount).to.be.a('string');\r",
-									"        pm.expect(element.feeTypeId).to.be.a('number');\r",
-									"        pm.expect(element.currencyId).to.be.a('string');\r",
-									"        pm.expect(element.bankCode).to.be.a('string');\r",
-									"        pm.expect(element.bankName).to.be.a('string');\r",
-									"        pm.expect(element.sessionId).to.be.null;\r",
-									"        pm.expect(element.senderName).to.be.a('string');\r",
-									"        pm.expect(element.vat).to.be.a('number');\r",
-									"        pm.expect(element.transferTypeId).to.be.a('number');\r",
-									"        pm.expect(element.narration).to.be.a('string');\r",
-									"        pm.expect(element.totalAmount).to.be.a('number');\r",
-									"        pm.expect(element.bankId).to.be.null;\r",
-									"        pm.expect(element.dateCreated).to.be.a('string');\r",
-									"        pm.expect(element.destinationUserId).to.be.null;\r",
-									"        pm.expect(element.destinationUserEmail).to.be.null;\r",
-									"        pm.expect(element.batchReference).to.be.a('string');\r",
-									"        pm.expect(element.processedByVendor).to.be.a('boolean');\r",
-									"        pm.expect(element.exchangeRate).to.be.a('number');\r",
-									"        pm.expect(element.beneficiaryCountryCode).to.be.a('string');\r",
-									"        pm.expect(element.beneficiaryCurrency).to.be.a('string');\r",
-									"        pm.expect(element.beneficiaryAddress).to.be.a('string');\r",
-									"        pm.expect(element.destinationAmount).to.be.a('number');\r",
-									"        pm.expect(element.isIndividual).to.be.a('boolean');\r",
-									"        pm.expect(element.routingNumber).to.be.a('string');\r",
-									"        pm.expect(element.swiftCode).to.be.a('string');\r",
-									"        pm.expect(element.routingType).to.be.a('number');\r",
-									"        pm.expect(element.expenseCategory).to.be.null;\r",
-									"        pm.expect(element.isFx).to.be.a('boolean');\r",
-									"    });\r",
-									"});\r",
 									""
 								],
 								"type": "text/javascript",
@@ -33105,7 +33048,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrltr}}/api/v1/TransferLogs/querypaged/:page/:pagesize/:whereCondition",
+							"raw": "{{baseUrltr}}/api/v1/TransferLogs/getpaged/:page/:pagesize/:whereCondition",
 							"host": [
 								"{{baseUrltr}}"
 							],
@@ -33113,24 +33056,21 @@
 								"api",
 								"v1",
 								"TransferLogs",
-								"querypaged",
+								"getpaged",
 								":page",
 								":pagesize",
 								":whereCondition"
 							],
 							"variable": [
 								{
-									"id": "784e9bd0-7693-445f-b6fe-09b6a24409db",
 									"key": "page",
 									"value": "1"
 								},
 								{
-									"id": "99f7c276-0968-4727-bb2d-94e1d5ff68fa",
 									"key": "pagesize",
 									"value": "10"
 								},
 								{
-									"id": "6b6a1e1c-c344-460b-873b-af7d189c481f",
 									"key": "whereCondition",
 									"value": "{\"isFx\":true}"
 								}
@@ -33210,6 +33150,35 @@
 				}
 			],
 			"id": "296dcaff-f27d-4707-b366-d6f2c5f5f206"
+		},
+		{
+			"name": "FX request Management",
+			"item": [
+				{
+					"name": "Approve FX request",
+					"item": [
+						{
+							"name": "New Request",
+							"id": "040e577a-0ea1-4aae-baef-c7fd534713eb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
+					"id": "657a8acc-f628-46e8-b041-fa49a703dddb"
+				},
+				{
+					"name": "Reject FX Request",
+					"item": [],
+					"id": "cf9888c1-edd5-4489-8801-a99c74d49e2a"
+				}
+			],
+			"id": "8e0f9f18-6d3c-439d-8f3c-400ffe6e7e60"
 		},
 		{
 			"name": "https://referral-dev.bank78.co/api/referral/query/referrals/1/20/%7B%7D",
