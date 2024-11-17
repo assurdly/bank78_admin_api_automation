@@ -7,6 +7,7 @@ on:
     - cron: '0 18 * * 4' # Runs every Wednesday by 4pm
     - cron: '0 18 * * 5' # Runs every Friday by 4pm
     - cron: '0 20 * * 0' # Runs every Sunday by 4pm
+
 jobs:
   run_tests:
     if: github.event_name == 'schedule' || github.event_name == 'push'
@@ -35,6 +36,15 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
+      - name: Create unique folder for the new report
+        id: create_folder
+        run: |
+          timestamp=$(date +'%Y%m%d%H%M%S')
+          new_folder="gh-pages/$timestamp"
+          mkdir -p $new_folder
+          echo "New Folder Created: $new_folder"
+          echo "::set-output name=new_folder::$new_folder"
+
       - name: Copy existing content to allure-history
         run: |
           mkdir -p allure-history
@@ -61,6 +71,8 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
+        with:
+          folder: ${{ steps.create_folder.outputs.new_folder }}
 
       - name: Wait for Allure report to be generated
         if: always()
