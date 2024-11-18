@@ -28987,7 +28987,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 10,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
+									"raw": "{\r\n  \"name\": \"USD to JPY\",\r\n  \"sourceCurrency\": \"USD\",\r\n  \"destinationCurrency\": \"JPY\",\r\n  \"charges\": 15,\r\n  \"vat\": 0,\r\n  \"limit\": 50000,\r\n  \"vatTypeId\": \"Fixed\",\r\n  \"feeTypeId\": \"Fixed\",\r\n  \"rate\": 155.86,\r\n  \"id\": 33\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
