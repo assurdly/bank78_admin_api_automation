@@ -27675,6 +27675,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
@@ -27686,47 +27692,12 @@
 										}
 									}
 								},
-								"url": ""
+								"url": "{{baseurlo}}/api/foreign-account/approve-fx-account/19"
 							},
 							"response": []
 						}
 					],
 					"id": "b8fd81f7-a499-42b1-adec-757f92c4471e"
-				},
-				{
-					"name": "FX Account Funding",
-					"id": "6355bcd0-48de-4420-9e4e-d6ee0ece5eeb",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkU2NEY4OTdBQzFFMzk3ODZEMDJEMDJENjBEQkRGQTFFIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MzE5MzMwOTUsImV4cCI6MTczMTkzNjY5NSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS1kZXYuYmFuazc4LmNvIiwiYXVkIjoiYXBpMSIsImNsaWVudF9pZCI6IkVDQkVFQ0JDN0NFNTQzNERCQTUwOUI5Mzc1MjAzRUMxIiwic3ViIjoiMjdjN2E0NzYtM2FhNC00NzA0LWJlYWEtMGI2OTMyNDViZTY2IiwiYXV0aF90aW1lIjoxNzMxOTMzMDk1LCJpZHAiOiJsb2NhbCIsInBob25lTnVtYmVyIjoiMDgwMDAwMDAwMDAiLCJ1c2VySWQiOiIyN2M3YTQ3Ni0zYWE0LTQ3MDQtYmVhYS0wYjY5MzI0NWJlNjYiLCJ1c2VybmFtZSI6InN1cGVyYWRtaW5AcGF5YXphLmFmcmljYSIsImlzQWN0aXZlIjoiVHJ1ZSIsInVzZXJUeXBlSWQiOiI0IiwidXNlclR5cGUiOiJTdXBlckFkbWluaXN0cmF0b3IiLCJlbWFpbCI6InN1cGVyYWRtaW5AcGF5YXphLmFmcmljYSIsImxhc3ROYW1lIjoiQWRtaW5pc3RyYXRvciIsImZpcnN0TmFtZSI6IlN1cGVyIiwicGVybWlzc2lvbiI6IntcInNlY3Rpb25zXCI6W3tcInNlY3Rpb25JZFwiOjEsXCJzZWN0aW9uTmFtZVwiOlwiQnVzaW5lc3NcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkFwcHJvdmVcIjp0cnVlLFwiY2FuUmVqZWN0S3ljXCI6dHJ1ZX19LHtcInNlY3Rpb25JZFwiOjIsXCJzZWN0aW9uTmFtZVwiOlwiQWRtaW5pc3RyYXRvclwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5BZGRcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkludml0ZVVzZXJcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MyxcInNlY3Rpb25OYW1lXCI6XCJUcmFuc2FjdGlvblwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5WaWV3XCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo0LFwic2VjdGlvbk5hbWVcIjpcIlRyYW5zZmVyXCIsXCJwZXJtaXNzaW9uc1wiOntcImNhblZpZXdcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo1LFwic2VjdGlvbk5hbWVcIjpcIkNvbmZpZ3VyYXRpb25cIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuQWRkXCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo2LFwic2VjdGlvbk5hbWVcIjpcIldhbGxldFwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5VcGRhdGVcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6NyxcInNlY3Rpb25OYW1lXCI6XCJEYXNoYm9hcmRcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo4LFwic2VjdGlvbk5hbWVcIjpcIlVzZXJcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuQWRkXCI6dHJ1ZSxcImNhblZpZXdcIjp0cnVlLFwiY2FuRXhwb3J0XCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo5LFwic2VjdGlvbk5hbWVcIjpcIkVtYWlsTG9nc1wiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5VcGRhdGVcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTAsXCJzZWN0aW9uTmFtZVwiOlwiQXVkaXRUcmFpbHNcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTEsXCJzZWN0aW9uTmFtZVwiOlwiUm9sZUNvbmZpZ1wiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5BZGRcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTIsXCJzZWN0aW9uTmFtZVwiOlwiQ3VzdG9tZXJcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuQWRkXCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjoxMyxcInNlY3Rpb25OYW1lXCI6XCJCaWxsVHJhbnNhY3Rpb25zXCIsXCJwZXJtaXNzaW9uc1wiOntcImNhblZpZXdcIjp0cnVlLFwiY2FuRXhwb3J0XCI6dHJ1ZSxcImNhbkFkZFwiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTQsXCJzZWN0aW9uTmFtZVwiOlwiVmlydHVhbEFjY291bnREYXNoYm9hcmRcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjoxNSxcInNlY3Rpb25OYW1lXCI6XCJWaXJ0dWFsQWNjb3VudFwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5WaWV3XCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTYsXCJzZWN0aW9uTmFtZVwiOlwiVmlydHVhbEFjY291bnRUcmFuc2FjdGlvbnNcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuUHJvY2Vzc1BheW1lbnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTcsXCJzZWN0aW9uTmFtZVwiOlwiUmVmZXJyYWxcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuUHJvY2Vzc1BheW1lbnRcIjp0cnVlfX1dfSIsImp0aSI6IjE5NDQzMTY2MTUyMjVBNTY4MUQzRDk1MjYzRTEzMDlEIiwiaWF0IjoxNzMxOTMzMDk1LCJzY29wZSI6WyJhcGkxIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImN1c3RvbSJdfQ.ke5qPDGh00eyGGGUDlkzl1bTgpf7QwS9pPUnyGhJt83P972nx3g8CQ0yF-6z17CDZT-j7X8-slK66QefVr-kSorBdRZnBaxtECdPKIq1-cTlF6RMltmtvEBnuyDWCkIjG9D3Fq6MxKLYNB1nuNMLG5-nhvRvQh-YUngYXqe-ygy9B_K_ZVlDg7psWqybPH7Wu3w6UW4-eLR7h7nAIpGj0SdrZ2NJnIO0gKsxDLNhftSE2JrUP8pSFKnioQtokxMzaDfQrdLbIV00mnqsaz-2xfb2xNnHCTEvtB7x6BMFkKaJK-c5G-K6JPCvyfzY8qb5TR4qEf-28OoFXiHzjILTew"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json-patch+json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"amount\": 400,\n  \"accountNumber\": \"0000076229\",\n  \"externalAccountNumber\": \"2209098745\",\n  \"senderName\": \"test\",\n  \"transactionReference\": \"yeuuuw838388\",\n  \"senderBank\": \"UBA\",\n  \"otherInfo\": \"string\",\n  \"remark\": \"test\",\n  \"currency\": \"USD\",\n  \"channel\": \"Web\",\n  \"senderAccountNo\": \"123456789\",\n  \"charges\": 5,\n  \"emailAddress\": \"circle@mailinator.com\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://transfer-dev.bank78.co/api/v1/FxAccountFunding"
-					},
-					"response": []
 				}
 			],
 			"id": "105c2122-4cbe-46fc-a6f1-53c0e206de9c"
@@ -31890,6 +31861,453 @@
 			"id": "6b60e4e8-f5e7-48fc-9a6e-091ffa42e056"
 		},
 		{
+			"name": "FX Transferlogs (QueryPaged)",
+			"item": [
+				{
+					"name": "FX Transferlogs (QueryPaged) - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7303cc8-b4d1-4bfb-bbe5-893531ab31fb",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Result array is present and contains the expected number of elements\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.result).to.exist.and.to.be.an('array');\r",
+									"    pm.expect(responseData.result).to.have.lengthOf.at.least(1, \"Result array should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate the structure and data types of the 'result' array elements\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.result).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+									"    responseData.result.forEach(function (element) {\r",
+									"        pm.expect(element).to.be.an('object');\r",
+									"        pm.expect(element.statusName).to.be.a('string');\r",
+									"        pm.expect(element.paymentGatewayName).to.be.a('string');\r",
+									"        pm.expect(element.id).to.be.a('number');\r",
+									"        pm.expect(element.statusId).to.be.a('number');\r",
+									"        pm.expect(element.reference).to.be.a('string');\r",
+									"        pm.expect(element.accountName).to.be.a('string');\r",
+									"        pm.expect(element.accountNumber).to.be.a('string');\r",
+									"        pm.expect(element.amount).to.be.a('number');\r",
+									"        pm.expect(element.phoneNumber).to.be.a('string');\r",
+									"        pm.expect(element.paymentGatewayId).to.be.a('number');\r",
+									"        pm.expect(element.responseCode).to.be.null;\r",
+									"        pm.expect(element.deviceId).to.be.a('string');\r",
+									"        pm.expect(element.channel).to.be.a('number');\r",
+									"        pm.expect(element.userId).to.be.a('string');\r",
+									"        pm.expect(element.charge).to.be.a('number');\r",
+									"        pm.expect(element.cbaReference).to.be.null;\r",
+									"        pm.expect(element.retryCount).to.be.a('number');\r",
+									"        pm.expect(element.vendorReference).to.be.null;\r",
+									"        pm.expect(element.emailAddress).to.be.a('string');\r",
+									"        pm.expect(element.sourceAccount).to.be.a('string');\r",
+									"        pm.expect(element.feeTypeId).to.be.a('number');\r",
+									"        pm.expect(element.currencyId).to.be.a('string');\r",
+									"        pm.expect(element.bankCode).to.be.a('string');\r",
+									"        pm.expect(element.bankName).to.be.a('string');\r",
+									"        pm.expect(element.sessionId).to.be.null;\r",
+									"        pm.expect(element.senderName).to.be.a('string');\r",
+									"        pm.expect(element.vat).to.be.a('number');\r",
+									"        pm.expect(element.transferTypeId).to.be.a('number');\r",
+									"        pm.expect(element.narration).to.be.a('string');\r",
+									"        pm.expect(element.totalAmount).to.be.a('number');\r",
+									"        pm.expect(element.bankId).to.be.null;\r",
+									"        pm.expect(element.dateCreated).to.be.a('string');\r",
+									"        pm.expect(element.destinationUserId).to.be.null;\r",
+									"        pm.expect(element.destinationUserEmail).to.be.null;\r",
+									"        pm.expect(element.batchReference).to.be.a('string');\r",
+									"        pm.expect(element.processedByVendor).to.be.a('boolean');\r",
+									"        pm.expect(element.exchangeRate).to.be.a('number');\r",
+									"        pm.expect(element.beneficiaryCountryCode).to.be.a('string');\r",
+									"        pm.expect(element.beneficiaryCurrency).to.be.a('string');\r",
+									"        pm.expect(element.beneficiaryAddress).to.be.a('string');\r",
+									"        pm.expect(element.destinationAmount).to.be.a('number');\r",
+									"        pm.expect(element.isIndividual).to.be.a('boolean');\r",
+									"        pm.expect(element.routingNumber).to.be.a('string');\r",
+									"        pm.expect(element.swiftCode).to.be.a('string');\r",
+									"        pm.expect(element.routingType).to.be.a('number');\r",
+									"        pm.expect(element.expenseCategory).to.be.null;\r",
+									"        pm.expect(element.isFx).to.be.a('boolean');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "fc402c4d-8643-424b-81e8-b809cb9d9733",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrltr}}/api/v1/TransferLogs/querypaged/:page/:pagesize/:whereCondition",
+							"host": [
+								"{{baseUrltr}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"TransferLogs",
+								"querypaged",
+								":page",
+								":pagesize",
+								":whereCondition"
+							],
+							"variable": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "whereCondition",
+									"value": "{\"isFx\":true}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FX Transferlogs (QueryPaged) - No Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aa524675-c586-4651-9a06-203d332d9462",
+								"exec": [
+									"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message indicates authentication failure\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "bdf8c90f-9acf-43eb-a719-e8ad33ea3080",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrltr}}/api/v1/TransferLogs/querypaged/:page/:pagesize/:whereCondition",
+							"host": [
+								"{{baseUrltr}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"TransferLogs",
+								"querypaged",
+								":page",
+								":pagesize",
+								":whereCondition"
+							],
+							"variable": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "whereCondition",
+									"value": "{\"isFx\":true}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "4182c552-1894-4493-ab8e-3051fd7823ac"
+		},
+		{
+			"name": "FX Transferlogs (Getpaged)",
+			"item": [
+				{
+					"name": "FX Transferlogs (getpaged) - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7303cc8-b4d1-4bfb-bbe5-893531ab31fb",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Result array is present and contains the expected number of elements\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.result).to.exist.and.to.be.an('object');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "8ce0c991-06b7-46e2-aede-a633081746f0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrltr}}/api/v1/TransferLogs/getpaged/:page/:pagesize/:whereCondition",
+							"host": [
+								"{{baseUrltr}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"TransferLogs",
+								"getpaged",
+								":page",
+								":pagesize",
+								":whereCondition"
+							],
+							"variable": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "whereCondition",
+									"value": "{\"isFx\":true}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FX Transferlogs (getpaged) - No Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aa524675-c586-4651-9a06-203d332d9462",
+								"exec": [
+									"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message indicates authentication failure\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "b3bbdb02-94e7-4870-901a-d20df4e14400",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrltr}}/api/v1/TransferLogs/getpaged/:page/:pagesize/:whereCondition",
+							"host": [
+								"{{baseUrltr}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"TransferLogs",
+								"getpaged",
+								":page",
+								":pagesize",
+								":whereCondition"
+							],
+							"variable": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "whereCondition",
+									"value": "{\"isFx\":true}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "296dcaff-f27d-4707-b366-d6f2c5f5f206"
+		},
+		{
+			"name": "FX request Management",
+			"item": [
+				{
+					"name": "Approve FX request",
+					"item": [
+						{
+							"name": "Approve fx request",
+							"id": "040e577a-0ea1-4aae-baef-c7fd534713eb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"requestId\":103206\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/TransferLogs/approve-fx-request"
+							},
+							"response": []
+						}
+					],
+					"id": "657a8acc-f628-46e8-b041-fa49a703dddb"
+				},
+				{
+					"name": "Reject FX request",
+					"item": [
+						{
+							"name": "Reject fx request",
+							"id": "1db93236-4d71-4310-8650-2dba3bb708e9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"requestId\": 103206,\r\n  \"comment\": \"Noooo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrltr}}/api/v1/TransferLogs/decline-fx-request"
+							},
+							"response": []
+						}
+					],
+					"id": "e3803787-161f-4075-842b-6c9c0f4ea2c2"
+				}
+			],
+			"id": "8e0f9f18-6d3c-439d-8f3c-400ffe6e7e60"
+		},
+		{
 			"name": "Fx Account Funding",
 			"item": [
 				{
@@ -31927,7 +32345,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{admin_access_token}}"
+										"token": "{{business_access_token}}"
 									}
 								},
 								"method": "POST",
@@ -32424,6 +32842,41 @@
 								"url": "{{baseUrltr}}/api/v1/FxAccountFunding"
 							},
 							"response": []
+						},
+						{
+							"name": "FX Account Funding",
+							"id": "6355bcd0-48de-4420-9e4e-d6ee0ece5eeb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkU2NEY4OTdBQzFFMzk3ODZEMDJEMDJENjBEQkRGQTFFIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MzE5MzMwOTUsImV4cCI6MTczMTkzNjY5NSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS1kZXYuYmFuazc4LmNvIiwiYXVkIjoiYXBpMSIsImNsaWVudF9pZCI6IkVDQkVFQ0JDN0NFNTQzNERCQTUwOUI5Mzc1MjAzRUMxIiwic3ViIjoiMjdjN2E0NzYtM2FhNC00NzA0LWJlYWEtMGI2OTMyNDViZTY2IiwiYXV0aF90aW1lIjoxNzMxOTMzMDk1LCJpZHAiOiJsb2NhbCIsInBob25lTnVtYmVyIjoiMDgwMDAwMDAwMDAiLCJ1c2VySWQiOiIyN2M3YTQ3Ni0zYWE0LTQ3MDQtYmVhYS0wYjY5MzI0NWJlNjYiLCJ1c2VybmFtZSI6InN1cGVyYWRtaW5AcGF5YXphLmFmcmljYSIsImlzQWN0aXZlIjoiVHJ1ZSIsInVzZXJUeXBlSWQiOiI0IiwidXNlclR5cGUiOiJTdXBlckFkbWluaXN0cmF0b3IiLCJlbWFpbCI6InN1cGVyYWRtaW5AcGF5YXphLmFmcmljYSIsImxhc3ROYW1lIjoiQWRtaW5pc3RyYXRvciIsImZpcnN0TmFtZSI6IlN1cGVyIiwicGVybWlzc2lvbiI6IntcInNlY3Rpb25zXCI6W3tcInNlY3Rpb25JZFwiOjEsXCJzZWN0aW9uTmFtZVwiOlwiQnVzaW5lc3NcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkFwcHJvdmVcIjp0cnVlLFwiY2FuUmVqZWN0S3ljXCI6dHJ1ZX19LHtcInNlY3Rpb25JZFwiOjIsXCJzZWN0aW9uTmFtZVwiOlwiQWRtaW5pc3RyYXRvclwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5BZGRcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkludml0ZVVzZXJcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MyxcInNlY3Rpb25OYW1lXCI6XCJUcmFuc2FjdGlvblwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5WaWV3XCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo0LFwic2VjdGlvbk5hbWVcIjpcIlRyYW5zZmVyXCIsXCJwZXJtaXNzaW9uc1wiOntcImNhblZpZXdcIjp0cnVlLFwiY2FuVXBkYXRlXCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo1LFwic2VjdGlvbk5hbWVcIjpcIkNvbmZpZ3VyYXRpb25cIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuQWRkXCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo2LFwic2VjdGlvbk5hbWVcIjpcIldhbGxldFwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5VcGRhdGVcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6NyxcInNlY3Rpb25OYW1lXCI6XCJEYXNoYm9hcmRcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo4LFwic2VjdGlvbk5hbWVcIjpcIlVzZXJcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuQWRkXCI6dHJ1ZSxcImNhblZpZXdcIjp0cnVlLFwiY2FuRXhwb3J0XCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjo5LFwic2VjdGlvbk5hbWVcIjpcIkVtYWlsTG9nc1wiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5VcGRhdGVcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTAsXCJzZWN0aW9uTmFtZVwiOlwiQXVkaXRUcmFpbHNcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTEsXCJzZWN0aW9uTmFtZVwiOlwiUm9sZUNvbmZpZ1wiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5BZGRcIjp0cnVlLFwiY2FuVmlld1wiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTIsXCJzZWN0aW9uTmFtZVwiOlwiQ3VzdG9tZXJcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuQWRkXCI6dHJ1ZSxcImNhblVwZGF0ZVwiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjoxMyxcInNlY3Rpb25OYW1lXCI6XCJCaWxsVHJhbnNhY3Rpb25zXCIsXCJwZXJtaXNzaW9uc1wiOntcImNhblZpZXdcIjp0cnVlLFwiY2FuRXhwb3J0XCI6dHJ1ZSxcImNhbkFkZFwiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTQsXCJzZWN0aW9uTmFtZVwiOlwiVmlydHVhbEFjY291bnREYXNoYm9hcmRcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWV9fSx7XCJzZWN0aW9uSWRcIjoxNSxcInNlY3Rpb25OYW1lXCI6XCJWaXJ0dWFsQWNjb3VudFwiLFwicGVybWlzc2lvbnNcIjp7XCJjYW5WaWV3XCI6dHJ1ZSxcImNhbkV4cG9ydFwiOnRydWUsXCJjYW5VcGRhdGVcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTYsXCJzZWN0aW9uTmFtZVwiOlwiVmlydHVhbEFjY291bnRUcmFuc2FjdGlvbnNcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuUHJvY2Vzc1BheW1lbnRcIjp0cnVlfX0se1wic2VjdGlvbklkXCI6MTcsXCJzZWN0aW9uTmFtZVwiOlwiUmVmZXJyYWxcIixcInBlcm1pc3Npb25zXCI6e1wiY2FuVmlld1wiOnRydWUsXCJjYW5FeHBvcnRcIjp0cnVlLFwiY2FuUHJvY2Vzc1BheW1lbnRcIjp0cnVlfX1dfSIsImp0aSI6IjE5NDQzMTY2MTUyMjVBNTY4MUQzRDk1MjYzRTEzMDlEIiwiaWF0IjoxNzMxOTMzMDk1LCJzY29wZSI6WyJhcGkxIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbImN1c3RvbSJdfQ.ke5qPDGh00eyGGGUDlkzl1bTgpf7QwS9pPUnyGhJt83P972nx3g8CQ0yF-6z17CDZT-j7X8-slK66QefVr-kSorBdRZnBaxtECdPKIq1-cTlF6RMltmtvEBnuyDWCkIjG9D3Fq6MxKLYNB1nuNMLG5-nhvRvQh-YUngYXqe-ygy9B_K_ZVlDg7psWqybPH7Wu3w6UW4-eLR7h7nAIpGj0SdrZ2NJnIO0gKsxDLNhftSE2JrUP8pSFKnioQtokxMzaDfQrdLbIV00mnqsaz-2xfb2xNnHCTEvtB7x6BMFkKaJK-c5G-K6JPCvyfzY8qb5TR4qEf-28OoFXiHzjILTew"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json-patch+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": 400,\n  \"accountNumber\": \"0000076229\",\n  \"externalAccountNumber\": \"2209098745\",\n  \"senderName\": \"test\",\n  \"transactionReference\": \"yeuuuw838388\",\n  \"senderBank\": \"UBA\",\n  \"otherInfo\": \"string\",\n  \"remark\": \"test\",\n  \"currency\": \"USD\",\n  \"channel\": \"Web\",\n  \"senderAccountNo\": \"123456789\",\n  \"charges\": 5,\n  \"emailAddress\": \"circle@mailinator.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://transfer-dev.bank78.co/api/v1/FxAccountFunding"
+							},
+							"response": []
 						}
 					],
 					"id": "67e0c79d-2738-48c9-a74b-d1fe31b3e981"
@@ -32824,453 +33277,6 @@
 				}
 			],
 			"id": "21a3e734-33e2-4e31-918b-8824bf64a139"
-		},
-		{
-			"name": "FX Transferlogs (QueryPaged)",
-			"item": [
-				{
-					"name": "FX Transferlogs (QueryPaged) - Success",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c7303cc8-b4d1-4bfb-bbe5-893531ab31fb",
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Result array is present and contains the expected number of elements\", function () {\r",
-									"    const responseData = pm.response.json();\r",
-									"    \r",
-									"    pm.expect(responseData).to.be.an('object');\r",
-									"    pm.expect(responseData.result).to.exist.and.to.be.an('array');\r",
-									"    pm.expect(responseData.result).to.have.lengthOf.at.least(1, \"Result array should not be empty\");\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Validate the structure and data types of the 'result' array elements\", function () {\r",
-									"    const responseData = pm.response.json();\r",
-									"    \r",
-									"    pm.expect(responseData.result).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
-									"    responseData.result.forEach(function (element) {\r",
-									"        pm.expect(element).to.be.an('object');\r",
-									"        pm.expect(element.statusName).to.be.a('string');\r",
-									"        pm.expect(element.paymentGatewayName).to.be.a('string');\r",
-									"        pm.expect(element.id).to.be.a('number');\r",
-									"        pm.expect(element.statusId).to.be.a('number');\r",
-									"        pm.expect(element.reference).to.be.a('string');\r",
-									"        pm.expect(element.accountName).to.be.a('string');\r",
-									"        pm.expect(element.accountNumber).to.be.a('string');\r",
-									"        pm.expect(element.amount).to.be.a('number');\r",
-									"        pm.expect(element.phoneNumber).to.be.a('string');\r",
-									"        pm.expect(element.paymentGatewayId).to.be.a('number');\r",
-									"        pm.expect(element.responseCode).to.be.null;\r",
-									"        pm.expect(element.deviceId).to.be.a('string');\r",
-									"        pm.expect(element.channel).to.be.a('number');\r",
-									"        pm.expect(element.userId).to.be.a('string');\r",
-									"        pm.expect(element.charge).to.be.a('number');\r",
-									"        pm.expect(element.cbaReference).to.be.null;\r",
-									"        pm.expect(element.retryCount).to.be.a('number');\r",
-									"        pm.expect(element.vendorReference).to.be.null;\r",
-									"        pm.expect(element.emailAddress).to.be.a('string');\r",
-									"        pm.expect(element.sourceAccount).to.be.a('string');\r",
-									"        pm.expect(element.feeTypeId).to.be.a('number');\r",
-									"        pm.expect(element.currencyId).to.be.a('string');\r",
-									"        pm.expect(element.bankCode).to.be.a('string');\r",
-									"        pm.expect(element.bankName).to.be.a('string');\r",
-									"        pm.expect(element.sessionId).to.be.null;\r",
-									"        pm.expect(element.senderName).to.be.a('string');\r",
-									"        pm.expect(element.vat).to.be.a('number');\r",
-									"        pm.expect(element.transferTypeId).to.be.a('number');\r",
-									"        pm.expect(element.narration).to.be.a('string');\r",
-									"        pm.expect(element.totalAmount).to.be.a('number');\r",
-									"        pm.expect(element.bankId).to.be.null;\r",
-									"        pm.expect(element.dateCreated).to.be.a('string');\r",
-									"        pm.expect(element.destinationUserId).to.be.null;\r",
-									"        pm.expect(element.destinationUserEmail).to.be.null;\r",
-									"        pm.expect(element.batchReference).to.be.a('string');\r",
-									"        pm.expect(element.processedByVendor).to.be.a('boolean');\r",
-									"        pm.expect(element.exchangeRate).to.be.a('number');\r",
-									"        pm.expect(element.beneficiaryCountryCode).to.be.a('string');\r",
-									"        pm.expect(element.beneficiaryCurrency).to.be.a('string');\r",
-									"        pm.expect(element.beneficiaryAddress).to.be.a('string');\r",
-									"        pm.expect(element.destinationAmount).to.be.a('number');\r",
-									"        pm.expect(element.isIndividual).to.be.a('boolean');\r",
-									"        pm.expect(element.routingNumber).to.be.a('string');\r",
-									"        pm.expect(element.swiftCode).to.be.a('string');\r",
-									"        pm.expect(element.routingType).to.be.a('number');\r",
-									"        pm.expect(element.expenseCategory).to.be.null;\r",
-									"        pm.expect(element.isFx).to.be.a('boolean');\r",
-									"    });\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "fc402c4d-8643-424b-81e8-b809cb9d9733",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrltr}}/api/v1/TransferLogs/querypaged/:page/:pagesize/:whereCondition",
-							"host": [
-								"{{baseUrltr}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"TransferLogs",
-								"querypaged",
-								":page",
-								":pagesize",
-								":whereCondition"
-							],
-							"variable": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "pagesize",
-									"value": "10"
-								},
-								{
-									"key": "whereCondition",
-									"value": "{\"isFx\":true}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FX Transferlogs (QueryPaged) - No Auth",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "aa524675-c586-4651-9a06-203d332d9462",
-								"exec": [
-									"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error message indicates authentication failure\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "bdf8c90f-9acf-43eb-a719-e8ad33ea3080",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrltr}}/api/v1/TransferLogs/querypaged/:page/:pagesize/:whereCondition",
-							"host": [
-								"{{baseUrltr}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"TransferLogs",
-								"querypaged",
-								":page",
-								":pagesize",
-								":whereCondition"
-							],
-							"variable": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "pagesize",
-									"value": "10"
-								},
-								{
-									"key": "whereCondition",
-									"value": "{\"isFx\":true}"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"id": "4182c552-1894-4493-ab8e-3051fd7823ac"
-		},
-		{
-			"name": "FX Transferlogs (Getpaged)",
-			"item": [
-				{
-					"name": "FX Transferlogs (getpaged) - Success",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c7303cc8-b4d1-4bfb-bbe5-893531ab31fb",
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Result array is present and contains the expected number of elements\", function () {\r",
-									"    const responseData = pm.response.json();\r",
-									"    \r",
-									"    pm.expect(responseData).to.be.an('object');\r",
-									"    pm.expect(responseData.result).to.exist.and.to.be.an('object');\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "8ce0c991-06b7-46e2-aede-a633081746f0",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrltr}}/api/v1/TransferLogs/getpaged/:page/:pagesize/:whereCondition",
-							"host": [
-								"{{baseUrltr}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"TransferLogs",
-								"getpaged",
-								":page",
-								":pagesize",
-								":whereCondition"
-							],
-							"variable": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "pagesize",
-									"value": "10"
-								},
-								{
-									"key": "whereCondition",
-									"value": "{\"isFx\":true}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FX Transferlogs (getpaged) - No Auth",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "aa524675-c586-4651-9a06-203d332d9462",
-								"exec": [
-									"pm.test(\"Status code is 401 for missing or invalid auth token\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Error message indicates authentication failure\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.include(\"Authentication required\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "b3bbdb02-94e7-4870-901a-d20df4e14400",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrltr}}/api/v1/TransferLogs/getpaged/:page/:pagesize/:whereCondition",
-							"host": [
-								"{{baseUrltr}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"TransferLogs",
-								"getpaged",
-								":page",
-								":pagesize",
-								":whereCondition"
-							],
-							"variable": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "pagesize",
-									"value": "10"
-								},
-								{
-									"key": "whereCondition",
-									"value": "{\"isFx\":true}"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"id": "296dcaff-f27d-4707-b366-d6f2c5f5f206"
-		},
-		{
-			"name": "FX request Management",
-			"item": [
-				{
-					"name": "Approve FX request",
-					"item": [
-						{
-							"name": "Approve fx request",
-							"id": "040e577a-0ea1-4aae-baef-c7fd534713eb",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"requestId\":103206\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrltr}}/api/v1/TransferLogs/approve-fx-request"
-							},
-							"response": []
-						}
-					],
-					"id": "657a8acc-f628-46e8-b041-fa49a703dddb"
-				},
-				{
-					"name": "Reject FX request",
-					"item": [
-						{
-							"name": "Reject fx request",
-							"id": "1db93236-4d71-4310-8650-2dba3bb708e9",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"requestId\": 103206,\r\n  \"comment\": \"Noooo\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrltr}}/api/v1/TransferLogs/decline-fx-request"
-							},
-							"response": []
-						}
-					],
-					"id": "e3803787-161f-4075-842b-6c9c0f4ea2c2"
-				}
-			],
-			"id": "8e0f9f18-6d3c-439d-8f3c-400ffe6e7e60"
 		},
 		{
 			"name": "https://referral-dev.bank78.co/api/referral/query/referrals/1/20/%7B%7D",
