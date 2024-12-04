@@ -27719,14 +27719,14 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"providerAccountNumber\": \"85121232112\",\n  \"requestID\": 19\n}",
+									"raw": "{\n  \"comments\": \"Test\",\n  \"requestID\": 19\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{baseurlo}}/api/foreign-account/approve-fx-account/19"
+								"url": "{{baseurlo}}/api/foreign-account/reject-fx-account/19"
 							},
 							"response": []
 						}
