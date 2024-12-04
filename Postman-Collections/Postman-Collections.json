@@ -27698,6 +27698,40 @@
 						}
 					],
 					"id": "b8fd81f7-a499-42b1-adec-757f92c4471e"
+				},
+				{
+					"name": "Reject FX Request",
+					"item": [
+						{
+							"name": "Reject FX Request",
+							"id": "c64524c9-69dd-4aed-8171-2b497851a38e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"providerAccountNumber\": \"85121232112\",\n  \"requestID\": 19\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseurlo}}/api/foreign-account/approve-fx-account/19"
+							},
+							"response": []
+						}
+					],
+					"id": "a331bdb0-7681-4324-969c-33021f0c8b06"
 				}
 			],
 			"id": "105c2122-4cbe-46fc-a6f1-53c0e206de9c"
