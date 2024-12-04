@@ -27462,7 +27462,7 @@
 									"variable": [
 										{
 											"key": "accountnumber",
-											"value": "0000069326"
+											"value": "0000076614"
 										}
 									]
 								}
@@ -32379,7 +32379,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{business_access_token}}"
+										"token": "{{admin_access_token}}"
 									}
 								},
 								"method": "POST",
@@ -32392,7 +32392,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"amount\": 2000,\r\n  \"accountNumber\": \"0000076205\",\r\n  \"externalAccountNumber\": \"0000002110\",\r\n  \"senderName\": \"Jack Daniels\",\r\n  \"transactionReference\": \"Godnobeman\",\r\n  \"senderBank\": \"Bank of America\",\r\n  \"otherInfo\": \"Test\",\r\n  \"remark\": \"Test Funds\",\r\n  \"currency\": \"USD\",\r\n  \"channel\": \"Web\",\r\n  \"senderAccountNo\": \"9876543210\",\r\n  \"charges\": 0,\r\n  \"emailAddress\": \"Udeme+1112@assurdly.com\"\r\n}",
+									"raw": "// {\r\n//   \"amount\": 2000,\r\n//   \"accountNumber\": \"0000076614\",\r\n//   \"externalAccountNumber\": \"0000002110\",\r\n//   \"senderName\": \"Jack Daniels\",\r\n//   \"transactionReference\": \"Godnobeman\",\r\n//   \"senderBank\": \"Bank of America\",\r\n//   \"otherInfo\": \"Test\",\r\n//   \"remark\": \"Test Funds\",\r\n//   \"currency\": \"USD\",\r\n//   \"channel\": \"Web\",\r\n//   \"senderAccountNo\": \"9876543210\",\r\n//   \"charges\": 0,\r\n//   \"emailAddress\": \"Udeme+1112@assurdly.com\"\r\n// }\r\n{\r\n  \"amount\": 2000,\r\n  \"accountNumber\": \"0000076614\",\r\n  \"senderName\": \"Main Admin\",\r\n  \"transactionReference\": \"1234512345\",\r\n  \"senderBank\": \"UBA Kenya\",\r\n  \"otherInfo\": \"string\",\r\n  \"remark\": \"string\",\r\n  \"currency\": \"string\",\r\n  \"channel\": \"Web\",\r\n  \"senderAccountNo\": \"0000000001\",\r\n  \"charges\": 0\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
