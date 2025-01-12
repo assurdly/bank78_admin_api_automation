@@ -129,7 +129,7 @@ jobs:
           SLACK_CHANNEL: 'C070KUKPDLZ'
           SLACK_MESSAGE: |
             *Bank78 Admin - API Quality Readiness*
-            *Contributors - Wuraola Williams, Larry Ogbe*
+            *Contributors - Ayomide Liasu, Larry Ogbe*
             Status: ${{ job.status }}
             Passing Tests: ${{ steps.parse_new_json.outputs.passing_percentage }}%
             Failing Tests: ${{ steps.parse_new_json.outputs.failing_percentage }}%
